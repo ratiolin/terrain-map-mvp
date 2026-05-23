@@ -238,3 +238,161 @@ def specialization_score(per_model_errors, z_history):
         specs.append(spec_k)
 
     return float(np.mean(specs)) if specs else 0.0
+
+
+def state_to_label(state):
+    x = state[0]
+    if x > 0.2:
+        return "positive_basin"
+    if x < -0.2:
+        return "negative_basin"
+    return "boundary"
+
+
+def state_to_basin(state):
+    x = state[0]
+    if x < -0.5:
+        return "left_basin"
+    if x > 0.5:
+        return "right_basin"
+    return "center_basin"
+
+
+def rollout_collect(controller, env, agent=None, steps=2000, reset_every=200):
+    controller.gating_reset()
+    obs = env.reset()
+    states = []
+    z_states = []
+    labels = []
+    max_pos = getattr(env, 'reset_range', (-1.5, 1.5))
+    if isinstance(max_pos, tuple):
+        lo, hi = max_pos
+    else:
+        lo, hi = -1.5, 1.5
+
+    for i in range(steps):
+        w = controller.gating_weights(obs)
+        states.append(obs.copy())
+        z_states.append(w.detach().numpy().copy())
+        labels.append(state_to_label(obs))
+        if agent is not None:
+            a = agent.act(obs)
+        else:
+            a = 0
+        o_next, _, done = env.step(a)
+
+        if reset_every > 0 and i % reset_every == 0:
+            env.state = np.random.uniform(lo, hi, size=env.state.shape).astype(np.float32)
+            controller.gating_reset()
+            obs = env.state
+        elif done:
+            obs = env.reset()
+            controller.gating_reset()
+        else:
+            obs = o_next
+    return states, z_states, labels
+
+
+def rollout_collect_balanced(controller, env, n_per_class=200):
+    controller.gating_reset()
+    max_pos = getattr(env, 'reset_range', (-1.5, 1.5))
+    if isinstance(max_pos, tuple):
+        lo, hi = max_pos
+    else:
+        lo, hi = -1.5, 1.5
+
+    def query(pos):
+        env.state = np.array([pos], dtype=np.float32)
+        controller.gating_reset()
+        w = controller.gating_weights(env.state)
+        return w.detach().numpy().copy()
+
+    states = []
+    z_states = []
+    labels = []
+
+    for cls, lo_c, hi_c in [("negative_basin", lo, -0.2),
+                              ("boundary", -0.2, 0.2),
+                              ("positive_basin", 0.2, hi)]:
+        for i in range(n_per_class):
+            pos = lo_c + (hi_c - lo_c) * (i + 0.5) / n_per_class
+            states.append(np.array([pos], dtype=np.float32))
+            z_states.append(query(pos))
+            labels.append(cls)
+
+    return states, z_states, labels
+
+
+def train_linear_probe(z_states, labels, lr=0.01, epochs=2000):
+    label_set = sorted(set(labels))
+    label_to_idx = {lab: i for i, lab in enumerate(label_set)}
+    n_classes = len(label_set)
+
+    X = np.asarray(z_states, dtype=np.float32)
+    y = np.array([label_to_idx[lab] for lab in labels], dtype=np.int64)
+    n, d = X.shape
+
+    W = np.zeros((d, n_classes), dtype=np.float32)
+    b = np.zeros(n_classes, dtype=np.float32)
+
+    for _ in range(epochs):
+        logits = X @ W + b
+        logits -= logits.max(axis=1, keepdims=True)
+        probs = np.exp(logits) / np.exp(logits).sum(axis=1, keepdims=True)
+
+        probs[range(n), y] -= 1.0
+
+        dW = X.T @ probs / n
+        db = probs.sum(axis=0) / n
+
+        W -= lr * dW
+        b -= lr * db
+
+    return W, b, label_to_idx
+
+
+def evaluate_clf(W, b, label_to_idx, z_states, labels):
+    X = np.asarray(z_states, dtype=np.float32)
+    logits = X @ W + b
+    preds_idx = logits.argmax(axis=1)
+    label_set = sorted(label_to_idx, key=lambda x: label_to_idx[x])
+    preds = [label_set[i] for i in preds_idx]
+    correct = sum(1 for p, l in zip(preds, labels) if p == l)
+    return correct / len(labels)
+
+
+def confusion(W, b, label_to_idx, z_states, labels):
+    X = np.asarray(z_states, dtype=np.float32)
+    logits = X @ W + b
+    preds_idx = logits.argmax(axis=1)
+    idx_to_label = {v: k for k, v in label_to_idx.items()}
+    preds = [idx_to_label[p] for p in preds_idx]
+
+    from collections import Counter
+    total = len(labels)
+    counts = Counter()
+    correct_counts = Counter()
+
+    for true, pred in zip(labels, preds):
+        counts[(true, pred)] += 1
+        if true == pred:
+            correct_counts[true] += 1
+
+    print("--- Per-class accuracy ---")
+    for cls in sorted(label_to_idx.keys()):
+        n_cls = sum(1 for l in labels if l == cls)
+        n_correct = correct_counts.get(cls, 0)
+        pct = n_correct / n_cls * 100 if n_cls > 0 else 0.0
+        print(f"  {cls:16s}: {n_correct:5d}/{n_cls:<5d}  ({pct:5.1f}%)")
+
+    print(f"\n--- Confusion matrix (true \\ pred) ---")
+    classes = sorted(label_to_idx.keys())
+    header = " " * 16 + "".join(f"{c:>8s}" for c in classes)
+    print(header)
+    for true_cls in classes:
+        row = f"{true_cls:16s}"
+        for pred_cls in classes:
+            row += f"  {counts.get((true_cls, pred_cls), 0):5d} "
+        print(row)
+
+    return dict(counts)

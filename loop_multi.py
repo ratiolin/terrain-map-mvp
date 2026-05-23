@@ -8,7 +8,7 @@ import torch.nn.functional as F
 from metrics import Metrics
 
 
-def run_soft(env, agent, controller, steps=10000, hook=None):
+def run_soft(env, agent, controller, steps=10000, hook=None, region_bias=None):
     controller.init_models(agent)
     gating = controller.gating
     gating_opt = controller.gating_optimizer
@@ -74,6 +74,17 @@ def run_soft(env, agent, controller, steps=10000, hook=None):
                 ])
                 perr = perr - perr.min()
                 z_target_raw = torch.softmax(-perr / 0.05, dim=-1)
+
+                if region_bias is not None and len(region_bias) == K:
+                    x_pos = obs[0]
+                    if abs(x_pos) >= 0.2:
+                        rb = torch.tensor(region_bias, dtype=torch.float32)
+                        head_sign = torch.sign(rb).to(z_target_raw.device)
+                        basin_sign = 1.0 if x_pos > 0 else -1.0
+                        match = (basin_sign * head_sign) > 0
+                        alpha = 0.3
+                        z_target_raw = z_target_raw * (1 + alpha * match.float())
+                        z_target_raw = z_target_raw / z_target_raw.sum(dim=-1, keepdim=True)
 
             z_logits = controller._last_logits
 
@@ -147,11 +158,119 @@ def run_soft(env, agent, controller, steps=10000, hook=None):
     return np.array(history), weight_history_all
 
 
-def experiment_soft(env, agent, controller, steps=10000, hook=None):
-    history, wh = run_soft(env, agent, controller, steps, hook=hook)
+def experiment_soft(env, agent, controller, steps=10000, hook=None, region_bias=None):
+    history, wh = run_soft(env, agent, controller, steps, hook=hook, region_bias=region_bias)
     controller._weight_history = wh
     metrics = Metrics()
     return history, metrics
+
+
+def run_soft_finetune(env, agent, controller, steps=2000, region_bias=None):
+    gating = controller.gating
+    gating_opt = controller.gating_optimizer
+
+    obs = env.reset()
+    controller.gating_reset()
+    history = []
+
+    z_history = []
+    prev_z = None
+
+    use_z = controller.use_z
+    activate_z_loss = True
+    running_error = 1.0
+
+    for t in range(steps):
+        a = agent.act(obs)
+        o_next, _, done = env.step(a)
+
+        target_tensor = torch.tensor(o_next, dtype=torch.float32)
+        weights = controller.gating_weights(obs)
+        K = len(controller.models)
+        preds = [m.predict(obs, a) for m in controller.models]
+
+        mode = "semi-hard" if (use_z and controller.freeze_structure) else "soft"
+        if mode == "semi-hard":
+            soft_pred = sum(weights[i].detach() * preds[i] for i in range(K))
+        else:
+            soft_pred = sum(weights[i] * preds[i] for i in range(K))
+
+        error = float(np.mean(np.abs(soft_pred.detach().numpy() - o_next)))
+
+        for i in range(K):
+            e_i = float(np.mean(np.abs(preds[i].detach().numpy() - o_next)))
+            controller.track_error(i, e_i)
+        controller.record_usage(int(weights.argmax().item()))
+
+        loss_pred = ((soft_pred - target_tensor) ** 2).mean()
+        entropy = -(weights * torch.log(weights + 1e-8)).sum()
+        loss = loss_pred - 0.005 * entropy
+
+        if use_z:
+            with torch.no_grad():
+                perr = torch.stack([
+                    ((preds[i].detach() - target_tensor) ** 2).mean()
+                    for i in range(K)
+                ])
+                perr = perr - perr.min()
+                z_target_raw = torch.softmax(-perr / 0.05, dim=-1)
+
+                if region_bias is not None and len(region_bias) == K:
+                    x_pos = obs[0]
+                    if abs(x_pos) >= 0.2:
+                        rb = torch.tensor(region_bias, dtype=torch.float32)
+                        head_sign = torch.sign(rb).to(z_target_raw.device)
+                        basin_sign = 1.0 if x_pos > 0 else -1.0
+                        match = (basin_sign * head_sign) > 0
+                        alpha = 0.3
+                        z_target_raw = z_target_raw * (1 + alpha * match.float())
+                        z_target_raw = z_target_raw / z_target_raw.sum(dim=-1, keepdim=True)
+
+            z_logits = controller._last_logits
+            z_loss = F.kl_div(
+                F.log_softmax(z_logits, dim=-1),
+                z_target_raw.detach(),
+                reduction='sum'
+            )
+
+            temporal_loss_z = torch.tensor(0.0)
+            if prev_z is not None and len(weights) == len(prev_z):
+                temporal_loss_z = ((weights - prev_z) ** 2).sum()
+
+            running_error = 0.99 * running_error + 0.01 * error
+            balance_loss = -(weights * torch.log(weights + 1e-8)).sum()
+            loss = loss + 0.01 * z_loss + 0.005 * balance_loss
+            if temporal_loss_z.item() > 0:
+                loss = loss + 0.02 * temporal_loss_z
+        else:
+            temporal_loss = torch.tensor(0.0)
+            if controller.use_temporal and prev_z is not None:
+                if len(weights) == len(prev_z):
+                    temporal_loss = ((weights - prev_z) ** 2).sum()
+            loss = loss + 0.02 * temporal_loss
+
+        gating_opt.zero_grad()
+        for m in controller.models:
+            m.optimizer.zero_grad()
+        loss.backward()
+        gating_opt.step()
+        for m in controller.models:
+            m.optimizer.step()
+
+        if use_z or controller.use_temporal:
+            prev_z = weights.detach().clone()
+
+        z_history.append(weights.detach().numpy().copy())
+        history.append(error)
+
+        if done:
+            obs = env.reset()
+            controller.gating_reset()
+            prev_z = None
+        else:
+            obs = o_next
+
+    return np.array(history)
 
 
 def experiment_growth(env, agent, controller, steps=10000, hook=None):

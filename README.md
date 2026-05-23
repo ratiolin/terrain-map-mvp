@@ -2,14 +2,14 @@
 
 **Structure–Complexity Co-evolution System**
 
-A self-organizing learning system where model capacity adapts automatically to environment structure. The number of experts grows, merges, prunes, and stabilizes based on internal signals, with learnable routing, temporal consistency, and adaptive credit assignment.
+A self-organizing learning system in which model structure adapts to environment complexity. The system dynamically allocates capacity, discovers latent structure, and stabilizes specialized behaviors through internal signals and closed-loop interaction.
 
 ---
 
 ## **Status**
 
 ```
-STAGE 1–8 COMPLETE
+STAGE 1–9 COMPLETE
 ```
 
 Validated capabilities:
@@ -24,7 +24,9 @@ Validated capabilities:
     
 - closed-loop interaction between model and environment
     
-- verified across CartPole, DoubleWell, TripleWell
+- multi-attractor behavior control via language modulation
+    
+- verified across CartPole, DoubleWell, and TripleWell environments
     
 
 ---
@@ -62,7 +64,7 @@ env.step(action) → next_state, reward
     GRU-based routing with direct state path for instantaneous response
     
 - **Controller (`controller.py`)**  
-    Handles structural transitions: split, merge, prune, freeze
+    Structural adaptation: split, merge, prune, freeze
     
 - **Training loops (`loop_multi.py`, `loop_policy.py`)**  
     Multi-model routing and optional policy interaction
@@ -75,25 +77,12 @@ env.step(action) → next_state, reward
 ```bash
 uv sync
 
-# baseline + perturbation mapping
 uv run python main.py
-
-# structural adaptation
 uv run python main_stage4.py
-
-# learnable routing
 uv run python main_stage5.py
-
-# temporal + explicit latent routing
 uv run python main_stage6b.py
-
-# stabilization + generalization
 uv run python main_stage6d.py
-
-# routing modes (credit assignment)
 uv run python main_stage7.py
-
-# policy coupling (closed loop)
 uv run python main_stage8.py
 ```
 
@@ -113,6 +102,7 @@ analyze.py
 
 env.py
 env_double_well.py
+env_triple_well.py
 
 main.py
 main_stage3.py
@@ -124,6 +114,7 @@ main_stage6c.py
 main_stage6d.py
 main_stage7.py
 main_stage8.py
+main_stage9.py
 ```
 
 ---
@@ -145,11 +136,11 @@ main_stage8.py
 
 ### **Routing Evolution**
 
-- static → temporal → explicit latent
+- static → temporal → explicit latent routing
     
 - state + history determine expert allocation
     
-- routing becomes stable before specialization
+- routing stabilizes before specialization emerges
     
 
 ---
@@ -170,12 +161,34 @@ Semi-hard mode activates after structural stabilization.
 
 - routing defines both prediction weights and action probabilities
     
-- actions affect future states
+- actions influence future states
     
-- data distribution shifts with learning
+- data distribution shifts during learning
     
 - model and environment form a feedback system
     
+
+---
+
+### **Language-Modulated Control**
+
+- text input perturbs gating logits (`z_logits`)
+    
+- routing shifts expert selection
+    
+- selected experts induce distinct behavioral regimes
+    
+
+Validated behavior:
+
+- **DoubleWell (2 attractors)**  
+    language reliably switches between attractors (2/3 criteria)
+    
+- **TripleWell (3 attractors)**  
+    language selects among three basins with stable separation (3/3 criteria)
+    
+
+Control operates at the level of **attractor selection**, not precise state targeting.
 
 ---
 
@@ -183,13 +196,13 @@ Semi-hard mode activates after structural stabilization.
 
 - **stability** — consistency of dominant expert
     
-- **separation** — difference in routing across regions
+- **separation** — routing divergence across regions
     
-- **specialization** — relative performance of experts
+- **specialization** — expert performance differences
     
 - **max_fraction** — usage concentration
     
-- **policy_entropy** — action distribution diversity
+- **policy_entropy** — action diversity
     
 - **reward_variance** — outcome variability
     
@@ -198,13 +211,13 @@ Semi-hard mode activates after structural stabilization.
 
 ## **Design Properties**
 
-- internally driven structural changes
+- internally driven structural evolution
     
-- minimal incremental modifications per stage
+- minimal stage-wise modifications
     
 - deterministic execution (fixed seeds)
     
-- measurable and testable progression
+- measurable progression at each stage
     
 - no external supervision for structure
     
@@ -215,15 +228,16 @@ Semi-hard mode activates after structural stabilization.
 
 - continuous routing reduces specialization without gradient isolation
     
-- entropy is insufficient alone for boundary detection
+- entropy alone does not identify structural boundaries
     
-- specialization depends on training distribution coverage
+- specialization depends on sufficient state-space coverage
     
-- policy is minimal (derived from routing, not optimized for reward)
+- policy remains minimal and is not reward-optimized
     
-- validated on low-dimensional continuous environments with clear spatial structure;
-  scaling to high-dimensional or weakly structured domains remains untested
-
+- control is limited to attractor selection, not precise state stabilization
+    
+- validated on low-dimensional continuous environments with clear spatial structure; scaling to high-dimensional or weakly structured domains remains untested
+    
 
 ---
 
@@ -233,11 +247,13 @@ The system evolves from a single predictor into a structured ensemble that:
 
 - discovers latent regions of the environment
     
-- allocates capacity where needed
+- allocates capacity adaptively
     
-- stabilizes its own structure
+- stabilizes its internal structure
     
 - forms specialized experts
     
-- and interacts with the environment through its own internal representation
+- and controls behavior by selecting among emergent dynamical regimes
     
+
+Language modulation demonstrates that high-level signals can steer system behavior by influencing internal routing, enabling consistent selection among multiple attractors within a learned dynamical landscape.

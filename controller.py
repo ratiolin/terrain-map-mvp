@@ -119,6 +119,7 @@ class GrowthController:
         self.usage = []
         self.errors = []
         self.birth_step = []
+        self.region_bias = []
 
         self.original_agent = None
 
@@ -130,6 +131,11 @@ class GrowthController:
         self.usage = [0]
         self.errors = [[]]
         self.birth_step = [0]
+        self.region_bias = [0.0]
+
+    def init_region_bias(self):
+        K = len(self.models)
+        self.region_bias = [float(v) for v in torch.linspace(-1.0, 1.0, K)]
 
     def should_update(self, error, model_idx):
         self.cnt += 1
@@ -158,9 +164,12 @@ class GrowthController:
             return
 
         new_models = []
+        new_biases = []
         for idx, m in enumerate(self.models):
             if idx >= len(self.errors) or len(self.errors[idx]) < 500:
                 new_models.append(m)
+                if idx < len(self.region_bias):
+                    new_biases.append(self.region_bias[idx])
                 continue
 
             h = np.array(self.errors[idx])
@@ -179,6 +188,8 @@ class GrowthController:
                 tail_mean > 0.005
             )
 
+            parent_bias = self.region_bias[idx] if idx < len(self.region_bias) else 0.0
+
             if should_split:
                 child = copy.deepcopy(m)
                 child.optimizer = optim.Adam(child.parameters(), lr=1e-3)
@@ -186,14 +197,19 @@ class GrowthController:
                     for p in child.predictor.parameters():
                         p.add_(torch.randn_like(p) * 0.3)
 
+                child_bias = parent_bias + float(torch.randn(1).item() * 0.05)
                 new_models.append(m)
                 new_models.append(child)
+                new_biases.append(parent_bias)
+                new_biases.append(child_bias)
             else:
                 new_models.append(m)
+                new_biases.append(parent_bias)
 
         if len(new_models) != len(self.models):
             old_len = len(self.models)
             self.models = new_models
+            self.region_bias = new_biases
             self.usage = self.usage[:old_len] + [0] * (len(new_models) - old_len)
             self.birth_step = self.birth_step[:old_len] + [self.cnt] * (len(new_models) - old_len)
             while len(self.errors) < len(new_models):
@@ -213,6 +229,7 @@ class GrowthController:
             return
 
         merged = []
+        merged_biases = []
         used = set()
 
         for i in range(len(self.models)):
@@ -221,6 +238,8 @@ class GrowthController:
             base = self.models[i]
             group_usage = self.usage[i]
             group_errors = self.errors[i]
+            n_merged = 1
+            bias_sum = self.region_bias[i] if i < len(self.region_bias) else 0.0
 
             for j in range(i + 1, len(self.models)):
                 if j in used:
@@ -235,17 +254,18 @@ class GrowthController:
                     base.optimizer = optim.Adam(base.parameters(), lr=1e-3)
                     group_usage += self.usage[j]
                     group_errors += self.errors[j]
+                    if j < len(self.region_bias):
+                        bias_sum += self.region_bias[j]
+                    n_merged += 1
                     used.add(j)
 
             merged.append(base)
+            merged_biases.append(bias_sum / n_merged)
             used.add(i)
 
         if len(merged) < len(self.models):
             self.models = merged
-            self.usage = self.usage[:len(merged)]
-            for idx, (u, e) in enumerate(
-                zip(self.usage, self.errors)):
-                pass
+            self.region_bias = merged_biases
             self.usage = [max(1, sum(self.usage) // max(1, len(self.usage)))] * len(merged)
             self.errors = [e if i < len(self.errors) else [] for i, e in enumerate(self.errors[:len(merged)])]
 
@@ -261,6 +281,7 @@ class GrowthController:
         kept_usage = []
         kept_errors = []
         kept_birth = []
+        kept_biases = []
 
         for i, m in enumerate(self.models):
             age = self.cnt - self.birth_step[i]
@@ -277,12 +298,17 @@ class GrowthController:
                     kept_birth.append(self.birth_step[i])
                 else:
                     kept_birth.append(self.cnt)
+                if i < len(self.region_bias):
+                    kept_biases.append(self.region_bias[i])
+                else:
+                    kept_biases.append(0.0)
 
         if len(kept) < len(self.models):
             self.models = kept
             self.usage = kept_usage
             self.errors = kept_errors
             self.birth_step = kept_birth
+            self.region_bias = kept_biases
 
     def n_models(self):
         return len(self.models)
@@ -378,6 +404,7 @@ class GatingGrowthController(GrowthController):
 
         merged_to = {}
         removed = set()
+        merged_biases = {}
         for d, i, j in dists:
             if d >= self.merge_thresh:
                 break
@@ -391,6 +418,12 @@ class GatingGrowthController(GrowthController):
                         pb.data.add_(pj.data).mul_(0.5)
                 self.models[target].optimizer = optim.Adam(
                     self.models[target].parameters(), lr=1e-3)
+                if target < len(self.region_bias) and j < len(self.region_bias):
+                    if target in merged_biases:
+                        n = merged_biases[target][0] + 1
+                        merged_biases[target] = (n, (merged_biases[target][1] * (n - 1) + self.region_bias[j]) / n)
+                    else:
+                        merged_biases[target] = (2, (self.region_bias[target] + self.region_bias[j]) / 2)
                 removed.add(j)
                 merged_to[j] = target
 
@@ -402,6 +435,15 @@ class GatingGrowthController(GrowthController):
             self.errors = [self.errors[i] for i in keep_indices]
             self.birth_step = [self.birth_step[i] for i in keep_indices]
             self.weight_history = [self.weight_history[i] for i in keep_indices]
+            new_biases = []
+            for i in keep_indices:
+                if i in merged_biases:
+                    new_biases.append(merged_biases[i][1])
+                elif i < len(self.region_bias):
+                    new_biases.append(self.region_bias[i])
+                else:
+                    new_biases.append(0.0)
+            self.region_bias = new_biases
             if self.gating is not None:
                 self.gating.shrink(keep_indices)
                 self.gating_optimizer = optim.Adam(self.gating.parameters(), lr=1e-3)
@@ -431,6 +473,8 @@ class GatingGrowthController(GrowthController):
             self.errors = [self.errors[i] for i in keep_indices]
             self.birth_step = [self.birth_step[i] for i in keep_indices]
             self.weight_history = [self.weight_history[i] for i in keep_indices]
+            self.region_bias = [self.region_bias[i] if i < len(self.region_bias) else 0.0
+                               for i in keep_indices]
             if self.gating is not None:
                 self.gating.shrink(keep_indices)
                 self.gating_optimizer = optim.Adam(self.gating.parameters(), lr=1e-3)
