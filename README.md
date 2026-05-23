@@ -2,7 +2,7 @@
 
 **Structure–Complexity Co-evolution System**
 
-A self-organizing learning system in which model structure adapts to environment complexity. The system dynamically allocates capacity, discovers latent structure, and stabilizes specialized behaviors through internal signals and closed-loop interaction.
+A self-organizing learning system in which model structure adapts to environment structure. Capacity emerges through interaction: experts grow, merge, prune, and stabilize based on internal signals, while routing, specialization, and behavior co-evolve in a closed loop.
 
 ---
 
@@ -14,19 +14,19 @@ STAGE 1–9 COMPLETE
 
 Validated capabilities:
 
-- dynamic structure adaptation (grow / merge / prune / freeze)
+- dynamic structural adaptation (grow / merge / prune / freeze)
     
 - state-dependent routing with temporal coherence
     
-- expert specialization via credit-aware training
+- expert specialization via credit-aware learning
     
 - stable behavior under perturbation and recovery
     
 - closed-loop interaction between model and environment
     
-- multi-attractor behavior control via language modulation
+- multi-attractor behavior selection via language modulation
     
-- verified across CartPole, DoubleWell, and TripleWell environments
+- verified on CartPole, DoubleWell, and TripleWell
     
 
 ---
@@ -49,7 +49,7 @@ loss = MSE + α·z_loss + λ·temporal_loss − β·entropy
 Optional policy coupling:
 
 ```
-action ~ z_soft
+action ~ z_soft (or policy_heads[z])
 env.step(action) → next_state, reward
 ```
 
@@ -64,10 +64,13 @@ env.step(action) → next_state, reward
     GRU-based routing with direct state path for instantaneous response
     
 - **Controller (`controller.py`)**  
-    Structural adaptation: split, merge, prune, freeze
+    Structural adaptation: split, merge, prune, freeze, bias initialization
     
-- **Training loops (`loop_multi.py`, `loop_policy.py`)**  
-    Multi-model routing and optional policy interaction
+- **Routing / Training (`loop_multi.py`, `loop_policy.py`)**  
+    Multi-expert coordination, credit assignment, and policy interaction
+    
+- **Analysis (`analyze.py`, `metrics.py`)**  
+    Behavioral evaluation, routing statistics, and system diagnostics
     
 
 ---
@@ -77,13 +80,29 @@ env.step(action) → next_state, reward
 ```bash
 uv sync
 
+# baseline + perturbation mapping
 uv run python main.py
+
+# structural adaptation
 uv run python main_stage4.py
+
+# learnable routing
 uv run python main_stage5.py
+
+# temporal routing
 uv run python main_stage6b.py
+
+# stabilization
 uv run python main_stage6d.py
+
+# routing modes
 uv run python main_stage7.py
+
+# closed-loop policy
 uv run python main_stage8.py
+
+# language-modulated control
+uv run python main_stage9e.py
 ```
 
 ---
@@ -94,15 +113,18 @@ uv run python main_stage8.py
 agent.py
 gating.py
 controller.py
+router.py
+
 loop.py
 loop_multi.py
 loop_policy.py
+
 metrics.py
 analyze.py
+experiment.py
 
 env.py
 env_double_well.py
-env_triple_well.py
 
 main.py
 main_stage3.py
@@ -115,6 +137,13 @@ main_stage6d.py
 main_stage7.py
 main_stage8.py
 main_stage9.py
+main_stage9a.py
+main_stage9b.py
+main_stage9b_prime.py
+main_stage9c.py
+main_stage9c_prime.py
+main_stage9d.py
+main_stage9e.py
 ```
 
 ---
@@ -136,11 +165,11 @@ main_stage9.py
 
 ### **Routing Evolution**
 
-- static → temporal → explicit latent routing
+- static → temporal → latent-conditioned
     
 - state + history determine expert allocation
     
-- routing stabilizes before specialization emerges
+- routing stabilizes before specialization
     
 
 ---
@@ -159,36 +188,32 @@ Semi-hard mode activates after structural stabilization.
 
 ### **Closed-Loop Behavior**
 
-- routing defines both prediction weights and action probabilities
+- routing determines prediction and action selection
     
-- actions influence future states
+- actions influence future state distribution
     
-- data distribution shifts during learning
+- training data evolves with policy
     
-- model and environment form a feedback system
+- system forms a feedback loop with environment
     
 
 ---
 
-### **Language-Modulated Control**
+### **Multi-Attractor Control**
 
-- text input perturbs gating logits (`z_logits`)
+- experts specialize to different regions of state space
     
-- routing shifts expert selection
+- routing selects experts based on state and modulation
     
-- selected experts induce distinct behavioral regimes
+- behavior emerges as attractor selection
     
 
 Validated behavior:
 
-- **DoubleWell (2 attractors)**  
-    language reliably switches between attractors (2/3 criteria)
+- DoubleWell: bidirectional attractor control
     
-- **TripleWell (3 attractors)**  
-    language selects among three basins with stable separation (3/3 criteria)
+- TripleWell: multi-attractor selection (3-way separation)
     
-
-Control operates at the level of **attractor selection**, not precise state targeting.
 
 ---
 
@@ -196,15 +221,15 @@ Control operates at the level of **attractor selection**, not precise state targ
 
 - **stability** — consistency of dominant expert
     
-- **separation** — routing divergence across regions
+- **separation** — routing differentiation across regions
     
-- **specialization** — expert performance differences
+- **specialization** — expert performance contrast
     
-- **max_fraction** — usage concentration
+- **max_fraction** — routing concentration
     
 - **policy_entropy** — action diversity
     
-- **reward_variance** — outcome variability
+- **reward_variance** — behavioral variability
     
 
 ---
@@ -217,7 +242,7 @@ Control operates at the level of **attractor selection**, not precise state targ
     
 - deterministic execution (fixed seeds)
     
-- measurable progression at each stage
+- measurable progression across stages
     
 - no external supervision for structure
     
@@ -226,15 +251,15 @@ Control operates at the level of **attractor selection**, not precise state targ
 
 ## **Limitations**
 
-- continuous routing reduces specialization without gradient isolation
+- continuous routing can reduce specialization without gradient isolation
     
-- entropy alone does not identify structural boundaries
+- entropy alone is insufficient for boundary detection
     
-- specialization depends on sufficient state-space coverage
+- specialization depends on coverage of training distribution
     
-- policy remains minimal and is not reward-optimized
+- policy is indirect (emerges from routing, not globally optimized)
     
-- control is limited to attractor selection, not precise state stabilization
+- control operates at attractor-selection level, not precise state targeting
     
 - validated on low-dimensional continuous environments with clear spatial structure; scaling to high-dimensional or weakly structured domains remains untested
     
@@ -245,15 +270,16 @@ Control operates at the level of **attractor selection**, not precise state targ
 
 The system evolves from a single predictor into a structured ensemble that:
 
-- discovers latent regions of the environment
+- discovers latent structure in the environment
     
 - allocates capacity adaptively
     
-- stabilizes its internal structure
+- stabilizes its own architecture
     
 - forms specialized experts
     
-- and controls behavior by selecting among emergent dynamical regimes
+- and controls behavior through internal routing dynamics
     
 
-Language modulation demonstrates that high-level signals can steer system behavior by influencing internal routing, enabling consistent selection among multiple attractors within a learned dynamical landscape.
+**Core result:**  
+Behavior can be modulated by selecting among dynamically learned experts, enabling consistent control over system-level outcomes through internal structure rather than explicit supervision.
