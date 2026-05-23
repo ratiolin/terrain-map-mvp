@@ -221,6 +221,9 @@ Semi-hard mode activates after structural stabilization.
     
 - policy is minimal (derived from routing, not optimized for reward)
     
+- validated on low-dimensional continuous environments with clear spatial structure;
+  scaling to high-dimensional or weakly structured domains remains untested
+
 
 ---
 
