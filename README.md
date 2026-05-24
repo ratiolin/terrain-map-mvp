@@ -263,6 +263,8 @@ Validated behavior:
     
 - validated on low-dimensional continuous environments with clear spatial structure; scaling to high-dimensional or weakly structured domains remains untested
     
+- language modulation controls attractor selection but cannot stabilize behavior at dynamically unstable points (e.g., basin boundaries in DoubleWell); controllability is bounded by the underlying attractor structure of the environment
+
 
 ---
 
