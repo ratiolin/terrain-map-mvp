@@ -24,7 +24,16 @@ def reset_seed(seed=42):
 
 
 def _state_dim_from_env(env):
-    return 2 if env.add_context else 1
+    dim = 2 if env.add_context else 1
+    if hasattr(env, 'memory_k') and env.memory_k is not None and env.memory_k > 1:
+        dim = env.memory_k
+        if env.add_context:
+            dim += 1
+    elif hasattr(env, 'memory_alpha') and env.memory_alpha is not None:
+        dim = 2
+        if env.add_context:
+            dim += 1
+    return dim
 
 
 def _make_agent(env):
@@ -32,7 +41,7 @@ def _make_agent(env):
     return Agent(obs_dim=sd, act_dim=1, hidden_dim=2, lr=1e-3)
 
 
-def _make_ctrl(agent, K_budget, inertia=0.0):
+def _make_ctrl(agent, K_budget, inertia=0.0, memory_k=None):
     ctrl = GatingGrowthController(
         check_interval=200,
         env_type="doublewell",
@@ -41,6 +50,7 @@ def _make_ctrl(agent, K_budget, inertia=0.0):
         max_models=8,
         use_z=True,
         inertia=inertia,
+        memory_k=memory_k,
     )
     ctrl.init_models(agent)
     for _ in range(K_budget - 1):
@@ -147,6 +157,8 @@ def evaluate_multi(env, ctrl, steps):
     phase_history = []
     oracle_mse_history = []
     routing_gap_history = []
+    pred_history = []
+    targ_history = []
 
     flip_period = getattr(env, 'flip_period', 500)
     for t_idx in range(steps):
@@ -170,6 +182,9 @@ def evaluate_multi(env, ctrl, steps):
             chosen_k = int(weights.argmax().item())
             chosen_err = perr[chosen_k].item()
 
+        pred_history.append(float(soft_pred.detach().mean().item()))
+        targ_history.append(float(target.mean().item()))
+
         loss = ((soft_pred - target) ** 2).mean()
         mse_history.append(loss.item())
         oracle_mse_history.append(oracle_err)
@@ -185,7 +200,7 @@ def evaluate_multi(env, ctrl, steps):
             obs = o_next
     K_max = max(len(z) for z in z_history) if z_history else 1
     return mse_history, z_history, state_history, sign_history, phase_history, K_max, \
-        oracle_mse_history, routing_gap_history
+        oracle_mse_history, routing_gap_history, pred_history, targ_history
 
 
 def evaluate_single(model, env, steps):
@@ -260,16 +275,19 @@ def compute_ctx_align(z_history, sign_history, K_max):
 
 def run_condition_multi(kappa, drift, flip_mode, add_context,
                          K_budget, expert_hidden, gating_hidden,
-                         train_steps, test_steps, seeds, inertia=0.0):
+                         train_steps, test_steps, seeds, inertia=0.0,
+                         omega=None, memory_k=None, memory_alpha=None):
     seed_results = []
     for seed in seeds:
         reset_seed(seed)
         env_train = DriftingDoubleWell(
             kappa=kappa, drift_rate=drift,
             flip_mode=flip_mode, add_context=add_context,
+            omega=omega,
+            memory_k=memory_k, memory_alpha=memory_alpha,
         )
         agent = _make_agent(env_train)
-        ctrl = _make_ctrl(agent, K_budget, inertia=inertia)
+        ctrl = _make_ctrl(agent, K_budget, inertia=inertia, memory_k=memory_k)
 
         (_mse_train, oracle_train_hist, _z_train, _st_train,
          _sgn_train, _K_train, _Kmax_train) = train_multi_expert(
@@ -281,9 +299,11 @@ def run_condition_multi(kappa, drift, flip_mode, add_context,
         env_test = DriftingDoubleWell(
             kappa=kappa, drift_rate=drift,
             flip_mode=flip_mode, add_context=add_context,
+            omega=omega,
+            memory_k=memory_k, memory_alpha=memory_alpha,
         )
         (mse_test, z_test, st_test, sgn_test, phase_test, K_max,
-         oracle_mse_list, routing_gap_list) = evaluate_multi(
+         oracle_mse_list, routing_gap_list, pred_history, targ_history) = evaluate_multi(
             env_test, ctrl, test_steps,
         )
         test_mse = float(np.mean(mse_test))
@@ -294,6 +314,7 @@ def run_condition_multi(kappa, drift, flip_mode, add_context,
         separation = compute_separation(expert_means)
         ctx_align = compute_ctx_align(z_test, sgn_test, K_max)
 
+        drift_history = list(env_test.drift_history) if hasattr(env_test, 'drift_history') else []
         seed_result = {
             "test_mse": test_mse,
             "mse_test_history": mse_test,
@@ -310,6 +331,9 @@ def run_condition_multi(kappa, drift, flip_mode, add_context,
             "state_history": st_test,
             "z_history": z_test,
             "sign_history": sgn_test,
+            "drift_history": drift_history,
+            "pred_history": pred_history,
+            "targ_history": targ_history,
         }
 
         metrics = compute_metrics_from_seed(seed_result)
@@ -325,8 +349,17 @@ def run_condition_multi(kappa, drift, flip_mode, add_context,
 
 def run_condition_single_large(kappa, drift, flip_mode, add_context,
                                 K_budget, expert_hidden, gating_hidden,
-                                train_steps, test_steps, seeds):
+                                train_steps, test_steps, seeds, omega=None,
+                                memory_k=None, memory_alpha=None):
     state_dim = 2 if add_context else 1
+    if memory_k is not None and memory_k > 1:
+        state_dim = memory_k
+        if add_context:
+            state_dim += 1
+    elif memory_alpha is not None:
+        state_dim = 2
+        if add_context:
+            state_dim += 1
     test_mses = []
     mse_histories = []
     state_histories = []
@@ -341,6 +374,8 @@ def run_condition_single_large(kappa, drift, flip_mode, add_context,
         env_train = DriftingDoubleWell(
             kappa=kappa, drift_rate=drift,
             flip_mode=flip_mode, add_context=add_context,
+            omega=omega,
+            memory_k=memory_k, memory_alpha=memory_alpha,
         )
         train_single_model(model_large, env_train, train_steps, lr=1e-3, seed=seed)
 
@@ -348,6 +383,8 @@ def run_condition_single_large(kappa, drift, flip_mode, add_context,
         env_test = DriftingDoubleWell(
             kappa=kappa, drift_rate=drift,
             flip_mode=flip_mode, add_context=add_context,
+            omega=omega,
+            memory_k=memory_k, memory_alpha=memory_alpha,
         )
         mse_test, st_test = evaluate_single(model_large, env_test, test_steps)
         test_mses.append(float(np.mean(mse_test)))
@@ -358,13 +395,24 @@ def run_condition_single_large(kappa, drift, flip_mode, add_context,
 
 
 def run_condition_single_small(kappa, drift, flip_mode, add_context,
-                                expert_hidden, train_steps, test_steps, seed):
+                                expert_hidden, train_steps, test_steps, seed, omega=None,
+                                memory_k=None, memory_alpha=None):
     state_dim = 2 if add_context else 1
+    if memory_k is not None and memory_k > 1:
+        state_dim = memory_k
+        if add_context:
+            state_dim += 1
+    elif memory_alpha is not None:
+        state_dim = 2
+        if add_context:
+            state_dim += 1
     reset_seed(seed)
     model_small = MLP(hidden_dim=expert_hidden, state_dim=state_dim)
     env_train = DriftingDoubleWell(
         kappa=kappa, drift_rate=drift,
         flip_mode=flip_mode, add_context=add_context,
+        omega=omega,
+        memory_k=memory_k, memory_alpha=memory_alpha,
     )
     train_single_model(model_small, env_train, train_steps, lr=1e-3, seed=seed)
 
@@ -372,13 +420,16 @@ def run_condition_single_small(kappa, drift, flip_mode, add_context,
     env_test = DriftingDoubleWell(
         kappa=kappa, drift_rate=drift,
         flip_mode=flip_mode, add_context=add_context,
+        omega=omega,
+        memory_k=memory_k, memory_alpha=memory_alpha,
     )
     mse_test, _ = evaluate_single(model_small, env_test, test_steps)
     return float(np.mean(mse_test)), model_small.count_params()
 
 
 def run_triplet(kappa, drift, K_budget=4, expert_hidden=2, gating_hidden=8,
-                train_steps=1200, test_steps=300, seeds=(42, 43, 44), inertia=0.0):
+                train_steps=1200, test_steps=300, seeds=(42, 43, 44), inertia=0.0,
+                omega=None, memory_k=None, memory_alpha=None):
     configs = [
         ("det", "deterministic", False),
         ("rand_noctx", "random", False),
@@ -391,6 +442,8 @@ def run_triplet(kappa, drift, K_budget=4, expert_hidden=2, gating_hidden=8,
         kappa, drift, flip_mode="deterministic", add_context=False,
         expert_hidden=expert_hidden,
         train_steps=train_steps, test_steps=test_steps, seed=seeds[0],
+        omega=omega,
+        memory_k=memory_k, memory_alpha=memory_alpha,
     )
     triplet["test_small_1d"] = test_small_1d
     triplet["params_small_1d"] = params_small_1d
@@ -404,6 +457,8 @@ def run_triplet(kappa, drift, K_budget=4, expert_hidden=2, gating_hidden=8,
             train_steps=train_steps, test_steps=test_steps,
             seeds=seeds,
             inertia=inertia,
+            omega=omega,
+            memory_k=memory_k, memory_alpha=memory_alpha,
         )
 
         test_large_list, params_large, H_large, mse_hist_large, state_hist_large = run_condition_single_large(
@@ -413,6 +468,8 @@ def run_triplet(kappa, drift, K_budget=4, expert_hidden=2, gating_hidden=8,
             gating_hidden=gating_hidden,
             train_steps=train_steps, test_steps=test_steps,
             seeds=seeds,
+            omega=omega,
+            memory_k=memory_k, memory_alpha=memory_alpha,
         )
 
         test_large_mean = float(np.mean(test_large_list))
@@ -477,7 +534,8 @@ def run_triplet(kappa, drift, K_budget=4, expert_hidden=2, gating_hidden=8,
 
 def run_experiment_grid(kappa_list=None, drift_list=None, seeds=(42, 43, 44),
                          expert_hidden=2, K_budget=4, gating_hidden=8,
-                         train_steps=1200, test_steps=300, inertia=0.0):
+                         train_steps=1200, test_steps=300, inertia=0.0,
+                         omega=None):
     if kappa_list is None:
         kappa_list = [0.5, 1.0, 2.0, 4.0]
     if drift_list is None:
@@ -497,7 +555,86 @@ def run_experiment_grid(kappa_list=None, drift_list=None, seeds=(42, 43, 44),
                 train_steps=train_steps, test_steps=test_steps,
                 seeds=seeds,
                 inertia=inertia,
+                omega=omega,
             )
             all_results[key] = triplet
+
+    return all_results
+
+
+def run_experiment_spectral_grid(kappa_list=None, omega_list=None, seeds=(42, 43, 44),
+                                  expert_hidden=2, K_budget=4, gating_hidden=8,
+                                  train_steps=1200, test_steps=300, inertia=0.0,
+                                  memory_k=None, memory_alpha=None):
+    if kappa_list is None:
+        kappa_list = [0.5, 1.0, 2.0, 4.0]
+    if omega_list is None:
+        omega_list = [0.01, 0.05, 0.1, 0.2, 0.5, 1.0]
+
+    all_results = {}
+    for kappa in kappa_list:
+        for omega in omega_list:
+            key = f"k{kappa}_w{omega}"
+            print(f"\n{'='*60}")
+            print(f"SPECTRAL TRIPLET: kappa={kappa}, omega={omega}")
+            print(f"{'='*60}")
+            triplet = run_triplet(
+                kappa=kappa, drift=0.0,
+                K_budget=K_budget, expert_hidden=expert_hidden,
+                gating_hidden=gating_hidden,
+                train_steps=train_steps, test_steps=test_steps,
+                seeds=seeds,
+                inertia=inertia,
+                omega=omega,
+                memory_k=memory_k, memory_alpha=memory_alpha,
+            )
+            all_results[key] = triplet
+
+    return all_results
+
+def run_experiment_memory_sweep(kappa=1.0, omega_list=None,
+                                 memory_k_list=None, memory_alpha_list=None,
+                                 seeds=(42,), expert_hidden=2, K_budget=4,
+                                 gating_hidden=8, train_steps=1200, test_steps=300):
+    if omega_list is None:
+        omega_list = [0.01, 0.05, 0.1, 0.2, 0.5, 1.0]
+
+    all_results = {}
+
+    if memory_k_list is not None:
+        for mk in memory_k_list:
+            for omega in omega_list:
+                key = f"k{kappa}_w{omega}_k{mk}"
+                print(f"\n{'='*60}")
+                print(f"MEMORY SWEEP (k={mk}): kappa={kappa}, omega={omega}")
+                print(f"{'='*60}")
+                triplet = run_triplet(
+                    kappa=kappa, drift=0.0,
+                    K_budget=K_budget, expert_hidden=expert_hidden,
+                    gating_hidden=gating_hidden,
+                    train_steps=train_steps, test_steps=test_steps,
+                    seeds=seeds,
+                    omega=omega,
+                    memory_k=mk,
+                )
+                all_results[key] = triplet
+
+    if memory_alpha_list is not None:
+        for alpha in memory_alpha_list:
+            for omega in omega_list:
+                key = f"k{kappa}_w{omega}_a{alpha}"
+                print(f"\n{'='*60}")
+                print(f"MEMORY SWEEP (alpha={alpha}): kappa={kappa}, omega={omega}")
+                print(f"{'='*60}")
+                triplet = run_triplet(
+                    kappa=kappa, drift=0.0,
+                    K_budget=K_budget, expert_hidden=expert_hidden,
+                    gating_hidden=gating_hidden,
+                    train_steps=train_steps, test_steps=test_steps,
+                    seeds=seeds,
+                    omega=omega,
+                    memory_alpha=alpha,
+                )
+                all_results[key] = triplet
 
     return all_results

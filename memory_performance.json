@@ -1,0 +1,128 @@
+[
+  {
+    "key": "k1.0_w0.01_k1",
+    "mse_gap_mean": -0.15175877754207248,
+    "test_large_mean": 0.046512822292867594,
+    "oracle_mse_mean": 0.1949470856700403,
+    "verdict": "\u2014 \u57fa\u7ebf\u672a\u89e6\u53d1\uff08det\u65e0\u7ed3\u6784\uff09"
+  },
+  {
+    "key": "k1.0_w0.20800000000000002_k1",
+    "mse_gap_mean": -0.024984357078804347,
+    "test_large_mean": 0.016179796121261466,
+    "oracle_mse_mean": 0.037881457582539045,
+    "verdict": "\u2014 \u57fa\u7ebf\u672a\u89e6\u53d1\uff08det\u65e0\u7ed3\u6784\uff09"
+  },
+  {
+    "key": "k1.0_w0.406_k1",
+    "mse_gap_mean": -0.024436886274881428,
+    "test_large_mean": 0.020341095843121673,
+    "oracle_mse_mean": 0.041500132562987534,
+    "verdict": "\u2014 \u57fa\u7ebf\u672a\u89e6\u53d1\uff08det\u65e0\u7ed3\u6784\uff09"
+  },
+  {
+    "key": "k1.0_w0.6040000000000001_k1",
+    "mse_gap_mean": -0.017135742648710227,
+    "test_large_mean": 0.024383850989539345,
+    "oracle_mse_mean": 0.03818108728609317,
+    "verdict": "\u2014 \u57fa\u7ebf\u672a\u89e6\u53d1\uff08det\u65e0\u7ed3\u6784\uff09"
+  },
+  {
+    "key": "k1.0_w0.802_k1",
+    "mse_gap_mean": -0.015448662606773574,
+    "test_large_mean": 0.023818516855544657,
+    "oracle_mse_mean": 0.036007218434666206,
+    "verdict": "\u2014 \u57fa\u7ebf\u672a\u89e6\u53d1\uff08det\u65e0\u7ed3\u6784\uff09"
+  },
+  {
+    "key": "k1.0_w1.0_k1",
+    "mse_gap_mean": -0.010121045201373042,
+    "test_large_mean": 0.0270707141696289,
+    "oracle_mse_mean": 0.03393615733657223,
+    "verdict": "\u2014 \u57fa\u7ebf\u672a\u89e6\u53d1\uff08det\u65e0\u7ed3\u6784\uff09"
+  },
+  {
+    "key": "k1.0_w0.01_k5",
+    "mse_gap_mean": -0.5217713608462752,
+    "test_large_mean": 0.035741117907649216,
+    "oracle_mse_mean": 0.5575124787539244,
+    "verdict": "\u2014 \u57fa\u7ebf\u672a\u89e6\u53d1\uff08det\u65e0\u7ed3\u6784\uff09"
+  },
+  {
+    "key": "k1.0_w0.20800000000000002_k5",
+    "mse_gap_mean": -0.21780637899733848,
+    "test_large_mean": 0.007892139327304903,
+    "oracle_mse_mean": 0.22569851832464338,
+    "verdict": "\u2014 \u57fa\u7ebf\u672a\u89e6\u53d1\uff08det\u65e0\u7ed3\u6784\uff09"
+  },
+  {
+    "key": "k1.0_w0.406_k5",
+    "mse_gap_mean": -0.21316960053828857,
+    "test_large_mean": 0.00964539851527661,
+    "oracle_mse_mean": 0.22281499905356517,
+    "verdict": "\u2014 \u57fa\u7ebf\u672a\u89e6\u53d1\uff08det\u65e0\u7ed3\u6784\uff09"
+  },
+  {
+    "key": "k1.0_w0.6040000000000001_k5",
+    "mse_gap_mean": -0.20517323786538327,
+    "test_large_mean": 0.009190759079938288,
+    "oracle_mse_mean": 0.21436399694532157,
+    "verdict": "\u2014 \u57fa\u7ebf\u672a\u89e6\u53d1\uff08det\u65e0\u7ed3\u6784\uff09"
+  },
+  {
+    "key": "k1.0_w0.802_k5",
+    "mse_gap_mean": -0.19930282208447653,
+    "test_large_mean": 0.009545746886481842,
+    "oracle_mse_mean": 0.20884856897095838,
+    "verdict": "\u2014 \u57fa\u7ebf\u672a\u89e6\u53d1\uff08det\u65e0\u7ed3\u6784\uff09"
+  },
+  {
+    "key": "k1.0_w1.0_k5",
+    "mse_gap_mean": -0.19604369478761025,
+    "test_large_mean": 0.009463990139823485,
+    "oracle_mse_mean": 0.20550768492743374,
+    "verdict": "\u2014 \u57fa\u7ebf\u672a\u89e6\u53d1\uff08det\u65e0\u7ed3\u6784\uff09"
+  },
+  {
+    "key": "k1.0_w0.01_k20",
+    "mse_gap_mean": -0.1636857753537091,
+    "test_large_mean": 0.02206585545296548,
+    "oracle_mse_mean": 0.18575163080667456,
+    "verdict": "\u2014 \u57fa\u7ebf\u672a\u89e6\u53d1\uff08det\u65e0\u7ed3\u6784\uff09"
+  },
+  {
+    "key": "k1.0_w0.20800000000000002_k20",
+    "mse_gap_mean": -0.08812737903383094,
+    "test_large_mean": 0.012538696532331717,
+    "oracle_mse_mean": 0.09607675795132915,
+    "verdict": "\u2014 \u57fa\u7ebf\u672a\u89e6\u53d1\uff08det\u65e0\u7ed3\u6784\uff09"
+  },
+  {
+    "key": "k1.0_w0.406_k20",
+    "mse_gap_mean": -0.1034327761316672,
+    "test_large_mean": 0.014120775127472977,
+    "oracle_mse_mean": 0.11755355125914017,
+    "verdict": "\u2014 \u57fa\u7ebf\u672a\u89e6\u53d1\uff08det\u65e0\u7ed3\u6784\uff09"
+  },
+  {
+    "key": "k1.0_w0.6040000000000001_k20",
+    "mse_gap_mean": -0.09662764183206794,
+    "test_large_mean": 0.013490335715080922,
+    "oracle_mse_mean": 0.11011797754714886,
+    "verdict": "\u2014 \u57fa\u7ebf\u672a\u89e6\u53d1\uff08det\u65e0\u7ed3\u6784\uff09"
+  },
+  {
+    "key": "k1.0_w0.802_k20",
+    "mse_gap_mean": -0.03036155548140717,
+    "test_large_mean": 0.013991008641120668,
+    "oracle_mse_mean": 0.04435256412252784,
+    "verdict": "\u2014 \u57fa\u7ebf\u672a\u89e6\u53d1\uff08det\u65e0\u7ed3\u6784\uff09"
+  },
+  {
+    "key": "k1.0_w1.0_k20",
+    "mse_gap_mean": -0.033127469915004135,
+    "test_large_mean": 0.015954005223660108,
+    "oracle_mse_mean": 0.049081475138664246,
+    "verdict": "\u2014 \u57fa\u7ebf\u672a\u89e6\u53d1\uff08det\u65e0\u7ed3\u6784\uff09"
+  }
+]

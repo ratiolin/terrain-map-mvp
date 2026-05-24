@@ -205,3 +205,63 @@ class TextZGatingNet(ZGatingNet):
                     new_proj.weight[ni] = old_proj.weight[oi]
                     new_proj.bias[ni] = old_proj.bias[oi]
         self.text_proj = new_proj
+
+
+class FreqGatingNet(ZGatingNet):
+    def __init__(self, state_dim, K, hidden_dim=32, temperature=0.5, inertia=0.0, memory_k=None):
+        super().__init__(state_dim, K, hidden_dim, temperature, inertia)
+        self.memory_k = memory_k
+        if memory_k is not None and memory_k > 1:
+            fft_bins = state_dim // 2 + 1
+            self.freq_net = nn.Sequential(
+                nn.Linear(fft_bins, hidden_dim),
+                nn.ReLU(),
+                nn.Linear(hidden_dim, K)
+            )
+            self.freq_weight = nn.Parameter(torch.tensor(1.0))
+
+    def forward(self, state):
+        s = state.unsqueeze(0) if state.dim() == 1 else state
+        if self.hidden is None:
+            self.hidden = torch.zeros(s.size(0), self.hidden_dim, device=s.device)
+        new_hidden = self.gru(s, self.hidden)
+        blended = (1 - self.inertia) * new_hidden + self.inertia * self.hidden.detach()
+        z_logits = self.output(blended) + self.direct(s)
+
+        if hasattr(self, 'freq_net'):
+            fft_amp = torch.abs(torch.fft.rfft(s.float(), dim=-1))
+            freq_logits = self.freq_weight * self.freq_net(fft_amp)
+            z_logits = z_logits + freq_logits
+
+        self.hidden = blended.detach()
+
+        z_soft = torch.softmax(z_logits / self.temperature, dim=-1)
+        z_hard_idx = z_logits.argmax(dim=-1)
+        z_hard = nn.functional.one_hot(z_hard_idx, z_logits.size(-1)).float()
+        z = z_hard - z_soft.detach() + z_soft
+
+        return z_soft, z_logits, z_soft
+
+    def resize_output(self, K_new):
+        super().resize_output(K_new)
+        if hasattr(self, 'freq_net'):
+            old_f = self.freq_net[-1]
+            new_f = nn.Linear(old_f.in_features, K_new)
+            with torch.no_grad():
+                k = min(old_f.out_features, K_new)
+                new_f.weight[:k] = old_f.weight[:k]
+                new_f.bias[:k] = old_f.bias[:k]
+            self.freq_net[-1] = new_f
+
+    def shrink(self, indices_to_keep):
+        super().shrink(indices_to_keep)
+        if hasattr(self, 'freq_net'):
+            K_new = len(indices_to_keep)
+            old_f = self.freq_net[-1]
+            new_f = nn.Linear(old_f.in_features, K_new)
+            with torch.no_grad():
+                for ni, oi in enumerate(indices_to_keep):
+                    if oi < old_f.out_features:
+                        new_f.weight[ni] = old_f.weight[oi]
+                        new_f.bias[ni] = old_f.bias[oi]
+            self.freq_net[-1] = new_f

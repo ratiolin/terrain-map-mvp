@@ -2,7 +2,7 @@
 
 **Structure–Complexity Co-Evolution System**
 
-A self-organizing learning system in which model structure adapts to environment structure. Effective capacity is not fixed, but depends on when structural decomposition is both **possible and stable** within a closed-loop interaction.
+A self-organizing learning system in which model structure adapts to environment structure. Effective capacity is not fixed, but depends on when structural decomposition is both **possible and stable** within a closed-loop interaction. The resulting controller is not reducible to a low-dimensional explicit law, but operates as a hybrid dynamical system with internal state, memory, and discrete decision logic.
 
 ---
 
@@ -10,18 +10,38 @@ A self-organizing learning system in which model structure adapts to environment
 
 ```
 STAGE 1–10 COMPLETE
+ADAPTIVE CONTROL LAYER INTEGRATED
 ```
 
 Validated capabilities:
 
-- dynamic structural adaptation (grow / merge / prune / freeze)
-- state-dependent routing with temporal coherence
-- expert specialization under separable regimes
-- stable behavior under perturbation and recovery
-- closed-loop interaction between model and environment
-- multi-attractor behavior selection via internal modulation
-- phase-dependent performance across environment drift regimes
-- banded emergence windows with inertia-limited stability
+* dynamic structural adaptation (grow / merge / prune / freeze)
+
+* state-dependent routing with temporal coherence
+
+* expert specialization under separable regimes
+
+* stable behavior under perturbation and recovery
+
+* closed-loop interaction between model and environment
+
+* multi-attractor behavior selection via internal modulation
+
+* phase-dependent performance across environment drift regimes
+
+* banded emergence windows with inertia-limited stability
+
+* frequency-selective transfer behavior induced by finite memory
+
+* learned inertia control without explicit prior
+
+* performance-aware adaptive control (advantage-driven)
+
+* probe-based stability boundary detection (online η_max estimation)
+
+* hybrid meta-controller (aggressive–conservative blending)
+
+* irreducible control behavior not representable by low-dimensional surrogate
 
 ---
 
@@ -40,10 +60,14 @@ uv run python main_stage10_inertia.py
 # 3. Emergence window blind test (pre-hoc prediction)
 uv run python main_stage10_blindtest.py
 
+# 4. Online adaptive control (full closed-loop system)
+uv run python online_controller.py
+
 # View key outputs
 # - Phase diagram: phase_diagram.png
 # - Stability curve: stability_curve.png
-# - Raw data: phase_diagram_raw.json, stability_curve.json
+# - Stability analysis: stability_analysis.png
+# - Raw data: *.json
 ```
 
 ---
@@ -66,31 +90,44 @@ uv run python main_stage10_blindtest.py
 │   ├── loop_policy.py             # Closed-loop policy coupling
 │   └── metrics.py / analyze.py    # System diagnostics & stability metrics
 │
+├── Controllers (New)
+│   ├── strategy.py                # Rule-based stability controller
+│   ├── learned_controller.py      # Learned η(d) controller
+│   ├── optimal_controller.py      # Oracle / optimal controller
+│   ├── generalizable_controller.py # Generalizable meta-controller (v1)
+│   ├── generalizable_v2.py        # Probe-aware controller (v2)
+│   └── online_controller.py       # Final hybrid controller (v1+v2 + advantage)
+│
 ├── Environments
 │   ├── env.py
-│   ├── env_double_well.py         # Static multi-attractor environment
-│   └── env_drifting_double_well.py # Non-stationary environment with drift & phase flips
+│   ├── env_double_well.py
+│   └── env_drifting_double_well.py
 │
 ├── Experiments & Validation (Stages 1–10)
-│   ├── experiment.py / experiment10.py   # Experiment setup & grid definitions
-│   ├── baseline_single.py               # Single-expert baselines (Small/Large)
-│   ├── analysis_stage10.py              # Judgment function & result matrix
-│   ├── main_stage3.py … main_stage9e.py # Historical stage scripts
-│   ├── main_stage10.py                  # Baseline drift phase diagram
-│   ├── main_stage10_phase.py            # Phase-dependent behavior analysis
-│   ├── main_stage10_inertia.py          # Inertia dual-axis experiment
-│   ├── main_stage10_ablation.py         # Ablation study
-│   └── main_stage10_diag.py             # Diagnostic tools for high-drift failure
+│   ├── experiment.py / experiment10.py
+│   ├── baseline_single.py
+│   ├── analysis_stage10.py
+│   ├── main_stage3.py … main_stage9e.py
+│   ├── main_stage10.py
+│   ├── main_stage10_phase.py
+│   ├── main_stage10_inertia.py
+│   ├── main_stage10_ablation.py
+│   └── main_stage10_diag.py
 │
-├── Blind Tests & Pre-hoc Prediction (New)
-│   ├── main_stage10_blindtest.py
-│   ├── main_stage10_blindtest2.py
-│   └── main_stage10_blind3.py
+├── Stability & Scaling Analysis
+│   ├── scaling_law_experiment.py
+│   ├── scaling_law.py
+│   ├── scaling_law_censored.py
+│   ├── band_structure.py
+│   └── stability_pipeline.py
 │
-└── Results Output
-    ├── phase_diagram.png / phase_diagram_raw.json
-    ├── stability_curve.png / stability_curve.json
-    └── ...
+├── Results Output
+│   ├── phase_diagram.png / phase_diagram_raw.json
+│   ├── stability_curve.png / stability_curve.json
+│   ├── band_structure.json
+│   ├── eta_max_curve.json
+│   ├── stability_regions.json
+│   └── stability_function.json
 ```
 
 ---
@@ -100,7 +137,7 @@ uv run python main_stage10_blindtest.py
 ```
 state → GRU(hidden) + Linear(state) → z_logits → softmax → z_soft
                                                         ↓
-models: {P₀, ..., P_K₋₁}  (independent predictors)
+models: {P₀, ..., P_K₋₁}
                                                         ↓
 prediction:
   soft:       Σ z[k] · pred_k
@@ -119,65 +156,129 @@ env.step(action) → next_state
 
 ---
 
+## Adaptive Control Layer (New)
+
+### Meta-Control Law
+
+```
+η = w · η_aggressive + (1 - w) · η_conservative
+```
+
+### Gating Mechanism
+
+```
+w = sigmoid(advantage)
+```
+
+where:
+
+```
+advantage ≈ -Δloss
+```
+
+---
+
+### Probe-Based Stability Estimation
+
+```
+η_max ≈ discovered via probe survival
+η ← min(η, 0.95 · η_probe_bound)
+```
+
+---
+
+### Behavior Modes
+
+| mode         | condition            | behavior          |
+| ------------ | -------------------- | ----------------- |
+| aggressive   | high advantage       | exploit structure |
+| conservative | low advantage        | stabilize         |
+| probe        | near boundary        | explore η_max     |
+| fallback     | instability detected | reduce η          |
+
+---
+
 ## Key Mechanisms
 
 ### Adaptive Structure
 
-- split when error stagnates
-- merge when expert representations converge
-- prune when usage falls below threshold
-- freeze after prolonged stability
+* split when error stagnates
+
+* merge when expert representations converge
+
+* prune when usage falls below threshold
+
+* freeze after prolonged stability
 
 ### Routing Evolution
 
-- routing depends on state and history
-- temporal coherence emerges before specialization
-- inertia controls switching selectivity
+* routing depends on state and history
 
-### Credit Assignment
+* temporal coherence emerges before specialization
 
-| mode       | effect                  |
-|------------|-------------------------|
-| soft       | shared gradient flow    |
-| semi-hard  | expert-specific learning|
-| hard       | discrete expert selection|
+* inertia controls switching selectivity
+
+* finite memory induces frequency-selective response
 
 ### Closed-Loop Behavior
 
-- routing determines both prediction and action
-- actions reshape future input distribution
-- training data co-evolves with policy
-- the system operates as a feedback process with the environment
+* routing determines prediction and action
 
-### Multi-Attractor Control
+* actions reshape future input distribution
 
-- experts specialize to distinct regions of state space
-- routing selects attractors based on internal state and modulation
-- behavior emerges from these selection dynamics
+* data distribution co-evolves with policy
+
+### Meta-Control (New)
+
+* η is not fixed, but learned online
+
+* control adapts to drift regime
+
+* system balances:
+
+  * stability
+
+  * responsiveness
+
+  * performance
+
+* control behavior emerges from internal state, not reducible to explicit low-dimensional laws
 
 ---
 
 ## Metrics (Operationalized Stability)
 
-- `prediction_variance` – consistency of model output under perturbation
-- `routing_consistency` – temporal stability of expert allocation
-- `specialization_gap` – performance contrast across experts
-- `attractor_dwell_time` – persistence within a behavioral regime
-- `performance_gap` – linear ensemble vs. single large model
-- `separability` – distance between expert error distributions (structural decomposability)
-- `inertia` – effective switching resistance derived from routing temporal coherence
+* `prediction_variance`
+
+* `routing_consistency`
+
+* `specialization_gap`
+
+* `attractor_dwell_time`
+
+* `performance_gap`
+
+* `separability`
+
+* `inertia`
+
+* `transfer_function(ω)`
+
+* `advantage` (performance signal)
+
+* `probe_survival_rate`
+
+* `η_usage`
 
 ---
 
 ## Phase Behavior (Core Experimental Findings)
 
 ```
-Structure advantage condition:
-
 S_adv > 1  ⇔  drift ∈ W(kappa)   AND   η < η_max(drift)
 ```
 
-where `W(kappa)` denotes discrete emergence windows and `η` is the effective routing inertia.
+---
 
 ### Observed structure
 
@@ -187,61 +288,103 @@ drift axis:
 
 inertia axis:
     right-side collapse boundary
+
+control axis:
+    adaptive η(d) (non-monotonic, state-dependent)
+
+frequency axis:
+    band-pass-like transfer
 ```
+
+---
 
 ### Regimes
 
 ```
 Outside drift window:
-    structure exists but is not useful
+    structure exists but not useful
 
-Inside window + low inertia:
-    strong specialization, high advantage
-
-Inside window + high inertia:
-    collapse due to over-commitment
+Inside window + adaptive η:
+    strong specialization and performance
 
 High drift:
-    η_max shrinks → system cannot track → collapse
+    η_max shrinks → tracking failure
+
+Near boundary:
+    probe-driven exploration
+
+Frequency response:
+    low ω: coherent tracking
+    mid ω: suppression
+    high ω: partial recovery
 ```
 
 ---
 
 ## Key Empirical Law
 
-> **Structural advantage is determined by discrete environment–model resonance windows and bounded by inertia-limited stability.**
+> **Structural advantage is determined by discrete environment–model resonance windows, modulated by inertia-limited stability, and optimized via performance-aware adaptive control.**
 
 ---
 
 ## Design Properties
 
-- structure emerges only when decomposition is meaningful
-- advantage is phase-dependent, not monotonic
-- inertia introduces asymmetric stability constraint
-- system behavior governed by coupled drift–inertia dynamics
+* structure emerges only when decomposition is meaningful
+
+* advantage is phase-dependent
+
+* η is learned, not fixed
+
+* control is performance-driven, not rule-driven
+
+* stability boundary is discovered, not predefined
+
+* system operates as a self-optimizing closed-loop
+
+* control policy is history-dependent and internally stateful
+
+* effective behavior cannot be compressed into simple analytic forms without loss of stability
 
 ---
 
 ## Limitations
 
-- emergence windows currently observed as discrete (not yet predicted analytically)
-- η_max(drift) functional form not fully derived
-- validated on low-dimensional environments
-- no global optimality guarantee
+* emergence windows not yet analytically predicted
+
+* η_max(drift) only empirically learned
+
+* frequency response not fully derived
+
+* validated on low-dimensional environments
+
+* no guarantee of global optimality
+
+* controller behavior not reducible to interpretable closed-form expression
+
+* post-hoc distillation into low-complexity models fails under closed-loop evaluation
 
 ---
 
 ## Summary
 
-The system evolves into a structured ensemble that:
+The system evolves into a structured, controlled ensemble that:
 
-- only benefits from structure within specific drift regimes
-- loses advantage outside these regimes
-- collapses under excessive inertia
-- exhibits banded phase structure rather than smooth transitions
+* activates structure only within valid drift bands
+
+* adapts inertia dynamically based on performance
+
+* discovers stability boundaries via probing
+
+* avoids collapse through constraint enforcement
+
+* optimizes behavior using direct performance signals
+
+* exhibits banded phase structure and non-monotonic control
+
+* operates as a hybrid dynamical system combining continuous adaptation and discrete decision logic
 
 ---
 
 **Core result:**
 
-> **Structure is useful only when environment dynamics fall within discrete compatibility windows and the system maintains sufficient responsiveness.**
+> **Structure becomes useful only when environment dynamics fall within discrete compatibility windows, while control adapts in real time to maximize performance under stability constraints, forming an irreducible closed-loop dynamical system.**

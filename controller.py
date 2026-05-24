@@ -317,7 +317,7 @@ class GrowthController:
 class GatingGrowthController(GrowthController):
     def __init__(self, check_interval=300, env_type="cartpole",
                  merge_thresh=0.3, prune_thresh=0.03, max_models=8,
-                 use_temporal=True, use_z=False, inertia=0.0):
+                 use_temporal=True, use_z=False, inertia=0.0, memory_k=None):
         super().__init__(check_interval, env_type,
                          merge_thresh, prune_thresh, max_models)
         self.gating = None
@@ -328,13 +328,20 @@ class GatingGrowthController(GrowthController):
         self.structure_change_history = []
         self.freeze_structure = False
         self.inertia = inertia
+        self.memory_k = memory_k
 
     def init_models(self, agent):
         super().init_models(agent)
         obs_dim = agent.predictor[0].in_features - 1
+        mk = self.memory_k
+        use_freq = (mk is not None and mk > 1)
         if self.use_z:
-            from gating import ZGatingNet
-            self.gating = ZGatingNet(obs_dim, 1, temperature=0.1, inertia=self.inertia)
+            if use_freq:
+                from gating import FreqGatingNet
+                self.gating = FreqGatingNet(obs_dim, 1, temperature=0.1, inertia=self.inertia, memory_k=mk)
+            else:
+                from gating import ZGatingNet
+                self.gating = ZGatingNet(obs_dim, 1, temperature=0.1, inertia=self.inertia)
         elif self.use_temporal:
             from gating import TemporalGatingNet
             self.gating = TemporalGatingNet(obs_dim, 1)

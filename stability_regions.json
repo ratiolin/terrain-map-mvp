@@ -1,0 +1,41 @@
+{
+  "threshold": 0.5934079365458187,
+  "stable_regions": [
+    {
+      "drift_start": 0.021586206896551725,
+      "drift_end": 0.028448275862068967
+    },
+    {
+      "drift_start": 0.04903448275862069,
+      "drift_end": 0.12451724137931035
+    },
+    {
+      "drift_start": 0.14510344827586208,
+      "drift_end": 0.15882758620689655
+    },
+    {
+      "drift_start": 0.1794137931034483,
+      "drift_end": 0.2
+    }
+  ],
+  "unstable_regions": [
+    {
+      "drift_start": 0.001,
+      "drift_end": 0.014724137931034484
+    },
+    {
+      "drift_start": 0.03531034482758621,
+      "drift_end": 0.04217241379310345
+    },
+    {
+      "drift_start": 0.13137931034482758,
+      "drift_end": 0.13824137931034483
+    },
+    {
+      "drift_start": 0.1656896551724138,
+      "drift_end": 0.17255172413793105
+    }
+  ],
+  "n_stable_points": 21,
+  "n_unstable_points": 9
+}

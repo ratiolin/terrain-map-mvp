@@ -1,0 +1,27 @@
+{
+  "method": "censored regression (observed points only)",
+  "K": 0.0,
+  "tau": -1.0625,
+  "K_err": 0.0,
+  "tau_err": 0.0,
+  "R2": 1.0,
+  "n_observed_used": 2,
+  "n_trivial_excluded": 5,
+  "fit_points": [
+    {
+      "drift": 0.005,
+      "eta_max": 1.0625
+    },
+    {
+      "drift": 0.02,
+      "eta_max": 1.0625
+    }
+  ],
+  "trivial_points": [
+    0.01,
+    0.04,
+    0.06,
+    0.08,
+    0.12
+  ]
+}

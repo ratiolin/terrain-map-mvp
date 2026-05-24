@@ -31,15 +31,17 @@ def judge(triplet):
 
 
 def compute_stability_curve(all_results):
+    sample_key = next(iter(all_results.keys()))
+    sep = "_d" if "_d" in sample_key else "_w"
     drifts = sorted(set(
-        float(key.split("_d")[1])
+        float(key.split(sep)[1])
         for key in all_results.keys()
     ))
     drift_S = {d: [] for d in drifts}
     drift_Sadv = {d: [] for d in drifts}
 
     for key, triplet in all_results.items():
-        drift = float(key.split("_d")[1])
+        drift = float(key.split(sep)[1])
         det = triplet["det"]
         v = det["variance_mean"]
         c = det["consistency_mean"]
@@ -95,9 +97,10 @@ def plot_stability_curve(drifts, S_values):
 def stability_analysis(all_results):
     drifts, S_values, S_adv_values = compute_stability_curve(all_results)
 
+    sep = "_d" if "_d" in next(iter(all_results.keys())) else "_w"
     drift_Ssingle = {d: [] for d in drifts}
     for key, triplet in all_results.items():
-        drift = float(key.split("_d")[1])
+        drift = float(key.split(sep)[1])
         det = triplet["det"]
         drift_Ssingle[drift].append(det["S_single_mean"])
 
@@ -160,7 +163,9 @@ def diagnose_triplet(triplet):
 
 
 def print_matrix(all_results):
-    header = f"{'kappa':>6} {'drift':>7} | {'det':>6} {'rand_noctx':>12} {'rand_ctx':>10} | {'判定':<48}"
+    sample_key = next(iter(all_results.keys()))
+    param_label = "drift" if "_d" in sample_key else "omega"
+    header = f"{'kappa':>6} {param_label:>7} | {'det':>6} {'rand_noctx':>12} {'rand_ctx':>10} | {'判定':<48}"
     print()
     print("=" * 110)
     print(header)
@@ -170,9 +175,14 @@ def print_matrix(all_results):
 
     for key in sorted(all_results.keys()):
         t = all_results[key]
-        k, d = key.replace("k", "").split("_d")
+        if "_d" in key:
+            k, d = key.replace("k", "").split("_d")
+            param_label = "drift"
+        else:
+            k, d = key.replace("k", "").split("_w")
+            param_label = "omega"
         kappa = float(k)
-        drift = float(d)
+        param_val = float(d)
 
         det_s = "STR" if has_structure(t["det"]) else "---"
         rnc_s = "STR" if has_structure(t["rand_noctx"]) else "---"
@@ -189,7 +199,7 @@ def print_matrix(all_results):
             counts["none"] += 1
 
         print(
-            f"{kappa:>6.1f} {drift:>7.3f} | {det_s:>6} {rnc_s:>12} {rc_s:>10} | {verdict:<48}"
+            f"{kappa:>6.1f} {param_val:>7.3f} | {det_s:>6} {rnc_s:>12} {rc_s:>10} | {verdict:<48}"
         )
 
     print("-" * 110)
@@ -207,8 +217,10 @@ def print_diagnosis(all_results):
     for key in sorted(all_results.keys()):
         t = all_results[key]
         diag = diagnose_triplet(t)
-        k, d = key.replace("k", "").split("_d")
-        print(f"\n--- κ={k}, drift={d} ---")
+        sep_key = "_d" if "_d" in key else "_w"
+        k, d = key.replace("k", "").split(sep_key)
+        param_label_key = "drift" if sep_key == "_d" else "omega"
+        print(f"\n--- κ={k}, {param_label_key}={d} ---")
         for tag in ["det", "rand_noctx", "rand_ctx"]:
             dg = diag[tag]
             print(f"  {tag:15s}: large={dg['large_mse']:.4f}  oracle={dg['oracle_mse']:.4f}  "
@@ -225,9 +237,10 @@ def print_diagnosis(all_results):
 
 
 def extract_R_data(all_results):
+    sep = "_d" if "_d" in next(iter(all_results.keys())) else "_w"
     drift_response = {}
     for key, triplet in all_results.items():
-        drift = float(key.split("_d")[1])
+        drift = float(key.split(sep)[1])
         det = triplet["det"]
         tau_r = det["response_time_mean"]
         if drift not in drift_response:
@@ -239,7 +252,7 @@ def extract_R_data(all_results):
 
     S_adv = {}
     for key, triplet in all_results.items():
-        drift = float(key.split("_d")[1])
+        drift = float(key.split(sep)[1])
         if drift not in S_adv:
             S_adv[drift] = []
         S_adv[drift].append(triplet.get("S_adv", 1.0))

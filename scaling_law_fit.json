@@ -1,0 +1,48 @@
+{
+  "scaling_law": "eta_max = 0.001002/drift - -0.496643",
+  "K": 0.0010022458270106211,
+  "tau": -0.49664339908952954,
+  "K_err": 0.0010844033891041073,
+  "tau_err": 0.18310460205844586,
+  "R2": 0.2992817400101163,
+  "surviving_boundary": [
+    {
+      "drift": 0.003,
+      "eta_survive": 0.8
+    },
+    {
+      "drift": 0.02,
+      "eta_survive": 0.8
+    },
+    {
+      "drift": 0.06,
+      "eta_survive": 0.6
+    },
+    {
+      "drift": 0.08,
+      "eta_survive": 0.2
+    }
+  ],
+  "collapse_points": [
+    {
+      "drift": 0.005,
+      "eta_collapse": 0.0
+    },
+    {
+      "drift": 0.01,
+      "eta_collapse": 0.0
+    },
+    {
+      "drift": 0.04,
+      "eta_collapse": 0.0
+    },
+    {
+      "drift": 0.06,
+      "eta_collapse": 0.8
+    },
+    {
+      "drift": 0.08,
+      "eta_collapse": 0.4
+    }
+  ]
+}
