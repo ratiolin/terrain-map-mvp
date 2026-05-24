@@ -1,4 +1,7 @@
+import json
 import numpy as np
+
+from metrics import compute_stability
 
 
 def has_structure(cond):
@@ -25,6 +28,95 @@ def judge(triplet):
         return "✅ 真实状态结构（对时间扰动鲁棒）"
 
     return "— 未触发/不确定"
+
+
+def compute_stability_curve(all_results):
+    drifts = sorted(set(
+        float(key.split("_d")[1])
+        for key in all_results.keys()
+    ))
+    drift_S = {d: [] for d in drifts}
+    drift_Sadv = {d: [] for d in drifts}
+
+    for key, triplet in all_results.items():
+        drift = float(key.split("_d")[1])
+        det = triplet["det"]
+        v = det["variance_mean"]
+        c = det["consistency_mean"]
+        d = det["dwell_time_mean"]
+        S_ensemble = compute_stability(v, c, d)
+        S_single = det["S_single_mean"]
+        S_adv = S_ensemble / (S_single + 1e-8)
+        drift_S[drift].append(S_ensemble)
+        drift_Sadv[drift].append(S_adv)
+        triplet["S_det"] = S_ensemble
+        triplet["S_adv"] = S_adv
+
+    S_values = [float(np.mean(drift_S[d])) for d in drifts]
+    S_adv_values = [float(np.mean(drift_Sadv[d])) for d in drifts]
+    return drifts, S_values, S_adv_values
+
+
+def export_stability_curve(drifts, S_values):
+    data = {"drift": drifts, "S": S_values}
+    with open("stability_curve.json", "w") as f:
+        json.dump(data, f)
+
+
+def check_unimodal(S_values):
+    if len(S_values) < 3:
+        return False
+    peak_idx = int(np.argmax(S_values))
+    n = len(S_values)
+    if peak_idx == 0 or peak_idx == n - 1:
+        return False
+    left_monotonic = all(
+        S_values[i] <= S_values[i + 1]
+        for i in range(peak_idx)
+    )
+    right_monotonic = all(
+        S_values[i] >= S_values[i + 1]
+        for i in range(peak_idx, n - 1)
+    )
+    return left_monotonic and right_monotonic
+
+
+def plot_stability_curve(drifts, S_values):
+    import matplotlib.pyplot as plt
+    plt.plot(drifts, S_values, marker='o')
+    plt.xlabel("Drift")
+    plt.ylabel("Stability S")
+    plt.title("Stability vs Drift")
+    plt.grid(True)
+    plt.savefig("stability_curve.png")
+    print("\nStability curve saved to stability_curve.png")
+
+
+def stability_analysis(all_results):
+    drifts, S_values, S_adv_values = compute_stability_curve(all_results)
+
+    drift_Ssingle = {d: [] for d in drifts}
+    for key, triplet in all_results.items():
+        drift = float(key.split("_d")[1])
+        det = triplet["det"]
+        drift_Ssingle[drift].append(det["S_single_mean"])
+
+    print()
+    print("=" * 60)
+    print("STABILITY CURVE ANALYSIS")
+    print("=" * 60)
+    for d, s, sa in zip(drifts, S_values, S_adv_values):
+        ss = float(np.mean(drift_Ssingle[d]))
+        print(f"  drift={d:.3f}  S_ensemble={s:.4f}  S_single={ss:.4f}  S_adv={sa:.4f}")
+
+    export_stability_curve(drifts, S_adv_values)
+    print("\nExported stability_curve.json (S_adv)")
+
+    plot_stability_curve(drifts, S_adv_values)
+
+    is_unimodal = check_unimodal(S_adv_values)
+    print(f"\nUnimodal (中间高，两边低): {'YES' if is_unimodal else 'NO'}")
+    return is_unimodal
 
 
 def diagnose_triplet(triplet):
@@ -130,3 +222,73 @@ def print_diagnosis(all_results):
     print("  capacity_ok_routing_fail: experts CAN fit but gating selects wrong one")
     print("  working:                both decomposable and routing effective")
     print("=" * 110)
+
+
+def extract_R_data(all_results):
+    drift_response = {}
+    for key, triplet in all_results.items():
+        drift = float(key.split("_d")[1])
+        det = triplet["det"]
+        tau_r = det["response_time_mean"]
+        if drift not in drift_response:
+            drift_response[drift] = []
+        drift_response[drift].append(tau_r)
+
+    drifts = sorted(drift_response.keys())
+    tau_response_avg = [float(np.mean(drift_response[d])) for d in drifts]
+
+    S_adv = {}
+    for key, triplet in all_results.items():
+        drift = float(key.split("_d")[1])
+        if drift not in S_adv:
+            S_adv[drift] = []
+        S_adv[drift].append(triplet.get("S_adv", 1.0))
+    S_adv_avg = [float(np.mean(S_adv[d])) for d in drifts]
+
+    tau_drift = [1.0 / d for d in drifts]
+    R_values = [tau_response_avg[i] / tau_drift[i] for i in range(len(drifts))]
+
+    return drifts, tau_response_avg, tau_drift, R_values, S_adv_avg
+
+
+def fit_threshold(R_values, S_adv_values, drifts):
+    high_r_candidates = []
+    low_r_candidates = []
+    for i, sa in enumerate(S_adv_values):
+        if sa > 1.0:
+            high_r_candidates.append(R_values[i])
+        else:
+            low_r_candidates.append(R_values[i])
+
+    if high_r_candidates and low_r_candidates:
+        tau_star = (max(low_r_candidates) + min(high_r_candidates)) / 2
+    elif high_r_candidates:
+        tau_star = max(high_r_candidates) * 1.5
+    else:
+        tau_star = min(low_r_candidates) * 0.5
+
+    direction = ""
+    return tau_star, direction
+
+
+def interpolate_tau_response(drifts_known, tau_known, drift_target):
+    return float(np.interp(drift_target, drifts_known, tau_known))
+
+
+def run_R_analysis(all_results):
+    drifts, tau_resp, tau_drift, R_values, S_adv_values = extract_R_data(all_results)
+
+    print()
+    print("=" * 60)
+    print("R ANALYSIS (τ_response / τ_drift)")
+    print("=" * 60)
+    print(f"{'drift':>8} {'τ_resp':>8} {'τ_drift':>8} {'R':>8} {'S_adv':>8}")
+    print("-" * 48)
+    for i in range(len(drifts)):
+        print(f"{drifts[i]:>8.3f} {tau_resp[i]:>8.1f} {tau_drift[i]:>8.1f} "
+              f"{R_values[i]:>8.4f} {S_adv_values[i]:>8.4f}")
+
+    tau_star, direction = fit_threshold(R_values, S_adv_values, drifts)
+    print(f"\nτ* = {tau_star:.4f}")
+
+    return drifts, tau_resp, tau_drift, R_values, S_adv_values, tau_star

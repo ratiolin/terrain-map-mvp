@@ -14,6 +14,7 @@ from baseline_single import (
 )
 from agent import Agent
 from controller import GatingGrowthController
+from metrics import compute_metrics_from_seed, compute_stability, compute_dwell_time, compute_prediction_variance
 
 
 def reset_seed(seed=42):
@@ -31,7 +32,7 @@ def _make_agent(env):
     return Agent(obs_dim=sd, act_dim=1, hidden_dim=2, lr=1e-3)
 
 
-def _make_ctrl(agent, K_budget):
+def _make_ctrl(agent, K_budget, inertia=0.0):
     ctrl = GatingGrowthController(
         check_interval=200,
         env_type="doublewell",
@@ -39,6 +40,7 @@ def _make_ctrl(agent, K_budget):
         prune_thresh=0.03,
         max_models=8,
         use_z=True,
+        inertia=inertia,
     )
     ctrl.init_models(agent)
     for _ in range(K_budget - 1):
@@ -258,7 +260,7 @@ def compute_ctx_align(z_history, sign_history, K_max):
 
 def run_condition_multi(kappa, drift, flip_mode, add_context,
                          K_budget, expert_hidden, gating_hidden,
-                         train_steps, test_steps, seeds):
+                         train_steps, test_steps, seeds, inertia=0.0):
     seed_results = []
     for seed in seeds:
         reset_seed(seed)
@@ -267,7 +269,7 @@ def run_condition_multi(kappa, drift, flip_mode, add_context,
             flip_mode=flip_mode, add_context=add_context,
         )
         agent = _make_agent(env_train)
-        ctrl = _make_ctrl(agent, K_budget)
+        ctrl = _make_ctrl(agent, K_budget, inertia=inertia)
 
         (_mse_train, oracle_train_hist, _z_train, _st_train,
          _sgn_train, _K_train, _Kmax_train) = train_multi_expert(
@@ -292,8 +294,9 @@ def run_condition_multi(kappa, drift, flip_mode, add_context,
         separation = compute_separation(expert_means)
         ctx_align = compute_ctx_align(z_test, sgn_test, K_max)
 
-        seed_results.append({
+        seed_result = {
             "test_mse": test_mse,
+            "mse_test_history": mse_test,
             "oracle_mse": oracle_mse,
             "oracle_train_mse": oracle_train_mean,
             "routing_gap": routing_gap,
@@ -307,7 +310,15 @@ def run_condition_multi(kappa, drift, flip_mode, add_context,
             "state_history": st_test,
             "z_history": z_test,
             "sign_history": sgn_test,
-        })
+        }
+
+        metrics = compute_metrics_from_seed(seed_result)
+        seed_result["variance"] = metrics["variance"]
+        seed_result["consistency"] = metrics["consistency"]
+        seed_result["dwell_time"] = metrics["dwell_time"]
+        seed_result["response_time"] = metrics["response_time"]
+
+        seed_results.append(seed_result)
 
     return seed_results
 
@@ -317,6 +328,8 @@ def run_condition_single_large(kappa, drift, flip_mode, add_context,
                                 train_steps, test_steps, seeds):
     state_dim = 2 if add_context else 1
     test_mses = []
+    mse_histories = []
+    state_histories = []
     H_large = None
     params_large = None
     for seed in seeds:
@@ -336,10 +349,12 @@ def run_condition_single_large(kappa, drift, flip_mode, add_context,
             kappa=kappa, drift_rate=drift,
             flip_mode=flip_mode, add_context=add_context,
         )
-        mse_test, _ = evaluate_single(model_large, env_test, test_steps)
+        mse_test, st_test = evaluate_single(model_large, env_test, test_steps)
         test_mses.append(float(np.mean(mse_test)))
+        mse_histories.append(mse_test)
+        state_histories.append(st_test)
 
-    return test_mses, params_large, H_large
+    return test_mses, params_large, H_large, mse_histories, state_histories
 
 
 def run_condition_single_small(kappa, drift, flip_mode, add_context,
@@ -363,7 +378,7 @@ def run_condition_single_small(kappa, drift, flip_mode, add_context,
 
 
 def run_triplet(kappa, drift, K_budget=4, expert_hidden=2, gating_hidden=8,
-                train_steps=1200, test_steps=300, seeds=(42, 43, 44)):
+                train_steps=1200, test_steps=300, seeds=(42, 43, 44), inertia=0.0):
     configs = [
         ("det", "deterministic", False),
         ("rand_noctx", "random", False),
@@ -388,9 +403,10 @@ def run_triplet(kappa, drift, K_budget=4, expert_hidden=2, gating_hidden=8,
             gating_hidden=gating_hidden,
             train_steps=train_steps, test_steps=test_steps,
             seeds=seeds,
+            inertia=inertia,
         )
 
-        test_large_list, params_large, H_large = run_condition_single_large(
+        test_large_list, params_large, H_large, mse_hist_large, state_hist_large = run_condition_single_large(
             kappa=kappa, drift=drift,
             flip_mode=flip_mode, add_context=add_ctx,
             K_budget=K_budget, expert_hidden=expert_hidden,
@@ -400,6 +416,13 @@ def run_triplet(kappa, drift, K_budget=4, expert_hidden=2, gating_hidden=8,
         )
 
         test_large_mean = float(np.mean(test_large_list))
+
+        S_single_per_seed = []
+        for i in range(len(seeds)):
+            var_s = compute_prediction_variance(mse_hist_large[i])
+            dwell_s = compute_dwell_time(state_hist_large[i])
+            S_single_per_seed.append(compute_stability(var_s, 1.0, dwell_s))
+        S_single_mean = float(np.mean(S_single_per_seed))
 
         for i, r in enumerate(seed_results):
             r["mse_gap"] = test_large_list[i] - r["test_mse"]
@@ -411,6 +434,10 @@ def run_triplet(kappa, drift, K_budget=4, expert_hidden=2, gating_hidden=8,
         oracle_mses = [s["oracle_mse"] for s in seed_results]
         oracle_train_mses = [s["oracle_train_mse"] for s in seed_results]
         routing_gaps = [s["routing_gap"] for s in seed_results]
+        variances = [s["variance"] for s in seed_results]
+        consistencies = [s["consistency"] for s in seed_results]
+        dwell_times = [s["dwell_time"] for s in seed_results]
+        response_times = [s["response_time"] for s in seed_results]
 
         triplet[tag] = {
             "seeds": seed_results,
@@ -425,6 +452,11 @@ def run_triplet(kappa, drift, K_budget=4, expert_hidden=2, gating_hidden=8,
             "oracle_mse_mean": float(np.mean(oracle_mses)),
             "oracle_train_mse_mean": float(np.mean(oracle_train_mses)),
             "routing_gap_mean": float(np.mean(routing_gaps)),
+            "variance_mean": float(np.mean(variances)),
+            "consistency_mean": float(np.mean(consistencies)),
+            "dwell_time_mean": float(np.mean(dwell_times)),
+            "response_time_mean": float(np.mean(response_times)),
+            "S_single_mean": S_single_mean,
         }
 
         of_str = ""
@@ -445,7 +477,7 @@ def run_triplet(kappa, drift, K_budget=4, expert_hidden=2, gating_hidden=8,
 
 def run_experiment_grid(kappa_list=None, drift_list=None, seeds=(42, 43, 44),
                          expert_hidden=2, K_budget=4, gating_hidden=8,
-                         train_steps=1200, test_steps=300):
+                         train_steps=1200, test_steps=300, inertia=0.0):
     if kappa_list is None:
         kappa_list = [0.5, 1.0, 2.0, 4.0]
     if drift_list is None:
@@ -464,6 +496,7 @@ def run_experiment_grid(kappa_list=None, drift_list=None, seeds=(42, 43, 44),
                 gating_hidden=gating_hidden,
                 train_steps=train_steps, test_steps=test_steps,
                 seeds=seeds,
+                inertia=inertia,
             )
             all_results[key] = triplet
 

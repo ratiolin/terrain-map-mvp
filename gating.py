@@ -81,7 +81,7 @@ class TemporalGatingNet(nn.Module):
 
 
 class ZGatingNet(nn.Module):
-    def __init__(self, state_dim, K, hidden_dim=32, temperature=0.5):
+    def __init__(self, state_dim, K, hidden_dim=32, temperature=0.5, inertia=0.0):
         super().__init__()
         self.gru = nn.GRUCell(state_dim, hidden_dim)
         self.output = nn.Linear(hidden_dim, K)
@@ -89,6 +89,7 @@ class ZGatingNet(nn.Module):
         self.hidden = None
         self.hidden_dim = hidden_dim
         self.temperature = temperature
+        self.inertia = inertia
 
     def reset(self):
         self.hidden = None
@@ -97,9 +98,10 @@ class ZGatingNet(nn.Module):
         s = state.unsqueeze(0) if state.dim() == 1 else state
         if self.hidden is None:
             self.hidden = torch.zeros(s.size(0), self.hidden_dim, device=s.device)
-        self.hidden = self.gru(s, self.hidden)
-        z_logits = self.output(self.hidden) + self.direct(s)
-        self.hidden = self.hidden.detach()
+        new_hidden = self.gru(s, self.hidden)
+        blended = (1 - self.inertia) * new_hidden + self.inertia * self.hidden.detach()
+        z_logits = self.output(blended) + self.direct(s)
+        self.hidden = blended.detach()
 
         z_soft = torch.softmax(z_logits / self.temperature, dim=-1)
         z_hard_idx = z_logits.argmax(dim=-1)

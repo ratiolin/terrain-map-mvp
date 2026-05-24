@@ -1,5 +1,5 @@
 from experiment10 import run_experiment_grid
-from analysis_stage10 import judge, print_matrix, has_structure
+from analysis_stage10 import judge, print_matrix, has_structure, stability_analysis
 
 
 if __name__ == "__main__":
@@ -23,3 +23,5 @@ if __name__ == "__main__":
     print()
     print("=" * 60)
     print("STAGE 10 COMPLETE")
+
+    stability_analysis(all_results)
