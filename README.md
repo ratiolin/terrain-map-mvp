@@ -1,33 +1,26 @@
 # **Terrain Map MVP**
 
-**Structure–Complexity Co-evolution System**
+**Structure–Complexity Co-Evolution System**
 
-A self-organizing learning system in which model structure adapts to environment structure. Capacity emerges through interaction: experts grow, merge, prune, and stabilize based on internal signals, while routing, specialization, and behavior co-evolve in a closed loop.
+A self-organizing system in which model structure and environment structure co-evolve. Effective capacity is not fixed, but depends on the separability of the experienced distribution within a closed-loop interaction.
 
 ---
 
 ## **Status**
 
 ```
-STAGE 1–9 COMPLETE
+STAGE 1–10 COMPLETE
 ```
 
 Validated capabilities:
 
 - dynamic structural adaptation (grow / merge / prune / freeze)
-    
 - state-dependent routing with temporal coherence
-    
-- expert specialization via credit-aware learning
-    
+- expert specialization under separable regimes
 - stable behavior under perturbation and recovery
-    
 - closed-loop interaction between model and environment
-    
-- multi-attractor behavior selection via language modulation
-    
-- verified on CartPole, DoubleWell, and TripleWell
-    
+- multi-attractor behavior selection via internal modulation
+- phase-dependent performance across environment drift regimes
 
 ---
 
@@ -49,8 +42,8 @@ loss = MSE + α·z_loss + λ·temporal_loss − β·entropy
 Optional policy coupling:
 
 ```
-action ~ z_soft (or policy_heads[z])
-env.step(action) → next_state, reward
+action ~ z_soft
+env.step(action) → next_state
 ```
 
 ---
@@ -58,93 +51,15 @@ env.step(action) → next_state, reward
 ## **Core Components**
 
 - **Predictors (`agent.py`)**  
-    MLP models learning forward dynamics `(state, action) → next_state`
-    
+    MLP models learning forward dynamics
 - **Gating (`gating.py`)**  
-    GRU-based routing with direct state path for instantaneous response
-    
+    GRU-based routing with instantaneous state path
 - **Controller (`controller.py`)**  
-    Structural adaptation: split, merge, prune, freeze, bias initialization
-    
+    Structural adaptation
 - **Routing / Training (`loop_multi.py`, `loop_policy.py`)**  
-    Multi-expert coordination, credit assignment, and policy interaction
-    
-- **Analysis (`analyze.py`, `metrics.py`)**  
-    Behavioral evaluation, routing statistics, and system diagnostics
-    
-
----
-
-## **Quick Start**
-
-```bash
-uv sync
-
-# baseline + perturbation mapping
-uv run python main.py
-
-# structural adaptation
-uv run python main_stage4.py
-
-# learnable routing
-uv run python main_stage5.py
-
-# temporal routing
-uv run python main_stage6b.py
-
-# stabilization
-uv run python main_stage6d.py
-
-# routing modes
-uv run python main_stage7.py
-
-# closed-loop policy
-uv run python main_stage8.py
-
-# language-modulated control
-uv run python main_stage9e.py
-```
-
----
-
-## **Project Structure**
-
-```
-agent.py
-gating.py
-controller.py
-router.py
-
-loop.py
-loop_multi.py
-loop_policy.py
-
-metrics.py
-analyze.py
-experiment.py
-
-env.py
-env_double_well.py
-
-main.py
-main_stage3.py
-main_stage4.py
-main_stage5.py
-main_stage6a.py
-main_stage6b.py
-main_stage6c.py
-main_stage6d.py
-main_stage7.py
-main_stage8.py
-main_stage9.py
-main_stage9a.py
-main_stage9b.py
-main_stage9b_prime.py
-main_stage9c.py
-main_stage9c_prime.py
-main_stage9d.py
-main_stage9e.py
-```
+    Coordination and learning
+- **Analysis (`metrics.py`, `analyze.py`)**  
+    System-level diagnostics
 
 ---
 
@@ -152,136 +67,109 @@ main_stage9e.py
 
 ### **Adaptive Structure**
 
-- split when error stagnates
-    
-- merge when models converge
-    
-- prune when usage is low
-    
-- freeze after prolonged stability
-    
-
----
+- split under persistent error
+- merge under functional convergence
+- prune under low usage
+- freeze after stabilization
 
 ### **Routing Evolution**
 
-- static → temporal → latent-conditioned
-    
-- state + history determine expert allocation
-    
+- state + history determine allocation
 - routing stabilizes before specialization
-    
-
----
+- specialization depends on input separability
 
 ### **Credit Assignment**
 
-|mode|gradient flow|
+|mode|effect|
 |---|---|
-|soft|full coupling|
-|semi-hard|model-specific learning|
-|hard|discrete assignment|
-
-Semi-hard mode activates after structural stabilization.
-
----
+|soft|shared learning|
+|semi-hard|expert separation|
+|hard|discrete specialization|
 
 ### **Closed-Loop Behavior**
 
-- routing determines prediction and action selection
-    
-- actions influence future state distribution
-    
-- training data evolves with policy
-    
-- system forms a feedback loop with environment
-    
-
----
+- model influences action
+- action shapes future data distribution
+- training distribution is not fixed
+- system operates as a feedback process
 
 ### **Multi-Attractor Control**
 
-- experts specialize to different regions of state space
-    
-- routing selects experts based on state and modulation
-    
-- behavior emerges as attractor selection
-    
-
-Validated behavior:
-
-- DoubleWell: bidirectional attractor control
-    
-- TripleWell: multi-attractor selection (3-way separation)
-    
+- experts correspond to regions of state space
+- routing selects attractors
+- behavior emerges from selection dynamics
 
 ---
 
-## **Metrics**
+## **Metrics (Operationalized Stability)**
 
-- **stability** — consistency of dominant expert
-    
-- **separation** — routing differentiation across regions
-    
-- **specialization** — expert performance contrast
-    
-- **max_fraction** — routing concentration
-    
-- **policy_entropy** — action diversity
-    
-- **reward_variance** — behavioral variability
-    
+- prediction_variance
+- routing_consistency
+- specialization_gap
+- attractor_dwell_time
+- performance_gap (linear vs single)
+
+---
+
+## **Phase Behavior (Core Experimental Findings)**
+
+```
+Low drift:
+    distribution separable
+    strong specialization
+    ensemble dominates
+
+Mid drift:
+    partial separability
+    emergence window
+    probabilistic success
+
+High drift:
+    distribution mixing
+    specialization collapse
+    single model dominates
+```
+
+---
+
+## **Key Empirical Law**
+
+> **The structural advantage depends on the match between the rate of environmental change and the separability of representations.**
+
+or equivalently:
+
+> **Effective capacity depends on whether the input distribution can be structurally decomposed, not on parameter count alone.**
 
 ---
 
 ## **Design Properties**
 
 - internally driven structural evolution
-    
-- minimal stage-wise modifications
-    
-- deterministic execution (fixed seeds)
-    
-- measurable progression across stages
-    
-- no external supervision for structure
-    
+- deterministic execution
+- measurable phase transitions
+- no external structural supervision
 
 ---
 
 ## **Limitations**
 
-- continuous routing can reduce specialization without gradient isolation
-    
-- entropy alone is insufficient for boundary detection
-    
-- specialization depends on coverage of training distribution
-    
-- policy is indirect (emerges from routing, not globally optimized)
-    
-- control operates at attractor-selection level, not precise state targeting
-    
-- validated on low-dimensional continuous environments with clear spatial structure; scaling to high-dimensional or weakly structured domains remains untested
-    
-- language modulation controls attractor selection but cannot stabilize behavior at dynamically unstable points (e.g., basin boundaries in DoubleWell); controllability is bounded by the underlying attractor structure of the environment
-
+- specialization fails under distribution mixing
+- effective capacity decreases as drift increases
+- closed-loop influence limited by control strength
+- not validated in high-dimensional domains
+- attractor-based control cannot override environment instability
 
 ---
 
 ## **Summary**
 
-The system evolves from a single predictor into a structured ensemble that:
+The system evolves into a structured ensemble that:
 
-- discovers latent structure in the environment
-    
-- allocates capacity adaptively
-    
-- stabilizes its own architecture
-    
-- forms specialized experts
-    
-- and controls behavior through internal routing dynamics
-    
+- adapts capacity to environment structure
+- forms experts only when separability allows
+- loses structure when separability collapses
+- and exhibits phase-dependent performance
 
-**Core result:**  
-Behavior can be modulated by selecting among dynamically learned experts, enabling consistent control over system-level outcomes through internal structure rather than explicit supervision.
+**Core result:**
+
+> **Structure is not a universal advantage; it is an emergent property under conditions of environmental separability.**
