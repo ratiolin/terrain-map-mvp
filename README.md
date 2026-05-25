@@ -2,7 +2,7 @@
 
 **Closed-Loop Stability Through Adaptation and Shaping**
 
-A closed-loop learning system in which model structure and control policy co-evolve through interaction with the environment. The system maintains behavioral consistency and structural integrity — through adaptation when the environment is uncontrollable, through shaping when it is controllable. These are not two separate strategies but the same survival logic expressed under different boundary conditions.
+A closed-loop learning system where model structure and control policy co-evolve through interaction with the environment. Stability is maintained either by tracking environmental dynamics or by constraining them, depending on boundary conditions.
 
 ---
 
@@ -11,38 +11,49 @@ A closed-loop learning system in which model structure and control policy co-evo
 ```
 STAGE 1–10 COMPLETE
 CLOSED-LOOP VALIDATION COMPLETE
-BOUNDARY CONDITION RECOGNITION: OPEN PROBLEM
+BOUNDARY CONDITION RECOGNITION: PRINCIPLE VALIDATED, GENERALIZATION OPEN
 ```
 
 ### Validated
 
-- Intrinsically closed-loop interaction (action → env → data distribution)
-- Dynamic structural adaptation (grow / merge / prune / freeze)
-- Banded emergence windows under adaptation objective (discrete drift intervals)
-- Phase transition from collapsed policy to bang-bang control at λ/c ≈ 1
-- Stability objective strictly dominates prediction objective across all tested target positions
-- Adaptation and shaping separate via state distribution competition, not gradient opposition
-- Capacity-competition gating produces discrete switching (jump magnitude 0.688)
-- Gating floor ≈ 0.200 is structural, not a regularization artifact (β-invariant)
+* Closed-loop interaction (action → environment → data distribution)
+* Structural adaptation dynamics (grow / merge / prune / freeze)
+* Discrete emergence bands under adaptation
+* Phase transition at λ/c ≈ 1
+* Stability objective dominates prediction objective
+* Separation via state distribution, not gradients
+* Capacity-based gating produces discrete switching
+* Non-zero shaping floor is structural
+* Intrinsic boundary condition recognition via rollout comparison (multiple seeds)
+* Controllability subspace emergent in hidden states (R²=0.51, 10× improvement; causal necessity confirmed by ablation; causal sufficiency confirmed by injection)
 
 ### Rejected
 
-- **Unified stability metric U = alignment × feasibility**: Spearman correlation negative, performs worse than alignment alone
-- **Intrinsic switching criterion in static-structure environments**: not found
-- **λ* as an intrinsic critical point**: scale test confirms λ* ≈ c, switching point is a loss-scale balance, not a dynamical critical point
+* Unified stability metric
+* Intrinsic switching in static environments
+* λ* as intrinsic critical point
 
 ### Open
 
-- **Intrinsic boundary condition recognition**: system cannot currently identify whether its environment is controllable without external specification via loss scale
+* Generalization of boundary recognition to high-dimensional, continuously-varying environments
+* Continuous controllability tracking beyond binary drift intervals
 
 ---
 
 ## Quick Start
 
 ```bash
+# Install dependencies
 uv sync
+
+# Run Stage 1–10 baseline (drift phase diagram, etc.)
 uv run python run.py
+
+# Run intrinsic boundary recognition experiment (Phase 0)
+uv run python core_mvp_v3/run.py
 ```
+
+Key outputs are written to `results_final/` and `core_mvp_v2/results/`.
 
 ---
 
@@ -51,10 +62,11 @@ uv run python run.py
 ```
 ├── README.md
 ├── pyproject.toml
-├── run.py
+├── uv.lock
 ├── config.yaml
+├── run.py                          # Main entry (Stage 1–10)
 │
-├── core/                          # Core engine
+├── core/                           # Core engine (Stage 1–10)
 │   ├── agent.py
 │   ├── controller.py
 │   ├── env.py
@@ -62,65 +74,54 @@ uv run python run.py
 │   ├── metrics.py
 │   └── router.py
 │
-├── core_mvp_v2/                   # Current experiment system
+├── core_mvp_v2/                    # Stage 2 experiments
 │   ├── agent.py
-│   ├── comparison_experiment.py
-│   ├── control_env.py
-│   ├── control_env_torch.py
-│   ├── control_experiment.py
-│   ├── control_experiment_v2.py
 │   ├── controller.py
 │   ├── env.py
 │   ├── gating.py
 │   ├── metrics.py
-│   ├── produce_results.py
 │   ├── run_mvp.py
-│   ├── REPRODUCE.md
-│   └── results/
+│   ├── comparison_experiment.py    # A vs B
+│   ├── gradient_alignment_experiment.py
+│   ├── gated_objective.py          # Capacity competition
+│   ├── delay_alignment.py          # Time-lag experiments
+│   └── results/                    # Phase diagrams, alignment data
 │
-└── results_final/
-    ├── band_intervals.json
-    ├── closed_loop_control_test.json
-    ├── closed_loop_decomposition.json
-    ├── closed_loop_verdict.json
+├── core_mvp_v3/                    # Stage 3: Intrinsic boundary recognition
+│   ├── env.py                      # Clonable drifting environment
+│   ├── models.py                   # Predictor + dual-head policy
+│   ├── experiment.py               # Full loop with rollouts, panic, mode switching
+│   └── run.py                      # Entry point
+│
+└── results_final/                  # Final experiment outputs (JSON)
     ├── comparison_A_vs_B.json
-    ├── control_phase_diagram.json
-    ├── explorability_phase.json
     ├── lambda_phase_transition.json
     ├── phase_diagram.json
-    ├── phase_diagram_raw.json
-    ├── run_output.json
-    └── stability_curve.json
+    ├── control_phase_diagram.json
+    └── ...
 ```
 
 ---
 
 ## Closed-Loop Stability Under Different Boundary Conditions
 
-The system maintains closed-loop stability through two expressions of the same survival logic:
+**Adaptation**
 
-**Adaptation** (uncontrollable environment)
-- Mechanism: minimize prediction error
-- Condition: drift exceeds control authority
-- Result: banded emergence windows; structure becomes useful within discrete drift intervals
+* Mechanism: prediction minimization
+* Condition: environment dominates
+* Result: banded structure utility
 
-**Shaping** (controllable environment)
-- Mechanism: minimize control cost `(state - target)²`
-- Condition: control authority exceeds environmental forcing
-- Result: system maintains target state through active opposition; bands disappear under drift
+**Shaping**
 
-### Experimental Evidence
+* Mechanism: control minimization
+* Condition: control dominates
+* Result: target stabilization
 
-| Condition | Adaptation (prediction loss) | Shaping (stability loss) |
-|---|---|---|
-| g = 0 | S_adv ≈ 1.0 | cost ≈ 0.005, in-zone 94% |
-| g > 0.3 | S_adv = 1.5–2.1, bands present | cost = 9.0, system fails |
-| target = 0 | failure rate 100% | failure rate 0% |
-| target = ±1 | failure rate 100% | failure rate 0% |
+---
 
-### Separation Mechanism
+## Separation Mechanism
 
-Gradient alignment remains positive across all 132 tested (g, λ) points (range: 0.17–0.88). The two expressions do not oppose each other in gradient space. Separation occurs through **state distribution incompatibility**: when shaping succeeds, the system stays near target, removing the structural variation signal that adaptation requires; when adaptation succeeds, the system explores broadly, removing the directional signal that shaping requires.
+Separation arises from **state distribution incompatibility**, not gradient conflict.
 
 ---
 
@@ -130,63 +131,57 @@ Gradient alignment remains positive across all 132 tested (g, λ) points (range:
 loss = prediction_loss + λ · control_loss
 ```
 
-| λ/c | behavior |
-|---|---|
-| < 1 | prediction dominant, policy collapsed or chaotic |
-| ≈ 1 | **DISCRETE TRANSITION** (jump 0.688, robust across g and k) |
-| > 1 | control dominant, bang-bang policy |
+| λ/c | behavior            |
+| --- | ------------------- |
+| < 1 | prediction-dominant |
+| ≈ 1 | discrete transition |
+| > 1 | control-dominant    |
 
-Transition is discrete (gating jump 0.688 vs soft baseline 0.220). Gating floor ≈ 0.200 persists regardless of regularization — the system always retains a minimum shaping signal for stability.
-
-**Scale invariance test**: λ* ≈ c across c ∈ [0.5, 2.0, 5.0]. The transition point is a loss-scale balance, not an intrinsic dynamical critical point.
+Earlier experiments showed transition depended on loss scale. Later experiments removed external λ entirely and achieved intrinsic mode switching via rollout comparison and panic signals.
 
 ---
 
-## Boundary Condition Recognition: Open Problem
+## Boundary Condition Recognition: Principle Validated
 
-The system cannot currently identify whether its environment is controllable without external specification. Switching between adaptation and shaping is triggered by the relative scale of the two loss terms (λ/c ≈ 1), not by any internal state signal.
+The system can endogenously recognize environmental controllability in low-dimensional settings. Through real-environment rollout comparison, the system perceives controllability and drives mode switching via multi-scale panic signals. Multiple seeds confirm the effect: ADAPT dominant (74–85%) in high-drift regimes, SHAPE dominant (up to 92%) in low-drift regimes.
 
-**What is required for intrinsic recognition to emerge:**
+**Emergent Controllability Subspace:**
+The hidden state spontaneously extracts a low-dimensional controllability subspace. Controllability, nearly linearly undetectable from raw state (R²=0.05), becomes readable in the hidden space (R²=0.51, 10× increase) and localized to 5 specific dimensions. Ablation of this subspace collapses the probe (R² drop 83%), confirming causal necessity. Injection of ±5 units along the controllability direction causes 2.6–3.6× action magnitude swings, confirming causal sufficiency.
 
-1. Structure exists and changes over time (adaptation must keep up)
-2. A target state exists (shaping is meaningful)
-3. Tracking structural change and maintaining target state **compete for the same resource**
-
-Condition 3 is absent in the current environment — adaptation consumes routing capacity while shaping consumes action magnitude. When resource competition exists, boundary recognition may emerge as an internal resource allocation problem rather than requiring external specification.
+**Remaining Challenge:** Generalization to higher-dimensional, continuously-varying environments has not been tested.
 
 ---
 
 ## Key Empirical Laws
 
-1. **Structural advantage emerges within discrete drift windows** (under adaptation objective)
-2. **Shaping dominates adaptation** when a target exists and control authority is sufficient
-3. **Discrete phase transition at λ/c ≈ 1**, robust across drift and delay conditions
-4. **Separation via state distribution competition**, not gradient opposition
-5. **No intrinsic switching criterion** in static-structure or externally-scaled environments
+1. Structural advantage appears in discrete drift windows
+2. Shaping dominates when control authority is sufficient
+3. Transition is discrete; its trigger can be either external (loss scale) or internal (rollout comparison)
+4. Separation via state distribution, not gradients
+5. Hidden states spontaneously encode controllability in low-dimensional subspaces causally necessary for adaptive behavior
 
 ---
 
 ## Limitations
 
-- Validated on low-dimensional environments only
-- Emergence windows not analytically predicted
-- No intrinsic boundary condition recognition
-- Switching point is loss-scale-dependent, not a universal constant
-- No guarantee of global optimality
+* Low-dimensional validation
+* No analytic prediction of emergence bands
+* Intrinsic boundary recognition confirmed only in binary drift interval environment
+* No guarantee of global optimality
 
 ---
 
 ## Open Problems
 
-1. **Intrinsic boundary condition recognition**: how can a system identify environment controllability without external loss specification?
-2. **Resource competition environment**: design requires time-varying structure with shared capacity between adaptation and shaping
-3. **Mixed regime**: does a closed-loop structure exist that handles both simultaneously?
-4. **Real-time adaptation** under resource constraints
-5. **Long-term behavior** in non-stationary environments
-6. **Multi-agent compatibility**
+1. Generalization of intrinsic controllability detection to high-dimensional, continuously-varying environments
+2. Real-time adaptation under resource constraints
+3. Mixed regime stability and coexistence conditions
+4. Long-term behavior in non-stationary settings
+5. Multi-agent coordination
+6. Minimum viable closed-loop system
 
 ---
 
 ## Core Result
 
-> **Closed-loop stability is maintained through adaptation in uncontrollable environments and through shaping in controllable ones — the same survival logic under different boundary conditions. The transition between them is discrete and capacity-driven, but its trigger point is determined by external loss scale rather than internal system dynamics. Intrinsic boundary condition recognition remains an open problem.**
+> **Closed-loop stability is maintained by tracking in uncontrollable regimes and by constraining in controllable regimes. A system trained solely to predict can endogenously learn to perceive environmental controllability through real-environment interaction, extract it into a low-dimensional hidden subspace causally necessary for behavior, and switch between behavioral modes without external rewards or loss weights. The principle of intrinsic boundary condition recognition has been validated in low-dimensional settings; generalization remains open.**
