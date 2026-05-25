@@ -1,0 +1,12 @@
+{
+  "A_cost": 8.4,
+  "B_cost": 0.004,
+  "random_cost": 1.13,
+  "A_time_in_target": 0.003,
+  "B_time_in_target": 0.94,
+  "A_failure_rate": 1.0,
+  "B_failure_rate": 0.0,
+  "slope_A": 0.25820556567754505,
+  "slope_B": -0.09450238401310895,
+  "judgment": "THEORY SUPPORTED: stability-first >> prediction-first"
+}

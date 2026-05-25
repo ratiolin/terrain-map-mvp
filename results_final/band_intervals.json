@@ -1,0 +1,23 @@
+{
+  "seeds": [0, 1, 2],
+  "drift_axis": [0.005, 0.02, 0.08],
+  "kappa_axis": [0.5, 1.0, 2.0, 4.0],
+  "S_adv": {
+    "0.005": 0.9961,
+    "0.020": 1.7406,
+    "0.080": 0.5829
+  },
+  "emergence_window": {
+    "drift_range": [0.01, 0.03],
+    "peak_drift": 0.02,
+    "peak_S_adv": 1.7406,
+    "condition": "S_adv > 1.0"
+  },
+  "collapse_boundary": {
+    "drift_threshold": 0.08,
+    "S_adv_at_boundary": 0.5829,
+    "condition": "S_adv < 1.0"
+  },
+  "unimodal": true,
+  "morphology_consistent": true
+}

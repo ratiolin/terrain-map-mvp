@@ -1,0 +1,23 @@
+# Terrain Map MVP — Configuration
+# Structure-Complexity Co-Evolution System
+
+seed: 0
+eta: 0.5
+kappa: 4.0
+drift_rate: 0.02
+flip_period: 200
+train_steps: 1200
+test_steps: 300
+
+coupling:
+  mode: drift
+  beta: 0.8
+
+model:
+  K: 4
+  hidden_dim: 4
+  gating_hidden: 8
+
+structure:
+  beta: 0.0
+  regime_visible: true

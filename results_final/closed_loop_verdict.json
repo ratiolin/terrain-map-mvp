@@ -1,0 +1,149 @@
+[
+  {
+    "action_effect_size": 0.10886039825621992,
+    "action_vs_null": 0.9650744921412,
+    "action_vs_real": 0.13534320907652825,
+    "distribution_shift_ws": 0.041273882207383095,
+    "distribution_shift_kl": 0.0741142550787838,
+    "loop_type": "weakly closed-loop (action \u2248 random/zero)",
+    "delta_real": 0.8043284845910966,
+    "delta_action": 0.10886039825621992,
+    "delta_null": 0.11279999538138509,
+    "mean_state_a0": 0.22910135482538801,
+    "mean_state_a1": 0.26975410162409147,
+    "mean_state_shift": 0.040652746798703454,
+    "params": {
+      "coupling_mode": "weak",
+      "coupling_beta": 0.0,
+      "coupling_gamma": 0.5,
+      "eta": 0.5,
+      "drift_rate": 0.02
+    }
+  },
+  {
+    "action_effect_size": 0.16257845289260148,
+    "action_vs_null": 0.8397855397314823,
+    "action_vs_real": 0.21871243902241805,
+    "distribution_shift_ws": 0.18492578941521545,
+    "distribution_shift_kl": 0.20283580807981988,
+    "loop_type": "weakly closed-loop (action \u2248 random/zero)",
+    "delta_real": 0.7433434221632779,
+    "delta_action": 0.16257845289260148,
+    "delta_null": 0.1935952040143311,
+    "mean_state_a0": 0.5495385198450337,
+    "mean_state_a1": 0.7111241493672132,
+    "mean_state_shift": 0.16158562952217959,
+    "params": {
+      "coupling_mode": "drift",
+      "coupling_beta": 0.5,
+      "coupling_gamma": 0.5,
+      "eta": 0.5,
+      "drift_rate": 0.02
+    }
+  },
+  {
+    "action_effect_size": 0.17284827842004596,
+    "action_vs_null": 0.7885975570761722,
+    "action_vs_real": 0.22508713085395757,
+    "distribution_shift_ws": 0.2689484876388063,
+    "distribution_shift_kl": 0.3659150707568744,
+    "loop_type": "closed-loop",
+    "delta_real": 0.7679171961732209,
+    "delta_action": 0.17284827842004596,
+    "delta_null": 0.21918439496681094,
+    "mean_state_a0": 0.5041842468053412,
+    "mean_state_a1": 0.7080655428036116,
+    "mean_state_shift": 0.20388129599827032,
+    "params": {
+      "coupling_mode": "drift",
+      "coupling_beta": 0.8,
+      "coupling_gamma": 0.5,
+      "eta": 0.5,
+      "drift_rate": 0.02
+    }
+  },
+  {
+    "action_effect_size": 0.23805873871641234,
+    "action_vs_null": 0.7450552354798473,
+    "action_vs_real": 0.29361010422585476,
+    "distribution_shift_ws": 0.41323551521023427,
+    "distribution_shift_kl": 0.6444208755138783,
+    "loop_type": "closed-loop",
+    "delta_real": 0.8107988631525077,
+    "delta_action": 0.23805873871641234,
+    "delta_null": 0.31951824157452213,
+    "mean_state_a0": -0.018949513289534176,
+    "mean_state_a1": 0.1036124107937018,
+    "mean_state_shift": 0.12256192408323598,
+    "params": {
+      "coupling_mode": "drift",
+      "coupling_beta": 1.5,
+      "coupling_gamma": 0.5,
+      "eta": 0.5,
+      "drift_rate": 0.02
+    }
+  },
+  {
+    "action_effect_size": 0.35762239422276615,
+    "action_vs_null": 1.8755535112067956,
+    "action_vs_real": 0.44939273316740197,
+    "distribution_shift_ws": 0.2673429588750393,
+    "distribution_shift_kl": 2.2879007850623356,
+    "loop_type": "closed-loop",
+    "delta_real": 0.7957903362214566,
+    "delta_action": 0.35762239422276615,
+    "delta_null": 0.1906756549924612,
+    "mean_state_a0": 0.8073064268460342,
+    "mean_state_a1": 0.6499591718321899,
+    "mean_state_shift": 0.15734725501384428,
+    "params": {
+      "coupling_mode": "potential",
+      "coupling_beta": 0.0,
+      "coupling_gamma": 0.5,
+      "eta": 0.5,
+      "drift_rate": 0.02
+    }
+  },
+  {
+    "action_effect_size": 1.6176794953923672,
+    "action_vs_null": 0.7638794500789096,
+    "action_vs_real": 0.6984271941770485,
+    "distribution_shift_ws": 0.3193796087176767,
+    "distribution_shift_kl": 3.0747182333900276,
+    "loop_type": "closed-loop",
+    "delta_real": 2.3161748409559952,
+    "delta_action": 1.6176794953923672,
+    "delta_null": 2.1177156882872805,
+    "mean_state_a0": 0.2932749782213869,
+    "mean_state_a1": 0.18526105604375093,
+    "mean_state_shift": 0.10801392217763595,
+    "params": {
+      "coupling_mode": "potential",
+      "coupling_beta": 0.0,
+      "coupling_gamma": 1.0,
+      "eta": 0.5,
+      "drift_rate": 0.02
+    }
+  },
+  {
+    "action_effect_size": 0.27068808776326475,
+    "action_vs_null": 2.4933511970676148,
+    "action_vs_real": 0.33755827695095003,
+    "distribution_shift_ws": 0.49065274630735317,
+    "distribution_shift_kl": 1.6074610142214452,
+    "loop_type": "closed-loop",
+    "delta_real": 0.8019003124684095,
+    "delta_action": 0.27068808776326475,
+    "delta_null": 0.10856396326422692,
+    "mean_state_a0": 0.6655436423340192,
+    "mean_state_a1": 1.1561963886413724,
+    "mean_state_shift": 0.4906527463073532,
+    "params": {
+      "coupling_mode": "distribution",
+      "coupling_beta": 0.0,
+      "coupling_gamma": 0.5,
+      "eta": 0.5,
+      "drift_rate": 0.02
+    }
+  }
+]

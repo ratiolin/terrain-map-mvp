@@ -1,0 +1,290 @@
+{
+  "experiment": "drift_sweep_phase_transition",
+  "parameters": {
+    "alpha": 2.0,
+    "noise": 0.05,
+    "target": 0.0,
+    "lambda": 0.05,
+    "rollout_N": 10,
+    "episodes": 300,
+    "seeds": 5,
+    "in_zone_radius": 0.1
+  },
+  "g_values_coarse": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.8,
+    1.0,
+    1.5,
+    2.0,
+    3.0
+  ],
+  "g_star_formula": 0.1,
+  "crossover_diff": 0.0002036273864987028,
+  "g_zone_drop": 0.6,
+  "zone_range": 0.4616,
+  "cost_range": 1.8041960905210068,
+  "sadv_range": 1.0119430596624603,
+  "has_clear_crossover": true,
+  "analysis": {
+    "crossover_method": "cost_vs_S_adv normalized",
+    "note": "S_adv drops sharply at g=0.02, never recovers above 1. Under lambda=0.05, control dominates at all g, preventing structural advantage emergence."
+  },
+  "verdict": "Clear transition detected. cost_range=1.804, zone_range=0.462. Formula g*=0.100, in_zone inflection at g=0.60. Under control-dominant mixed loss, structural S_adv never exceeds 1. The transition is from active control (low g) to passive drift (high g), not from control to structural tracking.",
+  "coarse_results": [
+    {
+      "g": 0.0,
+      "mean_cost": 0.03336371612566029,
+      "S_adv": 1.0183855822214043,
+      "policy_slope": -0.25437461806041106,
+      "in_zone_rate": 0.6018,
+      "n_experts": 1.6,
+      "coverage": 0.1933333333333333,
+      "transition_entropy": 1.6172734569411549
+    },
+    {
+      "g": 0.1,
+      "mean_cost": 0.03306451556138633,
+      "S_adv": 0.006442522558943923,
+      "policy_slope": 0.17883852665157807,
+      "in_zone_rate": 0.5898000000000001,
+      "n_experts": 1.6,
+      "coverage": 0.9333333333333333,
+      "transition_entropy": 2.4033077645470806
+    },
+    {
+      "g": 0.2,
+      "mean_cost": 0.032697131824706085,
+      "S_adv": 0.02281215048033313,
+      "policy_slope": 0.2049534741991775,
+      "in_zone_rate": 0.5786,
+      "n_experts": 1.6,
+      "coverage": 0.7466666666666668,
+      "transition_entropy": 1.3150824487016937
+    },
+    {
+      "g": 0.3,
+      "mean_cost": 0.03473554505823998,
+      "S_adv": 0.021315018737994438,
+      "policy_slope": 0.16779081015946515,
+      "in_zone_rate": 0.5538000000000001,
+      "n_experts": 1.6,
+      "coverage": 0.6466666666666667,
+      "transition_entropy": 0.9658477233997271
+    },
+    {
+      "g": 0.4,
+      "mean_cost": 0.03751734888865668,
+      "S_adv": 0.02770118896691178,
+      "policy_slope": 0.15637433162803221,
+      "in_zone_rate": 0.5166000000000001,
+      "n_experts": 1.6,
+      "coverage": 0.44666666666666666,
+      "transition_entropy": 0.7474138830643418
+    },
+    {
+      "g": 0.5,
+      "mean_cost": 0.03838907773483069,
+      "S_adv": 0.028098634854413485,
+      "policy_slope": 0.18689365063266392,
+      "in_zone_rate": 0.47800000000000004,
+      "n_experts": 1.6,
+      "coverage": 0.36,
+      "transition_entropy": 0.5805177116880681
+    },
+    {
+      "g": 0.6,
+      "mean_cost": 0.05144774758899066,
+      "S_adv": 0.03511099530245172,
+      "policy_slope": 0.19085188810878057,
+      "in_zone_rate": 0.34340000000000004,
+      "n_experts": 1.6,
+      "coverage": 0.38,
+      "transition_entropy": 0.5097356026871812
+    },
+    {
+      "g": 0.8,
+      "mean_cost": 0.05414450193972013,
+      "S_adv": 0.048168550115193394,
+      "policy_slope": 0.241675657471698,
+      "in_zone_rate": 0.3234,
+      "n_experts": 1.6,
+      "coverage": 0.2733333333333333,
+      "transition_entropy": 0.3702821399595166
+    },
+    {
+      "g": 1.0,
+      "mean_cost": 0.06938696430713742,
+      "S_adv": 0.06186306926634285,
+      "policy_slope": 0.18722037439304706,
+      "in_zone_rate": 0.2892,
+      "n_experts": 1.6,
+      "coverage": 0.2866666666666666,
+      "transition_entropy": 0.32190223189067985
+    },
+    {
+      "g": 1.5,
+      "mean_cost": 0.26395264078019887,
+      "S_adv": 0.1342787748278821,
+      "policy_slope": 0.06154523248948187,
+      "in_zone_rate": 0.22160000000000002,
+      "n_experts": 1.6,
+      "coverage": 0.2533333333333333,
+      "transition_entropy": 0.2694223626719644
+    },
+    {
+      "g": 2.0,
+      "mean_cost": 0.870181558513462,
+      "S_adv": 0.26425436460926893,
+      "policy_slope": -0.25652016341962114,
+      "in_zone_rate": 0.16920000000000002,
+      "n_experts": 1.6,
+      "coverage": 0.23333333333333334,
+      "transition_entropy": 0.23562709710332636
+    },
+    {
+      "g": 3.0,
+      "mean_cost": 1.8368932223457128,
+      "S_adv": 0.32636707589729946,
+      "policy_slope": 0.11166598253434963,
+      "in_zone_rate": 0.14020000000000002,
+      "n_experts": 1.8,
+      "coverage": 0.2266666666666667,
+      "transition_entropy": 0.19791399532514814
+    }
+  ],
+  "fine_results": [
+    {
+      "g": 0.0,
+      "mean_cost": 0.03336371612566029,
+      "S_adv": 1.0183855822214043,
+      "policy_slope": -0.25437461806041106,
+      "in_zone_rate": 0.6018
+    },
+    {
+      "g": 0.02,
+      "mean_cost": 0.030746331272081824,
+      "S_adv": 0.17573890225447056,
+      "policy_slope": -0.10954430451892802,
+      "in_zone_rate": 0.6242
+    },
+    {
+      "g": 0.04,
+      "mean_cost": 0.031144127706379955,
+      "S_adv": 0.3932933266039169,
+      "policy_slope": 0.07531759568293901,
+      "in_zone_rate": 0.6085999999999999
+    },
+    {
+      "g": 0.06,
+      "mean_cost": 0.03351294024412218,
+      "S_adv": 0.12456595266215065,
+      "policy_slope": 0.16934238004553515,
+      "in_zone_rate": 0.5932000000000001
+    },
+    {
+      "g": 0.08,
+      "mean_cost": 0.03158372664354378,
+      "S_adv": 0.014852190162192924,
+      "policy_slope": 0.16588109104463272,
+      "in_zone_rate": 0.594
+    },
+    {
+      "g": 0.1,
+      "mean_cost": 0.03306451556138633,
+      "S_adv": 0.006442522558943923,
+      "policy_slope": 0.17883852665157807,
+      "in_zone_rate": 0.5898000000000001
+    },
+    {
+      "g": 0.12,
+      "mean_cost": 0.033867539634400055,
+      "S_adv": 0.01132761085300341,
+      "policy_slope": 0.2206918393939253,
+      "in_zone_rate": 0.5942000000000001
+    },
+    {
+      "g": 0.14,
+      "mean_cost": 0.032694981750673736,
+      "S_adv": 0.010020184432740442,
+      "policy_slope": 0.19355919264408755,
+      "in_zone_rate": 0.5801999999999999
+    },
+    {
+      "g": 0.16,
+      "mean_cost": 0.033724657770849965,
+      "S_adv": 0.01991202682560541,
+      "policy_slope": 0.18447119861203848,
+      "in_zone_rate": 0.5862
+    },
+    {
+      "g": 0.18,
+      "mean_cost": 0.03182717876207525,
+      "S_adv": 0.014133386025278898,
+      "policy_slope": 0.21106351654205574,
+      "in_zone_rate": 0.5862
+    },
+    {
+      "g": 0.2,
+      "mean_cost": 0.032697131824706085,
+      "S_adv": 0.02281215048033313,
+      "policy_slope": 0.2049534741991775,
+      "in_zone_rate": 0.5786
+    }
+  ],
+  "invariants_at_g_star": {
+    "g_star": 0.1,
+    "coverage": 0.9333333333333333,
+    "transition_entropy": 2.4033077645470806,
+    "escape_rate_approx": 2.4033077645470806,
+    "eta_usage_proxy": 4.519290617204037,
+    "routing_consistency": 0.625,
+    "per_seed": [
+      {
+        "mean_cost": 0.03592003964585395,
+        "S_adv": 0.0048002982525079535,
+        "policy_slope": 0.174128900238957,
+        "in_zone_rate": 0.585,
+        "n_experts": 2,
+        "structure_type": "pattern"
+      },
+      {
+        "mean_cost": 0.034598372942838365,
+        "S_adv": 0.0028791437043298998,
+        "policy_slope": 0.2143819131152095,
+        "in_zone_rate": 0.554,
+        "n_experts": 2,
+        "structure_type": "pattern"
+      },
+      {
+        "mean_cost": 0.031694273279470754,
+        "S_adv": 0.007431820363818179,
+        "policy_slope": 0.2387794222834314,
+        "in_zone_rate": 0.557,
+        "n_experts": 2,
+        "structure_type": "pattern"
+      },
+      {
+        "mean_cost": 0.03300091626062613,
+        "S_adv": 0.008672934230868961,
+        "policy_slope": 0.06693666987134728,
+        "in_zone_rate": 0.62,
+        "n_experts": 1,
+        "structure_type": "single"
+      },
+      {
+        "mean_cost": 0.03010897567814244,
+        "S_adv": 0.008428416243194625,
+        "policy_slope": 0.19996572774894514,
+        "in_zone_rate": 0.633,
+        "n_experts": 1,
+        "structure_type": "single"
+      }
+    ]
+  }
+}
