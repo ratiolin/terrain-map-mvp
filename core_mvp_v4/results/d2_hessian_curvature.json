@@ -1,0 +1,57 @@
+{
+  "seeds": [
+    {
+      "seed": 0,
+      "cond_mean": 236113200.0,
+      "cond_std": 0.0,
+      "jac_hess_alignment": 0.45444217324256897
+    },
+    {
+      "seed": 1,
+      "cond_mean": 236385408.0,
+      "cond_std": 0.0,
+      "jac_hess_alignment": 0.3383764922618866
+    },
+    {
+      "seed": 2,
+      "cond_mean": 249954624.0,
+      "cond_std": 0.0,
+      "jac_hess_alignment": 0.392354279756546
+    },
+    {
+      "seed": 3,
+      "cond_mean": 249641712.0,
+      "cond_std": 0.0,
+      "jac_hess_alignment": 0.34256020188331604
+    },
+    {
+      "seed": 4,
+      "cond_mean": 292681792.0,
+      "cond_std": 0.0,
+      "jac_hess_alignment": 0.39809393882751465
+    },
+    {
+      "seed": 5,
+      "cond_mean": 286687424.0,
+      "cond_std": 0.0,
+      "jac_hess_alignment": 0.4405161440372467
+    },
+    {
+      "seed": 6,
+      "cond_mean": 250698384.0,
+      "cond_std": 0.0,
+      "jac_hess_alignment": 0.4538111388683319
+    },
+    {
+      "seed": 7,
+      "cond_mean": 237460576.0,
+      "cond_std": 0.0,
+      "jac_hess_alignment": 0.4711114168167114
+    }
+  ],
+  "analysis": {
+    "condition_number": 254952890.0,
+    "jac_hess_alignment": 0.4114082232117653,
+    "conclusion": "MODERATE: alignment=0.411, condition=254952890.0."
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "seeds": [
+    {
+      "seed": 0,
+      "smoothness_mean": 0.046480714997000225,
+      "lip_mean": 2.553810383434852,
+      "lip_max": 9.161099785800701,
+      "n_critical": 0,
+      "critical_types": [],
+      "hess_eff_rank": 0.0,
+      "hess_top_eig": 0.0,
+      "pca_var_ratio": [
+        0.29061076045036316,
+        0.11590741574764252
+      ]
+    },
+    {
+      "seed": 1,
+      "smoothness_mean": 0.04679442605028699,
+      "lip_mean": 3.5561020723461794,
+      "lip_max": 11.903207936688824,
+      "n_critical": 0,
+      "critical_types": [],
+      "hess_eff_rank": 0.0,
+      "hess_top_eig": 0.0,
+      "pca_var_ratio": [
+        0.2372298538684845,
+        0.1977197527885437
+      ]
+    },
+    {
+      "seed": 2,
+      "smoothness_mean": 0.04531620373936941,
+      "lip_mean": 5.3333707079864885,
+      "lip_max": 36.272045157218585,
+      "n_critical": 0,
+      "critical_types": [],
+      "hess_eff_rank": 0.0,
+      "hess_top_eig": 0.0,
+      "pca_var_ratio": [
+        0.34728774428367615,
+        0.1788710206747055
+      ]
+    },
+    {
+      "seed": 3,
+      "smoothness_mean": 0.04188825677358385,
+      "lip_mean": 13.137653537316194,
+      "lip_max": 3912.429396208129,
+      "n_critical": 0,
+      "critical_types": [],
+      "hess_eff_rank": 0.0,
+      "hess_top_eig": 0.0,
+      "pca_var_ratio": [
+        0.2286107838153839,
+        0.1304267942905426
+      ]
+    }
+  ],
+  "analysis": {
+    "smoothness": 0.04511990039006012,
+    "lipschitz": 6.145234175270929,
+    "n_critical": 0.0,
+    "conclusion": "MIXED: smoothness=0.045, 0 critical points found."
+  }
+}

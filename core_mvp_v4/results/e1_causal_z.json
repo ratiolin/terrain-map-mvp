@@ -1,0 +1,43 @@
+{
+  "baseline": {
+    "R2_mean": 0.9738457820278276,
+    "R2_std": 0.03766975371746217,
+    "rho_cost_mean": 0.04138264919828339,
+    "rho_cost_std": 0.029050022386162864,
+    "rho_drift_mean": NaN
+  },
+  "monotonicity": {
+    "R2_mean": 0.9736227052948448,
+    "R2_std": 0.03753624808628759,
+    "rho_cost_mean": 0.03688141447263138,
+    "rho_cost_std": 0.0227585652558945,
+    "rho_drift_mean": NaN
+  },
+  "jacobian_nuclear": {
+    "R2_mean": 0.9736227052948448,
+    "R2_std": 0.03753624808628759,
+    "rho_cost_mean": 0.03688141447263138,
+    "rho_cost_std": 0.0227585652558945,
+    "rho_drift_mean": NaN
+  },
+  "decoupling": {
+    "R2_mean": 0.9736227052948448,
+    "R2_std": 0.03753624808628759,
+    "rho_cost_mean": 0.03688141447263138,
+    "rho_cost_std": 0.0227585652558945,
+    "rho_drift_mean": NaN
+  },
+  "contrastive": {
+    "R2_mean": 0.06491487243626638,
+    "R2_std": 0.07502247518183054,
+    "rho_cost_mean": 0.03749497477716357,
+    "rho_cost_std": 0.021783884025887653,
+    "rho_drift_mean": NaN
+  },
+  "analysis": {
+    "best_constraint": "baseline",
+    "best_rho": 0.04138264919828339,
+    "baseline_rho": 0.04138264919828339,
+    "conclusion": "NO ALIGNMENT: best \u03c1=0.041. Causal constraints cannot align z with cost."
+  }
+}

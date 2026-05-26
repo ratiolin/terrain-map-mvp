@@ -1,0 +1,32 @@
+{
+  "seeds": [
+    {
+      "seed": 0,
+      "rho_cost_pred": -0.07915800727648849
+    },
+    {
+      "seed": 1,
+      "rho_cost_pred": 0.014844497051986526
+    },
+    {
+      "seed": 2,
+      "rho_cost_pred": -0.0421388451072041
+    },
+    {
+      "seed": 3,
+      "rho_cost_pred": 0.029117142690480408
+    },
+    {
+      "seed": 4,
+      "rho_cost_pred": -0.0253046351960284
+    },
+    {
+      "seed": 5,
+      "rho_cost_pred": 0.07157563665044006
+    }
+  ],
+  "analysis": {
+    "rho_cost_pred": -0.005177368531135665,
+    "conclusion": "NO COST TRACKING: \u03c1=-0.005. Dynamic z does not capture cost structure."
+  }
+}

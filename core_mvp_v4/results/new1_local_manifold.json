@@ -1,0 +1,90 @@
+{
+  "seeds": [
+    {
+      "seed": 0,
+      "local_id_mean": 19.994,
+      "local_id_std": 1.2577615036245942,
+      "alignment_mean": 0.022592404070712505,
+      "alignment_std": 0.01502298708943209,
+      "high_align_frac": 0.0,
+      "high_align_avg_risk": 0.0,
+      "n_degenerate": 0
+    },
+    {
+      "seed": 1,
+      "local_id_mean": 17.128,
+      "local_id_std": 2.1381337656938117,
+      "alignment_mean": 0.016385994503126694,
+      "alignment_std": 0.014570401057210736,
+      "high_align_frac": 0.0,
+      "high_align_avg_risk": 0.0,
+      "n_degenerate": 0
+    },
+    {
+      "seed": 2,
+      "local_id_mean": 14.562,
+      "local_id_std": 2.36604226504938,
+      "alignment_mean": 0.01805546119644078,
+      "alignment_std": 0.012751269982871682,
+      "high_align_frac": 0.0,
+      "high_align_avg_risk": 0.0,
+      "n_degenerate": 0
+    },
+    {
+      "seed": 3,
+      "local_id_mean": 15.076,
+      "local_id_std": 6.186616522785294,
+      "alignment_mean": 0.0314485375464573,
+      "alignment_std": 0.029052649497502588,
+      "high_align_frac": 0.0,
+      "high_align_avg_risk": 0.0,
+      "n_degenerate": 3
+    },
+    {
+      "seed": 4,
+      "local_id_mean": 18.35,
+      "local_id_std": 1.948204301401678,
+      "alignment_mean": 0.016554260241859183,
+      "alignment_std": 0.01650871412835954,
+      "high_align_frac": 0.0,
+      "high_align_avg_risk": 0.0,
+      "n_degenerate": 0
+    },
+    {
+      "seed": 5,
+      "local_id_mean": 9.738,
+      "local_id_std": 4.4963714259389205,
+      "alignment_mean": 0.03075414658470089,
+      "alignment_std": 0.02455096163443452,
+      "high_align_frac": 0.0,
+      "high_align_avg_risk": 0.0,
+      "n_degenerate": 36
+    },
+    {
+      "seed": 6,
+      "local_id_mean": 12.052,
+      "local_id_std": 2.6353929498274065,
+      "alignment_mean": 0.011366480022519046,
+      "alignment_std": 0.0110445454090114,
+      "high_align_frac": 0.0,
+      "high_align_avg_risk": 0.0,
+      "n_degenerate": 0
+    },
+    {
+      "seed": 7,
+      "local_id_mean": 10.762,
+      "local_id_std": 2.5269261959938603,
+      "alignment_mean": 0.029510945778713077,
+      "alignment_std": 0.01929347221134257,
+      "high_align_frac": 0.0,
+      "high_align_avg_risk": 0.0,
+      "n_degenerate": 0
+    }
+  ],
+  "analysis": {
+    "mean_alignment": 0.022083528743066183,
+    "local_id": 14.707749999999999,
+    "high_align_frac": 0.0,
+    "conclusion": "UNIFORMLY LOW ALIGNMENT: align=0.022. No strong alignment anywhere."
+  }
+}

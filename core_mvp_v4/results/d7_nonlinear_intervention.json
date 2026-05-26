@@ -1,0 +1,626 @@
+{
+  "seeds": [
+    {
+      "seed": 0,
+      "modes": {
+        "translate": {
+          "delta_0.1": {
+            "action_change_mean": 0.031165665276348592,
+            "action_change_max": 0.033131904900074005
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.11549666985869407,
+            "action_change_max": 0.14640632271766663
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.1855286853015423,
+            "action_change_max": 0.2511797845363617
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.28595015421509745,
+            "action_change_max": 0.41390296816825867
+          }
+        },
+        "scale": {
+          "delta_0.1": {
+            "action_change_mean": 0.004281165645370493,
+            "action_change_max": 0.009063503704965115
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.021015918630873785,
+            "action_change_max": 0.04918863624334335
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.04056885606143624,
+            "action_change_max": 0.09146151691675186
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.07385009096935391,
+            "action_change_max": 0.16728772222995758
+          }
+        },
+        "gradient": {
+          "delta_0.1": {
+            "action_change_mean": 0.03205750923603773,
+            "action_change_max": 0.03461765870451927
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.1619292151927948,
+            "action_change_max": 0.17372791469097137
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.2801736921072006,
+            "action_change_max": 0.2937452793121338
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.43607927322387696,
+            "action_change_max": 0.4498205780982971
+          }
+        },
+        "random": {
+          "delta_0.1": {
+            "action_change_mean": 0.03155043754726648,
+            "action_change_max": 0.03463559225201607
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.13459686666727066,
+            "action_change_max": 0.17639724910259247
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.22208583176136018,
+            "action_change_max": 0.30379220843315125
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.3522058890759945,
+            "action_change_max": 0.4632575213909149
+          }
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "modes": {
+        "translate": {
+          "delta_0.1": {
+            "action_change_mean": 0.03402098996564746,
+            "action_change_max": 0.037252288311719894
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.14193362884223462,
+            "action_change_max": 0.18508075177669525
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.24172334603965281,
+            "action_change_max": 0.347643107175827
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.40246546506881714,
+            "action_change_max": 0.6213208436965942
+          }
+        },
+        "scale": {
+          "delta_0.1": {
+            "action_change_mean": 0.0075664857472293075,
+            "action_change_max": 0.016804812476038933
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.03810869014356286,
+            "action_change_max": 0.08663121610879898
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.07527801606338472,
+            "action_change_max": 0.17032000422477722
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.1423289398290217,
+            "action_change_max": 0.31817924976348877
+          }
+        },
+        "gradient": {
+          "delta_0.1": {
+            "action_change_mean": 0.03187661774456501,
+            "action_change_max": 0.035819098353385925
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.10550794288516045,
+            "action_change_max": 0.16575711965560913
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.15242325007915497,
+            "action_change_max": 0.22708584368228912
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.19303617984056473,
+            "action_change_max": 0.2857198715209961
+          }
+        },
+        "random": {
+          "delta_0.1": {
+            "action_change_mean": 0.034113689679652455,
+            "action_change_max": 0.04130547493696213
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.13791444476693868,
+            "action_change_max": 0.17807669937610626
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.20907212559133767,
+            "action_change_max": 0.37342676520347595
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.36628343326039614,
+            "action_change_max": 0.7113431692123413
+          }
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "modes": {
+        "translate": {
+          "delta_0.1": {
+            "action_change_mean": 0.027126786038279532,
+            "action_change_max": 0.030469229444861412
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.09445184305310249,
+            "action_change_max": 0.12140116095542908
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.14873655617237092,
+            "action_change_max": 0.18359118700027466
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.2730245369672775,
+            "action_change_max": 0.3850010633468628
+          }
+        },
+        "scale": {
+          "delta_0.1": {
+            "action_change_mean": 0.002216714851092547,
+            "action_change_max": 0.008524124510586262
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.010050100398657377,
+            "action_change_max": 0.03400086984038353
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.01967036658199504,
+            "action_change_max": 0.0662887915968895
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.0385869804082904,
+            "action_change_max": 0.1374228596687317
+          }
+        },
+        "gradient": {
+          "delta_0.1": {
+            "action_change_mean": 0.025837089866399765,
+            "action_change_max": 0.029540957883000374
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.09223418518900871,
+            "action_change_max": 0.11033005267381668
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.1470191413164139,
+            "action_change_max": 0.1646883189678192
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.21127122402191162,
+            "action_change_max": 0.23864027857780457
+          }
+        },
+        "random": {
+          "delta_0.1": {
+            "action_change_mean": 0.026762999333441256,
+            "action_change_max": 0.03102482296526432
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.10332888759672641,
+            "action_change_max": 0.13590934872627258
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.17658765129745008,
+            "action_change_max": 0.23734529316425323
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.3030234968662262,
+            "action_change_max": 0.4045656621456146
+          }
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "modes": {
+        "translate": {
+          "delta_0.1": {
+            "action_change_mean": 0.030567008182406426,
+            "action_change_max": 0.03753788024187088
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.15879213958978652,
+            "action_change_max": 0.18049198389053345
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.318110231757164,
+            "action_change_max": 0.3615223467350006
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.5705387541651725,
+            "action_change_max": 0.6363661885261536
+          }
+        },
+        "scale": {
+          "delta_0.1": {
+            "action_change_mean": 0.004161236714571715,
+            "action_change_max": 0.011444846168160439
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.019258422119528405,
+            "action_change_max": 0.05165734887123108
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.03840707338356879,
+            "action_change_max": 0.1031336784362793
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.07728685582231265,
+            "action_change_max": 0.2029702365398407
+          }
+        },
+        "gradient": {
+          "delta_0.1": {
+            "action_change_mean": 0.035861664190888404,
+            "action_change_max": 0.04218459501862526
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.18570433408021927,
+            "action_change_max": 0.20151081681251526
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.33615803241729736,
+            "action_change_max": 0.3559872806072235
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.5735499310493469,
+            "action_change_max": 0.6063195466995239
+          }
+        },
+        "random": {
+          "delta_0.1": {
+            "action_change_mean": 0.029073820021003484,
+            "action_change_max": 0.04326432943344116
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.15522943809628487,
+            "action_change_max": 0.21704882383346558
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.28447778947651386,
+            "action_change_max": 0.4217655658721924
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.5060919934511184,
+            "action_change_max": 0.7255074977874756
+          }
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "modes": {
+        "translate": {
+          "delta_0.1": {
+            "action_change_mean": 0.029796331413090228,
+            "action_change_max": 0.03746709227561951
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.10260946370661259,
+            "action_change_max": 0.1454939991235733
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.17383300013840197,
+            "action_change_max": 0.24207477271556854
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.3063637314736843,
+            "action_change_max": 0.4266652464866638
+          }
+        },
+        "scale": {
+          "delta_0.1": {
+            "action_change_mean": 0.0031335081724682824,
+            "action_change_max": 0.007360334508121014
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.014060146088013425,
+            "action_change_max": 0.03472276031970978
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.028014006661251187,
+            "action_change_max": 0.06547099351882935
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.05462061931670178,
+            "action_change_max": 0.12948177754878998
+          }
+        },
+        "gradient": {
+          "delta_0.1": {
+            "action_change_mean": 0.025284301675856113,
+            "action_change_max": 0.026670245453715324
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.08641429588198662,
+            "action_change_max": 0.1012546643614769
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.1401951491832733,
+            "action_change_max": 0.16105030477046967
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.21863487750291824,
+            "action_change_max": 0.2539747655391693
+          }
+        },
+        "random": {
+          "delta_0.1": {
+            "action_change_mean": 0.03011718861758709,
+            "action_change_max": 0.03746846690773964
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.12721568323671817,
+            "action_change_max": 0.1536819189786911
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.2198260998725891,
+            "action_change_max": 0.27716901898384094
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.3941911095380783,
+            "action_change_max": 0.48461687564849854
+          }
+        }
+      }
+    },
+    {
+      "seed": 5,
+      "modes": {
+        "translate": {
+          "delta_0.1": {
+            "action_change_mean": 0.0231789443641901,
+            "action_change_max": 0.02920616790652275
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.07314605366438627,
+            "action_change_max": 0.09897778183221817
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.11062118455767632,
+            "action_change_max": 0.13337644934654236
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.22282776951789857,
+            "action_change_max": 0.26903456449508667
+          }
+        },
+        "scale": {
+          "delta_0.1": {
+            "action_change_mean": 0.0025289866137609353,
+            "action_change_max": 0.007306053768843412
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.012597051829798147,
+            "action_change_max": 0.04195950925350189
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.025660431180149317,
+            "action_change_max": 0.07470738887786865
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.05027453596354462,
+            "action_change_max": 0.108351930975914
+          }
+        },
+        "gradient": {
+          "delta_0.1": {
+            "action_change_mean": 0.02671149544417858,
+            "action_change_max": 0.03173796460032463
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.14244240492582322,
+            "action_change_max": 0.14866633713245392
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.22729429185390473,
+            "action_change_max": 0.23868222534656525
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.3301453649997711,
+            "action_change_max": 0.3524371385574341
+          }
+        },
+        "random": {
+          "delta_0.1": {
+            "action_change_mean": 0.02414813598617911,
+            "action_change_max": 0.03235657140612602
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.09216168055310846,
+            "action_change_max": 0.15135030448436737
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.14526942063122988,
+            "action_change_max": 0.28334933519363403
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.23019824273884296,
+            "action_change_max": 0.4512758255004883
+          }
+        }
+      }
+    },
+    {
+      "seed": 6,
+      "modes": {
+        "translate": {
+          "delta_0.1": {
+            "action_change_mean": 0.02168412160128355,
+            "action_change_max": 0.02325323596596718
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.08414269164204598,
+            "action_change_max": 0.09702830761671066
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.13114197351038456,
+            "action_change_max": 0.17763099074363708
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.22136708728969098,
+            "action_change_max": 0.3405625522136688
+          }
+        },
+        "scale": {
+          "delta_0.1": {
+            "action_change_mean": 0.0029067200396093538,
+            "action_change_max": 0.00550351245328784
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.01337997997412458,
+            "action_change_max": 0.0230276919901371
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.02498991882195696,
+            "action_change_max": 0.036262571811676025
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.04226538859773427,
+            "action_change_max": 0.06279934197664261
+          }
+        },
+        "gradient": {
+          "delta_0.1": {
+            "action_change_mean": 0.018697690200060606,
+            "action_change_max": 0.020516090095043182
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.06135101281106472,
+            "action_change_max": 0.08623622357845306
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.09537952318787575,
+            "action_change_max": 0.11384575068950653
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.167525737285614,
+            "action_change_max": 0.17885547876358032
+          }
+        },
+        "random": {
+          "delta_0.1": {
+            "action_change_mean": 0.021925304206088184,
+            "action_change_max": 0.028076425194740295
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.07458893071860075,
+            "action_change_max": 0.10145678371191025
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.11558509975671769,
+            "action_change_max": 0.16723968088626862
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.2117776794731617,
+            "action_change_max": 0.33170613646507263
+          }
+        }
+      }
+    },
+    {
+      "seed": 7,
+      "modes": {
+        "translate": {
+          "delta_0.1": {
+            "action_change_mean": 0.025450994055718185,
+            "action_change_max": 0.037158235907554626
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.10986754365265369,
+            "action_change_max": 0.14561709761619568
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.18941903658211232,
+            "action_change_max": 0.25395405292510986
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.30984390437603,
+            "action_change_max": 0.42161205410957336
+          }
+        },
+        "scale": {
+          "delta_0.1": {
+            "action_change_mean": 0.004735821939393645,
+            "action_change_max": 0.015595857053995132
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.018598422251234297,
+            "action_change_max": 0.048662569373846054
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.0368305295688333,
+            "action_change_max": 0.09409553557634354
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.07357800441677682,
+            "action_change_max": 0.17494022846221924
+          }
+        },
+        "gradient": {
+          "delta_0.1": {
+            "action_change_mean": 0.025010031946003437,
+            "action_change_max": 0.033336516469717026
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.05252559505403042,
+            "action_change_max": 0.07077860087156296
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.08494814813137054,
+            "action_change_max": 0.11177126318216324
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.13513555958867074,
+            "action_change_max": 0.18080316483974457
+          }
+        },
+        "random": {
+          "delta_0.1": {
+            "action_change_mean": 0.02452972112223506,
+            "action_change_max": 0.04100334644317627
+          },
+          "delta_0.5": {
+            "action_change_mean": 0.10540418179705739,
+            "action_change_max": 0.16414594650268555
+          },
+          "delta_1.0": {
+            "action_change_mean": 0.18368026040494442,
+            "action_change_max": 0.27561262249946594
+          },
+          "delta_2.0": {
+            "action_change_mean": 0.3136717936769128,
+            "action_change_max": 0.45262813568115234
+          }
+        }
+      }
+    }
+  ],
+  "analysis": {
+    "grad_vs_rand": 0.8460948893689666,
+    "gradient_max": 0.2831722684390843,
+    "random_max": 0.33468045476009134,
+    "conclusion": "z NOT CAUSAL: gradient=0.2832 vs random=0.3347. No advantage."
+  }
+}

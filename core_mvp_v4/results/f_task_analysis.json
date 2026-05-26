@@ -1,0 +1,30 @@
+{
+  "optimal_control_PCA": {
+    "ID_90": 2,
+    "explained_var_ratio": [
+      0.6569214985242416,
+      0.32351973187617455,
+      0.011861303481778608,
+      0.005647423036825541,
+      0.0014770617109457114,
+      0.0002900742683593251,
+      0.00011775111658775284,
+      4.5684749329128286e-05,
+      3.3657215624837165e-05,
+      1.7407334134907146e-05
+    ],
+    "note": "Optimal action sequences require 2 PCA dims for 90% variance."
+  },
+  "simple_tracking": {
+    "R2_linear_mean": -0.3043676357161451,
+    "R2_linear_std": 0.3688531852052128,
+    "rho_mean": NaN,
+    "cost_mean": 0.03948578596448011
+  },
+  "analysis": {
+    "id_90_optimal": 2,
+    "R2_simple": -0.3043676357161451,
+    "rho_simple": NaN,
+    "conclusion": "Optimal actions need 2 PCA dims. Optimal control IS low-dim \u2192 our analysis pipeline should work. Simple tracking also fails (R\u00b2=-0.304). Pipeline issue or task too noisy."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "trained": {
+    "action_sensitivity_mean": 0.0019654067666268326,
+    "cost_sensitivity_mean": 0.04874392179265685,
+    "lipschitz_mean": 0.009049654158143988,
+    "output_pca_dim": 2.0
+  },
+  "random": {
+    "action_sensitivity_mean": 0.017324696521706453,
+    "cost_sensitivity_mean": 0.05076733085674854,
+    "lipschitz_mean": 0.08889011385931474,
+    "output_pca_dim": 2.0
+  },
+  "analysis": {
+    "conclusion": "TRAINING SMOOTHENS: Lip trained=0.0090, random=0.0889. Output dim=2."
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "seeds": [
+    {
+      "seed": 0,
+      "cos_mean": -0.06563783198626225,
+      "cos_median": -0.06275116145948997,
+      "cos_high_drift": 0,
+      "cos_low_drift": -0.06563783198626225,
+      "cos_barrier": -0.06653499103172995,
+      "cos_center": 0.04560988965173578,
+      "g_effect_mean": -0.0009225169420242309,
+      "j_effect_mean": 0.0015800766944885254,
+      "proj_effect_mean": -0.00010435354709625244,
+      "rand_effect_mean": -1.964855194091797e-05
+    },
+    {
+      "seed": 1,
+      "cos_mean": 0.19117663060846815,
+      "cos_median": 0.19209860656730854,
+      "cos_high_drift": 0,
+      "cos_low_drift": 0.19117663060846815,
+      "cos_barrier": 0.1917678542246076,
+      "cos_center": 0.16713353688546329,
+      "g_effect_mean": -0.0010411951690912247,
+      "j_effect_mean": -0.005409855112433434,
+      "proj_effect_mean": -0.0010358826965093612,
+      "rand_effect_mean": 1.6103237867355346e-06
+    },
+    {
+      "seed": 2,
+      "cos_mean": 0.18847780351006896,
+      "cos_median": 0.18785052166320718,
+      "cos_high_drift": 0,
+      "cos_low_drift": 0.18847780351006896,
+      "cos_barrier": 0.1886347650488188,
+      "cos_center": 0.1690145727050919,
+      "g_effect_mean": -0.001069082498550415,
+      "j_effect_mean": -0.005501336216926575,
+      "proj_effect_mean": -0.001036945104598999,
+      "rand_effect_mean": -1.064300537109375e-05
+    },
+    {
+      "seed": 3,
+      "cos_mean": -0.18935024238872591,
+      "cos_median": -0.18842848476078877,
+      "cos_high_drift": 0,
+      "cos_low_drift": -0.18935024238872591,
+      "cos_barrier": -0.19041333786379647,
+      "cos_center": -0.13725856411026896,
+      "g_effect_mean": -0.001062682867050171,
+      "j_effect_mean": 0.005564951419830323,
+      "proj_effect_mean": -0.0010549079179763795,
+      "rand_effect_mean": 2.9199361801147462e-05
+    }
+  ],
+  "analysis": {
+    "cos_mean": 0.031166589935887244,
+    "g_effect": -0.0010238693691790104,
+    "g_vs_random": 1.0,
+    "conclusion": "WEAK ALIGNMENT: cos=0.031. Gradient is epiphenomenal; policy uses other structure."
+  }
+}

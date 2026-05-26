@@ -1,0 +1,284 @@
+{
+  "seeds": [
+    {
+      "seed": 0,
+      "variants": {
+        "remove_top1": {
+          "cost": 1.2162767806913442,
+          "zone": 0.006
+        },
+        "remove_top2": {
+          "cost": 1.2147712086945175,
+          "zone": 0.008
+        },
+        "shuffle_S": {
+          "cost": 1.213928519327251,
+          "zone": 0.002
+        },
+        "randomize_U": {
+          "cost": 1.2113370017697556,
+          "zone": 0.02
+        },
+        "random_full": {
+          "cost": 1.212015483177588,
+          "zone": 0.014
+        },
+        "original": {
+          "cost": 1.2087215973614824,
+          "zone": 0.01
+        }
+      },
+      "S_spectrum": [
+        1.0501437187194824,
+        0.9340056777000427
+      ],
+      "k": 2
+    },
+    {
+      "seed": 1,
+      "variants": {
+        "remove_top1": {
+          "cost": 1.1931617188934327,
+          "zone": 0.022
+        },
+        "remove_top2": {
+          "cost": 1.2221457060695515,
+          "zone": 0.012
+        },
+        "shuffle_S": {
+          "cost": 1.220762052081187,
+          "zone": 0.006
+        },
+        "randomize_U": {
+          "cost": 1.2105439838112209,
+          "zone": 0.008
+        },
+        "random_full": {
+          "cost": 1.1897918222802344,
+          "zone": 0.03
+        },
+        "original": {
+          "cost": 1.2029963276645006,
+          "zone": 0.018
+        }
+      },
+      "S_spectrum": [
+        1.0876190662384033,
+        1.0092986822128296
+      ],
+      "k": 2
+    },
+    {
+      "seed": 2,
+      "variants": {
+        "remove_top1": {
+          "cost": 1.2171361104666696,
+          "zone": 0.006
+        },
+        "remove_top2": {
+          "cost": 1.217457208324417,
+          "zone": 0.006
+        },
+        "shuffle_S": {
+          "cost": 1.201230957655286,
+          "zone": 0.008
+        },
+        "randomize_U": {
+          "cost": 1.2179818066594104,
+          "zone": 0.008
+        },
+        "random_full": {
+          "cost": 1.2177257268511619,
+          "zone": 0.004
+        },
+        "original": {
+          "cost": 1.20825485352692,
+          "zone": 0.016
+        }
+      },
+      "S_spectrum": [
+        1.1185016632080078,
+        1.0193322896957397
+      ],
+      "k": 2
+    },
+    {
+      "seed": 3,
+      "variants": {
+        "remove_top1": {
+          "cost": 1.2049714331097177,
+          "zone": 0.018
+        },
+        "remove_top2": {
+          "cost": 1.1936581069025318,
+          "zone": 0.03
+        },
+        "shuffle_S": {
+          "cost": 1.2078834623122907,
+          "zone": 0.02
+        },
+        "randomize_U": {
+          "cost": 1.211187485168551,
+          "zone": 0.01
+        },
+        "random_full": {
+          "cost": 1.2018236956433956,
+          "zone": 0.006
+        },
+        "original": {
+          "cost": 1.2163119436508787,
+          "zone": 0.008
+        }
+      },
+      "S_spectrum": [
+        1.1172643899917603,
+        1.041276454925537
+      ],
+      "k": 2
+    },
+    {
+      "seed": 4,
+      "variants": {
+        "remove_top1": {
+          "cost": 1.2136894767303783,
+          "zone": 0.01
+        },
+        "remove_top2": {
+          "cost": 1.2003244179140544,
+          "zone": 0.032
+        },
+        "shuffle_S": {
+          "cost": 1.2136585262645807,
+          "zone": 0.01
+        },
+        "randomize_U": {
+          "cost": 1.2097264001481014,
+          "zone": 0.016
+        },
+        "random_full": {
+          "cost": 1.2231760647368652,
+          "zone": 0.01
+        },
+        "original": {
+          "cost": 1.2136163912964049,
+          "zone": 0.01
+        }
+      },
+      "S_spectrum": [
+        1.210746169090271,
+        0.9691140651702881
+      ],
+      "k": 2
+    },
+    {
+      "seed": 5,
+      "variants": {
+        "remove_top1": {
+          "cost": 1.2057710088346916,
+          "zone": 0.028
+        },
+        "remove_top2": {
+          "cost": 1.2123678897593897,
+          "zone": 0.022
+        },
+        "shuffle_S": {
+          "cost": 1.2076503867412263,
+          "zone": 0.018
+        },
+        "randomize_U": {
+          "cost": 1.2132335230715963,
+          "zone": 0.008
+        },
+        "random_full": {
+          "cost": 1.21328764976928,
+          "zone": 0.012
+        },
+        "original": {
+          "cost": 1.217543797015391,
+          "zone": 0.004
+        }
+      },
+      "S_spectrum": [
+        1.1981902122497559,
+        1.0090954303741455
+      ],
+      "k": 2
+    },
+    {
+      "seed": 6,
+      "variants": {
+        "remove_top1": {
+          "cost": 1.2194504491884317,
+          "zone": 0.006
+        },
+        "remove_top2": {
+          "cost": 1.2069438959551906,
+          "zone": 0.024
+        },
+        "shuffle_S": {
+          "cost": 1.2206872721633117,
+          "zone": 0.004
+        },
+        "randomize_U": {
+          "cost": 1.2019584990305257,
+          "zone": 0.014
+        },
+        "random_full": {
+          "cost": 1.213039791222727,
+          "zone": 0.006
+        },
+        "original": {
+          "cost": 1.210210614738824,
+          "zone": 0.014
+        }
+      },
+      "S_spectrum": [
+        1.120758056640625,
+        1.07175612449646
+      ],
+      "k": 2
+    },
+    {
+      "seed": 7,
+      "variants": {
+        "remove_top1": {
+          "cost": 1.2108932209029122,
+          "zone": 0.022
+        },
+        "remove_top2": {
+          "cost": 1.206668947913733,
+          "zone": 0.022
+        },
+        "shuffle_S": {
+          "cost": 1.2120654583412898,
+          "zone": 0.012
+        },
+        "randomize_U": {
+          "cost": 1.206480064705792,
+          "zone": 0.024
+        },
+        "random_full": {
+          "cost": 1.2126040177417503,
+          "zone": 0.016
+        },
+        "original": {
+          "cost": 1.2103255781074624,
+          "zone": 0.022
+        }
+      },
+      "S_spectrum": [
+        1.0900686979293823,
+        0.9138200283050537
+      ],
+      "k": 2
+    }
+  ],
+  "analysis": {
+    "top1_ratio": 0.9993155535220868,
+    "top2_ratio": 0.9985916857513539,
+    "top3_ratio": 1.0,
+    "shuffle_ratio": 1.001020391288865,
+    "random_ratio": 0.9995337674701603,
+    "conclusion": "Remove top-1 SVD: cost \u00d71.0 \u2192 redundant directions exist. Remove top-3 approaches random (1.0 vs 1.0) \u2192 3 directions contain most control. Shuffle S: cost \u00d71.0 \u2192 spectrum reshuffling tolerated."
+  }
+}

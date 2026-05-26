@@ -1,0 +1,14 @@
+{
+  "baseline": {
+    "smoothness_mean": 0.04360134528491102,
+    "smoothness_std": 0.002621869473146528
+  },
+  "spectral": {
+    "smoothness_mean": 0.055419235863013755,
+    "smoothness_std": 0.02109084469372862
+  },
+  "analysis": {
+    "improvement_pct": 27.101502226285245,
+    "conclusion": "spectral improves smoothness by 27% vs baseline (0.044\u21920.055)."
+  }
+}

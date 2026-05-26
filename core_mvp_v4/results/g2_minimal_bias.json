@@ -1,0 +1,65 @@
+{
+  "baseline": {
+    "align_mean": 0.6880566629352217,
+    "align_std": 0.06534511979885739,
+    "R2_mean": 0.8157446999590328,
+    "R2_std": 0.08216537249846172,
+    "k80_mean": 3.0,
+    "k80_std": 0.7071067811865476,
+    "extra_params": 0
+  },
+  "A_scaling": {
+    "align_mean": 0.7393222701662299,
+    "align_std": 0.034315156706593804,
+    "R2_mean": 0.7842485289000637,
+    "R2_std": 0.08004052285775826,
+    "k80_mean": 3.125,
+    "k80_std": 1.0532687216470449,
+    "extra_params": 16,
+    "weight_ctrl_mean": 1.023706316947937,
+    "weight_noise_mean": 0.8841366171836853,
+    "weight_ratio": 1.1583421230316162
+  },
+  "B_sparse_scaling": {
+    "align_mean": 0.7639640982990695,
+    "align_std": 0.22180948393102623,
+    "R2_mean": 0.9987416331308265,
+    "R2_std": 0.0017210661092084386,
+    "k80_mean": 2.5,
+    "k80_std": 1.5811388300841898,
+    "extra_params": 16,
+    "weight_ctrl_mean": -0.0001880852651083842,
+    "weight_noise_mean": -2.5752280635060742e-05,
+    "weight_ratio": -0.9404692053794861
+  },
+  "C_hint": {
+    "align_mean": 0.7027259302840394,
+    "align_std": 0.07502948983344415,
+    "R2_mean": 0.7286641955738535,
+    "R2_std": 0.07850415785599678,
+    "k80_mean": 3.25,
+    "k80_std": 0.6614378277661477,
+    "extra_params": 2
+  },
+  "comparison": {
+    "methods": {
+      "A_scaling": {
+        "align": 0.7393222701662299,
+        "params": 16,
+        "improvement": 0.05126560723100815
+      },
+      "B_sparse_scaling": {
+        "align": 0.7639640982990695,
+        "params": 16,
+        "improvement": 0.07590743536384781
+      },
+      "C_hint": {
+        "align": 0.7027259302840394,
+        "params": 2,
+        "improvement": 0.014669267348817683
+      }
+    },
+    "best": null,
+    "conclusion": "NO METHOD achieves align>0.8 with <10 extra params. Best align among methods: 0.764."
+  }
+}

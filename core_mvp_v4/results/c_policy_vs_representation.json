@@ -1,0 +1,402 @@
+{
+  "C1_freeze_encoder": [
+    {
+      "seed": 0,
+      "original_cost": 1.2151317415905125,
+      "original_zone": 0.006,
+      "retrained_cost": 1.2175454739680422,
+      "retrained_zone": 0.006,
+      "cost_ratio": 1.0019855710367673,
+      "zone_ratio": 0.9998333611064822
+    },
+    {
+      "seed": 1,
+      "original_cost": 1.1914743157672536,
+      "original_zone": 0.022,
+      "retrained_cost": 1.2055745241052698,
+      "retrained_zone": 0.008,
+      "cost_ratio": 1.011833403639535,
+      "zone_ratio": 0.3636198354620245
+    },
+    {
+      "seed": 2,
+      "original_cost": 1.2168763315726727,
+      "original_zone": 0.006,
+      "retrained_cost": 1.2043045029920514,
+      "retrained_zone": 0.018,
+      "cost_ratio": 0.9896679572752232,
+      "zone_ratio": 2.9995000833194463
+    },
+    {
+      "seed": 3,
+      "original_cost": 1.2048612870253488,
+      "original_zone": 0.018,
+      "retrained_cost": 1.208047878410652,
+      "retrained_zone": 0.012,
+      "cost_ratio": 1.00264394646559,
+      "zone_ratio": 0.6666296316871285
+    },
+    {
+      "seed": 4,
+      "original_cost": 1.2108870252211732,
+      "original_zone": 0.012,
+      "retrained_cost": 1.2184262052806731,
+      "retrained_zone": 0.01,
+      "cost_ratio": 1.0062253320724046,
+      "zone_ratio": 0.8332638946754438
+    },
+    {
+      "seed": 5,
+      "original_cost": 1.2060875503671555,
+      "original_zone": 0.028,
+      "retrained_cost": 1.2024853689354438,
+      "retrained_zone": 0.024,
+      "cost_ratio": 0.9970125067262974,
+      "zone_ratio": 0.8571122459912146
+    },
+    {
+      "seed": 6,
+      "original_cost": 1.2194707212069544,
+      "original_zone": 0.006,
+      "retrained_cost": 1.2043660154464342,
+      "retrained_zone": 0.018,
+      "cost_ratio": 0.9876129101660762,
+      "zone_ratio": 2.9995000833194463
+    },
+    {
+      "seed": 7,
+      "original_cost": 1.2093528666787798,
+      "original_zone": 0.022,
+      "retrained_cost": 1.221280080150496,
+      "retrained_zone": 0.01,
+      "cost_ratio": 1.0098616408317846,
+      "zone_ratio": 0.45452479432753057
+    }
+  ],
+  "C2_noise_sensitivity": [
+    {
+      "seed": 0,
+      "sigma": [
+        {
+          "sigma": 0.01,
+          "encoder_noise_cost": 1.2125468938182935,
+          "encoder_noise_zone": 0.008,
+          "policy_noise_cost": 1.2138936264571742,
+          "policy_noise_zone": 0.002,
+          "encoder_cost_ratio": 0.9978719627216741,
+          "policy_cost_ratio": 0.9989802635622209
+        },
+        {
+          "sigma": 0.05,
+          "encoder_noise_cost": 1.2148309956437031,
+          "encoder_noise_zone": 0.02,
+          "policy_noise_cost": 1.2218265700008533,
+          "policy_noise_zone": 0.014,
+          "encoder_cost_ratio": 0.9997516765564112,
+          "policy_cost_ratio": 1.005508721953767
+        },
+        {
+          "sigma": 0.1,
+          "encoder_noise_cost": 1.2212006129762183,
+          "encoder_noise_zone": 0.01,
+          "policy_noise_cost": 1.2265851842297355,
+          "policy_noise_zone": 0.048,
+          "encoder_cost_ratio": 1.0049935872666582,
+          "policy_cost_ratio": 1.0094248490286195
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "sigma": [
+        {
+          "sigma": 0.01,
+          "encoder_noise_cost": 1.2202679849602802,
+          "encoder_noise_zone": 0.012,
+          "policy_noise_cost": 1.2233796080623216,
+          "policy_noise_zone": 0.006,
+          "encoder_cost_ratio": 1.0241655608068436,
+          "policy_cost_ratio": 1.0267771324112773
+        },
+        {
+          "sigma": 0.05,
+          "encoder_noise_cost": 1.2079829189947535,
+          "encoder_noise_zone": 0.008,
+          "policy_noise_cost": 1.200525741255332,
+          "policy_noise_zone": 0.026,
+          "encoder_cost_ratio": 1.0138547588934899,
+          "policy_cost_ratio": 1.0075959823659884
+        },
+        {
+          "sigma": 0.1,
+          "encoder_noise_cost": 1.2334121943988252,
+          "encoder_noise_zone": 0.014,
+          "policy_noise_cost": 1.1844138486257971,
+          "policy_noise_zone": 0.006,
+          "encoder_cost_ratio": 1.0351974380640578,
+          "policy_cost_ratio": 0.9940733416395545
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "sigma": [
+        {
+          "sigma": 0.01,
+          "encoder_noise_cost": 1.2165981890009567,
+          "encoder_noise_zone": 0.006,
+          "policy_noise_cost": 1.1968570324241923,
+          "policy_noise_zone": 0.008,
+          "encoder_cost_ratio": 0.9997706074684166,
+          "policy_cost_ratio": 0.9835478082884439
+        },
+        {
+          "sigma": 0.05,
+          "encoder_noise_cost": 1.2154340105992005,
+          "encoder_noise_zone": 0.008,
+          "policy_noise_cost": 1.2133285223355355,
+          "policy_noise_zone": 0.004,
+          "encoder_cost_ratio": 0.9988139141587864,
+          "policy_cost_ratio": 0.9970836754493974
+        },
+        {
+          "sigma": 0.1,
+          "encoder_noise_cost": 1.2033339408802397,
+          "encoder_noise_zone": 0.016,
+          "policy_noise_cost": 1.1865744971931338,
+          "policy_noise_zone": 0.016,
+          "encoder_cost_ratio": 0.9888703730926357,
+          "policy_cost_ratio": 0.9750978725683254
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "sigma": [
+        {
+          "sigma": 0.01,
+          "encoder_noise_cost": 1.191923256637714,
+          "encoder_noise_zone": 0.03,
+          "policy_noise_cost": 1.210997760282035,
+          "policy_noise_zone": 0.018,
+          "encoder_cost_ratio": 0.9892609881419897,
+          "policy_cost_ratio": 1.0050922610183393
+        },
+        {
+          "sigma": 0.05,
+          "encoder_noise_cost": 1.2123012243556168,
+          "encoder_noise_zone": 0.01,
+          "policy_noise_cost": 1.2018208550978084,
+          "policy_noise_zone": 0.006,
+          "encoder_cost_ratio": 1.0061740975797606,
+          "policy_cost_ratio": 0.9974757016131286
+        },
+        {
+          "sigma": 0.1,
+          "encoder_noise_cost": 1.2054116311712506,
+          "encoder_noise_zone": 0.01,
+          "policy_noise_cost": 1.1871854226752776,
+          "policy_noise_zone": 0.034,
+          "encoder_cost_ratio": 1.0004559393648698,
+          "policy_cost_ratio": 0.9853287263279582
+        }
+      ]
+    },
+    {
+      "seed": 4,
+      "sigma": [
+        {
+          "sigma": 0.01,
+          "encoder_noise_cost": 1.2017644710079598,
+          "encoder_noise_zone": 0.03,
+          "policy_noise_cost": 1.2116626923114702,
+          "policy_noise_zone": 0.012,
+          "encoder_cost_ratio": 0.9924654022311048,
+          "policy_cost_ratio": 1.0006397512190737
+        },
+        {
+          "sigma": 0.05,
+          "encoder_noise_cost": 1.207914253843978,
+          "encoder_noise_zone": 0.016,
+          "policy_noise_cost": 1.2189616385116355,
+          "policy_noise_zone": 0.01,
+          "encoder_cost_ratio": 0.9975441400730245,
+          "policy_cost_ratio": 1.0066675143550021
+        },
+        {
+          "sigma": 0.1,
+          "encoder_noise_cost": 1.2149448316252989,
+          "encoder_noise_zone": 0.014,
+          "policy_noise_cost": 1.1959784887688905,
+          "policy_noise_zone": 0.008,
+          "encoder_cost_ratio": 1.003350273782239,
+          "policy_cost_ratio": 0.9876871055442477
+        }
+      ]
+    },
+    {
+      "seed": 5,
+      "sigma": [
+        {
+          "sigma": 0.01,
+          "encoder_noise_cost": 1.209904992931904,
+          "encoder_noise_zone": 0.022,
+          "policy_noise_cost": 1.2061104034557726,
+          "policy_noise_zone": 0.018,
+          "encoder_cost_ratio": 1.003164313734333,
+          "policy_cost_ratio": 1.0000181189752697
+        },
+        {
+          "sigma": 0.05,
+          "encoder_noise_cost": 1.2159285371972812,
+          "encoder_noise_zone": 0.008,
+          "policy_noise_cost": 1.2059653991862347,
+          "policy_noise_zone": 0.014,
+          "encoder_cost_ratio": 1.0081585940162772,
+          "policy_cost_ratio": 0.9998978920901925
+        },
+        {
+          "sigma": 0.1,
+          "encoder_noise_cost": 1.2287138744509907,
+          "encoder_noise_zone": 0.004,
+          "policy_noise_cost": 1.2150229391282583,
+          "policy_noise_zone": 0.01,
+          "encoder_cost_ratio": 1.0187592561731456,
+          "policy_cost_ratio": 1.007407738642725
+        }
+      ]
+    },
+    {
+      "seed": 6,
+      "sigma": [
+        {
+          "sigma": 0.01,
+          "encoder_noise_cost": 1.206595835248205,
+          "encoder_noise_zone": 0.024,
+          "policy_noise_cost": 1.218879024685524,
+          "policy_noise_zone": 0.004,
+          "encoder_cost_ratio": 0.989441423089331,
+          "policy_cost_ratio": 0.999513972721857
+        },
+        {
+          "sigma": 0.05,
+          "encoder_noise_cost": 1.2016846897918085,
+          "encoder_noise_zone": 0.014,
+          "policy_noise_cost": 1.1946566963424659,
+          "policy_noise_zone": 0.006,
+          "encoder_cost_ratio": 0.985414150155494,
+          "policy_cost_ratio": 0.9796510042562298
+        },
+        {
+          "sigma": 0.1,
+          "encoder_noise_cost": 1.1912701596048876,
+          "encoder_noise_zone": 0.016,
+          "policy_noise_cost": 1.2070993114624289,
+          "policy_noise_zone": 0.032,
+          "encoder_cost_ratio": 0.9768739519649093,
+          "policy_cost_ratio": 0.9898542872873837
+        }
+      ]
+    },
+    {
+      "seed": 7,
+      "sigma": [
+        {
+          "sigma": 0.01,
+          "encoder_noise_cost": 1.2049742934032468,
+          "encoder_noise_zone": 0.024,
+          "policy_noise_cost": 1.2138913330444532,
+          "policy_noise_zone": 0.012,
+          "encoder_cost_ratio": 0.9963785841380236,
+          "policy_cost_ratio": 1.00375197573737
+        },
+        {
+          "sigma": 0.05,
+          "encoder_noise_cost": 1.2068476562540917,
+          "encoder_noise_zone": 0.024,
+          "policy_noise_cost": 1.2032636803487806,
+          "policy_noise_zone": 0.02,
+          "encoder_cost_ratio": 0.9979276450890501,
+          "policy_cost_ratio": 0.9949640990136952
+        },
+        {
+          "sigma": 0.1,
+          "encoder_noise_cost": 1.2123710013835094,
+          "encoder_noise_zone": 0.018,
+          "policy_noise_cost": 1.2050263587436303,
+          "policy_noise_zone": 0.008,
+          "encoder_cost_ratio": 1.002494831982483,
+          "policy_cost_ratio": 0.9964216363345875
+        }
+      ]
+    }
+  ],
+  "C3_no_encoder": [
+    {
+      "seed": 0,
+      "original_cost": 1.2151317415905125,
+      "direct_cost": 1.2127455624385328,
+      "direct_zone": 0.006,
+      "cost_ratio": 0.9980354581271055
+    },
+    {
+      "seed": 1,
+      "original_cost": 1.1914743157672536,
+      "direct_cost": 1.1955238965499984,
+      "direct_zone": 0.02,
+      "cost_ratio": 1.0033979560710728
+    },
+    {
+      "seed": 2,
+      "original_cost": 1.2168763315726727,
+      "direct_cost": 1.1830157583652312,
+      "direct_zone": 0.008,
+      "cost_ratio": 0.9721733881231239
+    },
+    {
+      "seed": 3,
+      "original_cost": 1.2048612870253488,
+      "direct_cost": 1.2319984842467226,
+      "direct_zone": 0.01,
+      "cost_ratio": 1.0225222396896243
+    },
+    {
+      "seed": 4,
+      "original_cost": 1.2108870252211732,
+      "direct_cost": 1.1778611947989177,
+      "direct_zone": 0.018,
+      "cost_ratio": 0.9727251160021811
+    },
+    {
+      "seed": 5,
+      "original_cost": 1.2060875503671555,
+      "direct_cost": 1.2012860938184764,
+      "direct_zone": 0.012,
+      "cost_ratio": 0.9960181559246067
+    },
+    {
+      "seed": 6,
+      "original_cost": 1.2194707212069544,
+      "direct_cost": 1.2142812982773032,
+      "direct_zone": 0.006,
+      "cost_ratio": 0.9957437119374003
+    },
+    {
+      "seed": 7,
+      "original_cost": 1.2093528666787798,
+      "direct_cost": 1.2077146235892269,
+      "direct_zone": 0.042,
+      "cost_ratio": 0.9986445298314093
+    }
+  ],
+  "analysis": {
+    "C1_recovered": true,
+    "C2_policy_sensitive": false,
+    "C3_direct_works": true,
+    "C1_cost_ratio": 1.0008554085267098,
+    "C2_enc_ratio": 1.0038744564613749,
+    "C2_pol_ratio": 0.9931619446716752,
+    "C3_direct_ratio": 0.9949075694633156,
+    "conclusion": "Frozen encoder retrain recovers to 1.00x cost \u2192 control in policy head, not encoder. Encoder more noise-sensitive \u2192 encoder geometry matters for control. Direct state\u2192action achieves 0.99x cost \u2192 encoder not necessary for control."
+  }
+}

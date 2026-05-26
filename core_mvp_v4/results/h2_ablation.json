@@ -1,0 +1,689 @@
+{
+  "baseline": [
+    {
+      "seed": 0,
+      "k80": 5,
+      "no_ablation": {
+        "mean_cost": 1.213775131098047,
+        "in_zone_rate": 0.006,
+        "success_rate": 0.0
+      },
+      "hard_ablation": {
+        "mean_cost": 1.2157906880240468,
+        "in_zone_rate": 0.01,
+        "success_rate": 0.004
+      },
+      "hard_random": {
+        "mean_cost": 1.2175700908866205,
+        "in_zone_rate": 0.012,
+        "success_rate": 0.0
+      },
+      "dim_drop": {
+        "mean_cost": 1.2057552482869396,
+        "in_zone_rate": 0.016,
+        "success_rate": 0.0
+      },
+      "soft_ablation": {
+        "eps_0.1": {
+          "mean_cost": 1.2162326109216843,
+          "in_zone_rate": 0.004,
+          "success_rate": 0.0
+        },
+        "eps_0.5": {
+          "mean_cost": 1.2176940371914877,
+          "in_zone_rate": 0.006,
+          "success_rate": 0.0
+        },
+        "eps_1.0": {
+          "mean_cost": 1.19748202824468,
+          "in_zone_rate": 0.032,
+          "success_rate": 0.002
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "k80": 2,
+      "no_ablation": {
+        "mean_cost": 1.203010122180244,
+        "in_zone_rate": 0.008,
+        "success_rate": 0.002
+      },
+      "hard_ablation": {
+        "mean_cost": 1.2077167883430624,
+        "in_zone_rate": 0.008,
+        "success_rate": 0.0
+      },
+      "hard_random": {
+        "mean_cost": 1.219157301131565,
+        "in_zone_rate": 0.012,
+        "success_rate": 0.002
+      },
+      "dim_drop": {
+        "mean_cost": 1.205955061807429,
+        "in_zone_rate": 0.016,
+        "success_rate": 0.006
+      },
+      "soft_ablation": {
+        "eps_0.1": {
+          "mean_cost": 1.2115451774468253,
+          "in_zone_rate": 0.012,
+          "success_rate": 0.002
+        },
+        "eps_0.5": {
+          "mean_cost": 1.2035029840346243,
+          "in_zone_rate": 0.018,
+          "success_rate": 0.01
+        },
+        "eps_1.0": {
+          "mean_cost": 1.2145635952054503,
+          "in_zone_rate": 0.004,
+          "success_rate": 0.0
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "k80": 3,
+      "no_ablation": {
+        "mean_cost": 1.2123978358735483,
+        "in_zone_rate": 0.01,
+        "success_rate": 0.002
+      },
+      "hard_ablation": {
+        "mean_cost": 1.2161011426134765,
+        "in_zone_rate": 0.008,
+        "success_rate": 0.0
+      },
+      "hard_random": {
+        "mean_cost": 1.2091691176194297,
+        "in_zone_rate": 0.008,
+        "success_rate": 0.0
+      },
+      "dim_drop": {
+        "mean_cost": 1.209070304751914,
+        "in_zone_rate": 0.008,
+        "success_rate": 0.002
+      },
+      "soft_ablation": {
+        "eps_0.1": {
+          "mean_cost": 1.2161440179522134,
+          "in_zone_rate": 0.008,
+          "success_rate": 0.0
+        },
+        "eps_0.5": {
+          "mean_cost": 1.2055893580139672,
+          "in_zone_rate": 0.014,
+          "success_rate": 0.002
+        },
+        "eps_1.0": {
+          "mean_cost": 1.2046432781104788,
+          "in_zone_rate": 0.026,
+          "success_rate": 0.016
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "k80": 4,
+      "no_ablation": {
+        "mean_cost": 1.2173467267726819,
+        "in_zone_rate": 0.014,
+        "success_rate": 0.002
+      },
+      "hard_ablation": {
+        "mean_cost": 1.2026678464823588,
+        "in_zone_rate": 0.014,
+        "success_rate": 0.006
+      },
+      "hard_random": {
+        "mean_cost": 1.2145177665252693,
+        "in_zone_rate": 0.01,
+        "success_rate": 0.0
+      },
+      "dim_drop": {
+        "mean_cost": 1.2074283804776076,
+        "in_zone_rate": 0.018,
+        "success_rate": 0.002
+      },
+      "soft_ablation": {
+        "eps_0.1": {
+          "mean_cost": 1.2032351693166623,
+          "in_zone_rate": 0.018,
+          "success_rate": 0.01
+        },
+        "eps_0.5": {
+          "mean_cost": 1.2167236264878034,
+          "in_zone_rate": 0.008,
+          "success_rate": 0.0
+        },
+        "eps_1.0": {
+          "mean_cost": 1.2100355465567818,
+          "in_zone_rate": 0.012,
+          "success_rate": 0.002
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "k80": 2,
+      "no_ablation": {
+        "mean_cost": 1.2123433906229608,
+        "in_zone_rate": 0.01,
+        "success_rate": 0.0
+      },
+      "hard_ablation": {
+        "mean_cost": 1.2070786501160577,
+        "in_zone_rate": 0.012,
+        "success_rate": 0.006
+      },
+      "hard_random": {
+        "mean_cost": 1.204501364792261,
+        "in_zone_rate": 0.022,
+        "success_rate": 0.012
+      },
+      "dim_drop": {
+        "mean_cost": 1.2051947078352192,
+        "in_zone_rate": 0.018,
+        "success_rate": 0.002
+      },
+      "soft_ablation": {
+        "eps_0.1": {
+          "mean_cost": 1.216451407175244,
+          "in_zone_rate": 0.012,
+          "success_rate": 0.0
+        },
+        "eps_0.5": {
+          "mean_cost": 1.2232401921874798,
+          "in_zone_rate": 0.006,
+          "success_rate": 0.0
+        },
+        "eps_1.0": {
+          "mean_cost": 1.2082700942065319,
+          "in_zone_rate": 0.012,
+          "success_rate": 0.006
+        }
+      }
+    },
+    {
+      "seed": 5,
+      "k80": 3,
+      "no_ablation": {
+        "mean_cost": 1.2149583442354972,
+        "in_zone_rate": 0.012,
+        "success_rate": 0.0
+      },
+      "hard_ablation": {
+        "mean_cost": 1.2168157079140247,
+        "in_zone_rate": 0.012,
+        "success_rate": 0.0
+      },
+      "hard_random": {
+        "mean_cost": 1.215843196801799,
+        "in_zone_rate": 0.008,
+        "success_rate": 0.0
+      },
+      "dim_drop": {
+        "mean_cost": 1.2172431611180528,
+        "in_zone_rate": 0.006,
+        "success_rate": 0.0
+      },
+      "soft_ablation": {
+        "eps_0.1": {
+          "mean_cost": 1.2059171234374186,
+          "in_zone_rate": 0.024,
+          "success_rate": 0.0
+        },
+        "eps_0.5": {
+          "mean_cost": 1.2182027798552841,
+          "in_zone_rate": 0.008,
+          "success_rate": 0.0
+        },
+        "eps_1.0": {
+          "mean_cost": 1.2210723697109909,
+          "in_zone_rate": 0.002,
+          "success_rate": 0.0
+        }
+      }
+    },
+    {
+      "seed": 6,
+      "k80": 3,
+      "no_ablation": {
+        "mean_cost": 1.2173258519022763,
+        "in_zone_rate": 0.008,
+        "success_rate": 0.0
+      },
+      "hard_ablation": {
+        "mean_cost": 1.2117636109246939,
+        "in_zone_rate": 0.012,
+        "success_rate": 0.004
+      },
+      "hard_random": {
+        "mean_cost": 1.2128858866027745,
+        "in_zone_rate": 0.016,
+        "success_rate": 0.006
+      },
+      "dim_drop": {
+        "mean_cost": 1.2086870125424594,
+        "in_zone_rate": 0.01,
+        "success_rate": 0.002
+      },
+      "soft_ablation": {
+        "eps_0.1": {
+          "mean_cost": 1.2034405348074562,
+          "in_zone_rate": 0.01,
+          "success_rate": 0.002
+        },
+        "eps_0.5": {
+          "mean_cost": 1.205774995284829,
+          "in_zone_rate": 0.008,
+          "success_rate": 0.0
+        },
+        "eps_1.0": {
+          "mean_cost": 1.2162131625388313,
+          "in_zone_rate": 0.016,
+          "success_rate": 0.006
+        }
+      }
+    },
+    {
+      "seed": 7,
+      "k80": 1,
+      "no_ablation": {
+        "mean_cost": 1.2022734498389034,
+        "in_zone_rate": 0.024,
+        "success_rate": 0.008
+      },
+      "hard_ablation": {
+        "mean_cost": 1.218158047226646,
+        "in_zone_rate": 0.006,
+        "success_rate": 0.0
+      },
+      "hard_random": {
+        "mean_cost": 1.2061757016327774,
+        "in_zone_rate": 0.022,
+        "success_rate": 0.0
+      },
+      "dim_drop": {
+        "mean_cost": 1.2097521078485631,
+        "in_zone_rate": 0.006,
+        "success_rate": 0.0
+      },
+      "soft_ablation": {
+        "eps_0.1": {
+          "mean_cost": 1.2155004606546398,
+          "in_zone_rate": 0.008,
+          "success_rate": 0.002
+        },
+        "eps_0.5": {
+          "mean_cost": 1.2095690006415571,
+          "in_zone_rate": 0.01,
+          "success_rate": 0.0
+        },
+        "eps_1.0": {
+          "mean_cost": 1.213513665142511,
+          "in_zone_rate": 0.014,
+          "success_rate": 0.006
+        }
+      }
+    }
+  ],
+  "split_encoder": [
+    {
+      "seed": 0,
+      "k80": 1,
+      "no_ablation": {
+        "mean_cost": 1.21364413390492,
+        "in_zone_rate": 0.006,
+        "success_rate": 0.0
+      },
+      "hard_ablation": {
+        "mean_cost": 1.2142880622473708,
+        "in_zone_rate": 0.01,
+        "success_rate": 0.004
+      },
+      "hard_random": {
+        "mean_cost": 1.2137024544095922,
+        "in_zone_rate": 0.012,
+        "success_rate": 0.0
+      },
+      "dim_drop": {
+        "mean_cost": 1.2080269543196491,
+        "in_zone_rate": 0.016,
+        "success_rate": 0.0
+      },
+      "soft_ablation": {
+        "eps_0.1": {
+          "mean_cost": 1.2156744939519215,
+          "in_zone_rate": 0.004,
+          "success_rate": 0.0
+        },
+        "eps_0.5": {
+          "mean_cost": 1.2122117766444909,
+          "in_zone_rate": 0.006,
+          "success_rate": 0.0
+        },
+        "eps_1.0": {
+          "mean_cost": 1.1922992439565294,
+          "in_zone_rate": 0.046,
+          "success_rate": 0.002
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "k80": 1,
+      "no_ablation": {
+        "mean_cost": 1.205246376583049,
+        "in_zone_rate": 0.006,
+        "success_rate": 0.002
+      },
+      "hard_ablation": {
+        "mean_cost": 1.2031376947559187,
+        "in_zone_rate": 0.01,
+        "success_rate": 0.0
+      },
+      "hard_random": {
+        "mean_cost": 1.2209093827662296,
+        "in_zone_rate": 0.012,
+        "success_rate": 0.002
+      },
+      "dim_drop": {
+        "mean_cost": 1.203986787472435,
+        "in_zone_rate": 0.016,
+        "success_rate": 0.006
+      },
+      "soft_ablation": {
+        "eps_0.1": {
+          "mean_cost": 1.2122439862260521,
+          "in_zone_rate": 0.012,
+          "success_rate": 0.002
+        },
+        "eps_0.5": {
+          "mean_cost": 1.2076645621492477,
+          "in_zone_rate": 0.02,
+          "success_rate": 0.01
+        },
+        "eps_1.0": {
+          "mean_cost": 1.216778839215046,
+          "in_zone_rate": 0.004,
+          "success_rate": 0.0
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "k80": 1,
+      "no_ablation": {
+        "mean_cost": 1.2149793536533111,
+        "in_zone_rate": 0.01,
+        "success_rate": 0.002
+      },
+      "hard_ablation": {
+        "mean_cost": 1.2178327691097224,
+        "in_zone_rate": 0.008,
+        "success_rate": 0.0
+      },
+      "hard_random": {
+        "mean_cost": 1.2081062846055974,
+        "in_zone_rate": 0.008,
+        "success_rate": 0.0
+      },
+      "dim_drop": {
+        "mean_cost": 1.209485146531801,
+        "in_zone_rate": 0.008,
+        "success_rate": 0.002
+      },
+      "soft_ablation": {
+        "eps_0.1": {
+          "mean_cost": 1.2169305440621818,
+          "in_zone_rate": 0.008,
+          "success_rate": 0.0
+        },
+        "eps_0.5": {
+          "mean_cost": 1.2079573478293673,
+          "in_zone_rate": 0.014,
+          "success_rate": 0.002
+        },
+        "eps_1.0": {
+          "mean_cost": 1.2059463132580543,
+          "in_zone_rate": 0.028,
+          "success_rate": 0.016
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "k80": 2,
+      "no_ablation": {
+        "mean_cost": 1.2173777909395813,
+        "in_zone_rate": 0.014,
+        "success_rate": 0.002
+      },
+      "hard_ablation": {
+        "mean_cost": 1.202903466330888,
+        "in_zone_rate": 0.014,
+        "success_rate": 0.006
+      },
+      "hard_random": {
+        "mean_cost": 1.2143365491185187,
+        "in_zone_rate": 0.01,
+        "success_rate": 0.0
+      },
+      "dim_drop": {
+        "mean_cost": 1.2117057314763842,
+        "in_zone_rate": 0.018,
+        "success_rate": 0.002
+      },
+      "soft_ablation": {
+        "eps_0.1": {
+          "mean_cost": 1.2007437979764304,
+          "in_zone_rate": 0.02,
+          "success_rate": 0.012
+        },
+        "eps_0.5": {
+          "mean_cost": 1.2178356529878935,
+          "in_zone_rate": 0.008,
+          "success_rate": 0.0
+        },
+        "eps_1.0": {
+          "mean_cost": 1.2088214316388421,
+          "in_zone_rate": 0.012,
+          "success_rate": 0.002
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "k80": 2,
+      "no_ablation": {
+        "mean_cost": 1.2133725312651398,
+        "in_zone_rate": 0.01,
+        "success_rate": 0.0
+      },
+      "hard_ablation": {
+        "mean_cost": 1.2103533197561018,
+        "in_zone_rate": 0.012,
+        "success_rate": 0.006
+      },
+      "hard_random": {
+        "mean_cost": 1.2029376583907827,
+        "in_zone_rate": 0.024,
+        "success_rate": 0.012
+      },
+      "dim_drop": {
+        "mean_cost": 1.2079311642708104,
+        "in_zone_rate": 0.018,
+        "success_rate": 0.002
+      },
+      "soft_ablation": {
+        "eps_0.1": {
+          "mean_cost": 1.215354011014012,
+          "in_zone_rate": 0.012,
+          "success_rate": 0.0
+        },
+        "eps_0.5": {
+          "mean_cost": 1.2240734200747734,
+          "in_zone_rate": 0.006,
+          "success_rate": 0.0
+        },
+        "eps_1.0": {
+          "mean_cost": 1.2080416729542276,
+          "in_zone_rate": 0.012,
+          "success_rate": 0.006
+        }
+      }
+    },
+    {
+      "seed": 5,
+      "k80": 3,
+      "no_ablation": {
+        "mean_cost": 1.216019233396609,
+        "in_zone_rate": 0.01,
+        "success_rate": 0.0
+      },
+      "hard_ablation": {
+        "mean_cost": 1.214837359760449,
+        "in_zone_rate": 0.012,
+        "success_rate": 0.0
+      },
+      "hard_random": {
+        "mean_cost": 1.2123805210986969,
+        "in_zone_rate": 0.008,
+        "success_rate": 0.0
+      },
+      "dim_drop": {
+        "mean_cost": 1.2171209404647176,
+        "in_zone_rate": 0.006,
+        "success_rate": 0.0
+      },
+      "soft_ablation": {
+        "eps_0.1": {
+          "mean_cost": 1.206749397920187,
+          "in_zone_rate": 0.024,
+          "success_rate": 0.0
+        },
+        "eps_0.5": {
+          "mean_cost": 1.2175094213510123,
+          "in_zone_rate": 0.008,
+          "success_rate": 0.0
+        },
+        "eps_1.0": {
+          "mean_cost": 1.2232974424027965,
+          "in_zone_rate": 0.002,
+          "success_rate": 0.0
+        }
+      }
+    },
+    {
+      "seed": 6,
+      "k80": 1,
+      "no_ablation": {
+        "mean_cost": 1.219839986512682,
+        "in_zone_rate": 0.008,
+        "success_rate": 0.0
+      },
+      "hard_ablation": {
+        "mean_cost": 1.2110353589868734,
+        "in_zone_rate": 0.012,
+        "success_rate": 0.004
+      },
+      "hard_random": {
+        "mean_cost": 1.2122194507992412,
+        "in_zone_rate": 0.016,
+        "success_rate": 0.006
+      },
+      "dim_drop": {
+        "mean_cost": 1.2080474868529185,
+        "in_zone_rate": 0.01,
+        "success_rate": 0.002
+      },
+      "soft_ablation": {
+        "eps_0.1": {
+          "mean_cost": 1.205942257319795,
+          "in_zone_rate": 0.01,
+          "success_rate": 0.002
+        },
+        "eps_0.5": {
+          "mean_cost": 1.206685632723572,
+          "in_zone_rate": 0.008,
+          "success_rate": 0.0
+        },
+        "eps_1.0": {
+          "mean_cost": 1.2152993171436273,
+          "in_zone_rate": 0.016,
+          "success_rate": 0.006
+        }
+      }
+    },
+    {
+      "seed": 7,
+      "k80": 3,
+      "no_ablation": {
+        "mean_cost": 1.2036427238050684,
+        "in_zone_rate": 0.024,
+        "success_rate": 0.008
+      },
+      "hard_ablation": {
+        "mean_cost": 1.2190399612609988,
+        "in_zone_rate": 0.006,
+        "success_rate": 0.0
+      },
+      "hard_random": {
+        "mean_cost": 1.2049984660685529,
+        "in_zone_rate": 0.022,
+        "success_rate": 0.0
+      },
+      "dim_drop": {
+        "mean_cost": 1.210722664244563,
+        "in_zone_rate": 0.006,
+        "success_rate": 0.0
+      },
+      "soft_ablation": {
+        "eps_0.1": {
+          "mean_cost": 1.214502800359396,
+          "in_zone_rate": 0.008,
+          "success_rate": 0.002
+        },
+        "eps_0.5": {
+          "mean_cost": 1.2089905613189362,
+          "in_zone_rate": 0.01,
+          "success_rate": 0.0
+        },
+        "eps_1.0": {
+          "mean_cost": 1.2153622609020192,
+          "in_zone_rate": 0.014,
+          "success_rate": 0.004
+        }
+      }
+    }
+  ],
+  "analysis": {
+    "baseline": {
+      "hard": {
+        "p_value": 0.9197953895235188,
+        "significant": "False",
+        "effect_size": 0.00033270364002602193
+      },
+      "random": {
+        "p_value": 0.7697150518088156,
+        "significant": "False",
+        "effect_size": 0.0007986966835420439
+      }
+    },
+    "split_encoder": {
+      "hard": {
+        "p_value": 0.6779279157816646,
+        "significant": "False",
+        "effect_size": -0.0013367672315045542
+      },
+      "random": {
+        "p_value": 0.5452939848978845,
+        "significant": "False",
+        "effect_size": -0.0018164203503936438
+      }
+    },
+    "conclusion": "REDUNDANCY CONFIRMED: ablation has no significant effect. Subspace is epiphenomenal."
+  }
+}

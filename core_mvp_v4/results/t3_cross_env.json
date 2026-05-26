@@ -1,0 +1,73 @@
+{
+  "seeds": [
+    {
+      "seed": 0,
+      "k80_mean": 2.0,
+      "eff_rank_mean": 1.9962997752239766,
+      "baseline_cost": 0.0722451895123665,
+      "ablated_cost": 0.08566113708416723,
+      "cost_ratio": 1.185683807856807
+    },
+    {
+      "seed": 1,
+      "k80_mean": 2.0,
+      "eff_rank_mean": 1.9972907667253044,
+      "baseline_cost": 0.06243137559766091,
+      "ablated_cost": 0.07505909398313174,
+      "cost_ratio": 1.2022463227547582
+    },
+    {
+      "seed": 2,
+      "k80_mean": 2.0,
+      "eff_rank_mean": 1.9992576763773013,
+      "baseline_cost": 0.0712761100084028,
+      "ablated_cost": 0.10115569948383484,
+      "cost_ratio": 1.4191891263816627
+    },
+    {
+      "seed": 3,
+      "k80_mean": 2.0,
+      "eff_rank_mean": 1.9927642696784635,
+      "baseline_cost": 0.07121642863421178,
+      "ablated_cost": 0.08516476798183173,
+      "cost_ratio": 1.1958416586374738
+    },
+    {
+      "seed": 4,
+      "k80_mean": 2.0,
+      "eff_rank_mean": 1.9845560741155066,
+      "baseline_cost": 0.07407650950236742,
+      "ablated_cost": 0.0642130784036761,
+      "cost_ratio": 0.8668363560686922
+    },
+    {
+      "seed": 5,
+      "k80_mean": 2.0,
+      "eff_rank_mean": 1.9921365938975024,
+      "baseline_cost": 0.08172558966321802,
+      "ablated_cost": 0.06445025676474417,
+      "cost_ratio": 0.7886081755073004
+    },
+    {
+      "seed": 6,
+      "k80_mean": 2.0,
+      "eff_rank_mean": 1.9967556253164214,
+      "baseline_cost": 0.08730567078323853,
+      "ablated_cost": 0.11945284181292586,
+      "cost_ratio": 1.3681983374385966
+    },
+    {
+      "seed": 7,
+      "k80_mean": 2.0,
+      "eff_rank_mean": 1.9764756627245894,
+      "baseline_cost": 0.07733234533521625,
+      "ablated_cost": 0.08216461889833009,
+      "cost_ratio": 1.0624733553446026
+    }
+  ],
+  "analysis": {
+    "k80_mean": 2.0,
+    "cost_ratio": 1.1361346424987366,
+    "conclusion": "PARTIAL: k80=2.0\u22643 structure generalizes but ablation effect \u00d71.1 (weak)."
+  }
+}

@@ -1,0 +1,273 @@
+{
+  "seeds": [
+    {
+      "seed": 0,
+      "has_umap": false,
+      "direction_effects": {
+        "PC1": {
+          "mean_action_change": 0.0026119043806102126,
+          "std_action_change": 6.044204470985479e-09
+        },
+        "PC2": {
+          "mean_action_change": 0.0019742095994297413,
+          "std_action_change": 5.609830896882337e-09
+        },
+        "PC3": {
+          "mean_action_change": 0.0061772390408441425,
+          "std_action_change": 5.749382084991048e-09
+        },
+        "PC4": {
+          "mean_action_change": 0.005557157772127539,
+          "std_action_change": 6.0390178618508035e-09
+        },
+        "PC5": {
+          "mean_action_change": 0.0021310213464312256,
+          "std_action_change": 5.266503067075278e-09
+        }
+      },
+      "random_effect": 0.009411778997746296,
+      "max_pc_key": "PC3",
+      "max_pc_effect": 0.0061772390408441425,
+      "pc_vs_random_ratio": 0.6562609238274011,
+      "n_behavior_grid_cells": 11,
+      "behavior_grid_mean": 0.04461430013045724,
+      "behavior_grid_std": 0.010152473783345375
+    },
+    {
+      "seed": 1,
+      "has_umap": false,
+      "direction_effects": {
+        "PC1": {
+          "mean_action_change": 0.0022183296422008426,
+          "std_action_change": 2.2183125147494756e-09
+        },
+        "PC2": {
+          "mean_action_change": 0.003613982517272234,
+          "std_action_change": 1.8320028823947515e-09
+        },
+        "PC3": {
+          "mean_action_change": 0.0012010817142436281,
+          "std_action_change": 1.8181739409759465e-09
+        },
+        "PC4": {
+          "mean_action_change": 0.0011101200571283698,
+          "std_action_change": 1.633915480803343e-09
+        },
+        "PC5": {
+          "mean_action_change": 0.002121466742828488,
+          "std_action_change": 1.9069611487102142e-09
+        }
+      },
+      "random_effect": 0.009386070928012486,
+      "max_pc_key": "PC2",
+      "max_pc_effect": 0.003613982517272234,
+      "pc_vs_random_ratio": 0.38499576118973877,
+      "n_behavior_grid_cells": 5,
+      "behavior_grid_mean": 0.03662173522286426,
+      "behavior_grid_std": 0.025289886924341955
+    },
+    {
+      "seed": 2,
+      "has_umap": false,
+      "direction_effects": {
+        "PC1": {
+          "mean_action_change": 0.0012453535618260504,
+          "std_action_change": 1.4668349028804661e-09
+        },
+        "PC2": {
+          "mean_action_change": 0.0014528673782479018,
+          "std_action_change": 1.5963656614664724e-09
+        },
+        "PC3": {
+          "mean_action_change": 0.0016429766220971943,
+          "std_action_change": 1.9070151601659997e-09
+        },
+        "PC4": {
+          "mean_action_change": 0.005763580047059804,
+          "std_action_change": 1.5754206397794063e-09
+        },
+        "PC5": {
+          "mean_action_change": 0.0035639753146097064,
+          "std_action_change": 1.5071823737518228e-09
+        }
+      },
+      "random_effect": 0.009267646335356403,
+      "max_pc_key": "PC4",
+      "max_pc_effect": 0.005763580047059804,
+      "pc_vs_random_ratio": 0.62183622489445,
+      "n_behavior_grid_cells": 3,
+      "behavior_grid_mean": 0.018212021426657624,
+      "behavior_grid_std": 0.0032343459080781106
+    },
+    {
+      "seed": 3,
+      "has_umap": false,
+      "direction_effects": {
+        "PC1": {
+          "mean_action_change": 0.007595829197671264,
+          "std_action_change": 2.119908626318963e-09
+        },
+        "PC2": {
+          "mean_action_change": 0.0032779487245716155,
+          "std_action_change": 1.5558784726410585e-09
+        },
+        "PC3": {
+          "mean_action_change": 0.002249412041855976,
+          "std_action_change": 1.3723381611189093e-09
+        },
+        "PC4": {
+          "mean_action_change": 0.0017773141019279137,
+          "std_action_change": 1.3419701428251393e-09
+        },
+        "PC5": {
+          "mean_action_change": 0.0035524057771544903,
+          "std_action_change": 1.4970444594167356e-09
+        }
+      },
+      "random_effect": 0.009549554455152248,
+      "max_pc_key": "PC1",
+      "max_pc_effect": 0.007595829197671264,
+      "pc_vs_random_ratio": 0.7953286098037518,
+      "n_behavior_grid_cells": 3,
+      "behavior_grid_mean": 0.035046292306184085,
+      "behavior_grid_std": 0.021318275992360525
+    },
+    {
+      "seed": 4,
+      "has_umap": false,
+      "direction_effects": {
+        "PC1": {
+          "mean_action_change": 0.0001258501264237566,
+          "std_action_change": 5.3191007999316635e-09
+        },
+        "PC2": {
+          "mean_action_change": 0.0008403633322450332,
+          "std_action_change": 3.810371373000814e-09
+        },
+        "PC3": {
+          "mean_action_change": 0.001150204759906046,
+          "std_action_change": 2.828643130327624e-09
+        },
+        "PC4": {
+          "mean_action_change": 0.00488659507362172,
+          "std_action_change": 4.3708898055509604e-09
+        },
+        "PC5": {
+          "mean_action_change": 0.002381353775272146,
+          "std_action_change": 3.289698225934333e-09
+        }
+      },
+      "random_effect": 0.009940265039622318,
+      "max_pc_key": "PC4",
+      "max_pc_effect": 0.00488659507362172,
+      "pc_vs_random_ratio": 0.49154660439546727,
+      "n_behavior_grid_cells": 8,
+      "behavior_grid_mean": 0.03896673006049002,
+      "behavior_grid_std": 0.025934099233947464
+    },
+    {
+      "seed": 5,
+      "has_umap": false,
+      "direction_effects": {
+        "PC1": {
+          "mean_action_change": 0.001689754428807646,
+          "std_action_change": 1.5284121449663758e-09
+        },
+        "PC2": {
+          "mean_action_change": 0.0029102671204600484,
+          "std_action_change": 1.7714108987908006e-09
+        },
+        "PC3": {
+          "mean_action_change": 0.005490976423025131,
+          "std_action_change": 1.5467807272096498e-09
+        },
+        "PC4": {
+          "mean_action_change": 0.01147951406892389,
+          "std_action_change": 1.8449533112028178e-09
+        },
+        "PC5": {
+          "mean_action_change": 0.012428351151756943,
+          "std_action_change": 1.6092690866484466e-09
+        }
+      },
+      "random_effect": 0.010050294148386455,
+      "max_pc_key": "PC5",
+      "max_pc_effect": 0.012428351151756943,
+      "pc_vs_random_ratio": 1.2364926315236808,
+      "n_behavior_grid_cells": 4,
+      "behavior_grid_mean": 0.021465752466371342,
+      "behavior_grid_std": 0.004978241514440967
+    },
+    {
+      "seed": 6,
+      "has_umap": false,
+      "direction_effects": {
+        "PC1": {
+          "mean_action_change": 0.0009688572480808943,
+          "std_action_change": 9.684215508810325e-10
+        },
+        "PC2": {
+          "mean_action_change": 0.001035311034647748,
+          "std_action_change": 8.469972728759036e-10
+        },
+        "PC3": {
+          "mean_action_change": 0.0013452086271718143,
+          "std_action_change": 1.0818836071177786e-09
+        },
+        "PC4": {
+          "mean_action_change": 0.002077054148539901,
+          "std_action_change": 9.75679861166419e-10
+        },
+        "PC5": {
+          "mean_action_change": 0.007294274072628468,
+          "std_action_change": 1.1842797428464216e-09
+        }
+      },
+      "random_effect": 0.009858444259734825,
+      "max_pc_key": "PC5",
+      "max_pc_effect": 0.007294274072628468,
+      "pc_vs_random_ratio": 0.7398260876039126,
+      "n_behavior_grid_cells": 3,
+      "behavior_grid_mean": 0.01588348619415025,
+      "behavior_grid_std": 0.004931152943822743
+    },
+    {
+      "seed": 7,
+      "has_umap": false,
+      "direction_effects": {
+        "PC1": {
+          "mean_action_change": 0.002378366149496287,
+          "std_action_change": 2.1045250071507283e-09
+        },
+        "PC2": {
+          "mean_action_change": 0.0018313858390320093,
+          "std_action_change": 1.1277580707820241e-09
+        },
+        "PC3": {
+          "mean_action_change": 0.0046984733850695196,
+          "std_action_change": 1.8070883084200887e-09
+        },
+        "PC4": {
+          "mean_action_change": 0.004977286274079233,
+          "std_action_change": 2.0463561962449867e-09
+        },
+        "PC5": {
+          "mean_action_change": 0.0027640041790436953,
+          "std_action_change": 1.4535976226575429e-09
+        }
+      },
+      "random_effect": 0.009029015970882029,
+      "max_pc_key": "PC4",
+      "max_pc_effect": 0.004977286274079233,
+      "pc_vs_random_ratio": 0.5511935183867748,
+      "n_behavior_grid_cells": 5,
+      "behavior_grid_mean": 0.025851500337414457,
+      "behavior_grid_std": 0.008771110218374217
+    }
+  ],
+  "analysis": {
+    "pc_random_ratio": 0.6846850452031471,
+    "behavior_cv": 0.44200645159917246,
+    "conclusion": "UNIFORM MANIFOLD: PC=0.7x random, CV=0.44. Behavior is spatially uniform."
+  }
+}

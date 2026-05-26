@@ -1,0 +1,120 @@
+{
+  "B1_SNR": {
+    "baseline": {
+      "R2_mean": 0.5704333973296716,
+      "R2_std": 0.1803180003519061,
+      "align_mean": 0.7818952566908811,
+      "align_std": 0.11873807504160741,
+      "k80_mean": 3.0,
+      "k80_std": 0.5
+    },
+    "boost_x2": {
+      "R2_mean": 0.5891268628854122,
+      "R2_std": 0.22933358433971293,
+      "align_mean": 0.7323187325654223,
+      "align_std": 0.10860375507119242,
+      "k80_mean": 2.875,
+      "k80_std": 0.5994789404140899
+    },
+    "boost_x3": {
+      "R2_mean": 0.5711193952806879,
+      "R2_std": 0.20109629445260524,
+      "align_mean": 0.689384719757288,
+      "align_std": 0.09260790162217362,
+      "k80_mean": 3.25,
+      "k80_std": 0.6614378277661477
+    },
+    "boost_x5": {
+      "R2_mean": 0.4338943157127352,
+      "R2_std": 0.08938969971088909,
+      "align_mean": 0.6461800499167714,
+      "align_std": 0.14314462619073418,
+      "k80_mean": 3.5,
+      "k80_std": 0.5
+    },
+    "diagnosis": {
+      "SNR_issue": true,
+      "best_boost": "baseline",
+      "note": "If boosting signal recovers alignment \u2192 SNR bottleneck. Else \u2192 competition/capacity."
+    }
+  },
+  "B2_competition": {
+    "dropout_0.0": {
+      "R2_mean": 0.5193279795943562,
+      "R2_std": 0.06682101883752037,
+      "align_mean": 0.8189444028423178,
+      "align_std": 0.08680906082539384,
+      "k80_mean": 3.0,
+      "k80_std": 0.8660254037844386
+    },
+    "dropout_0.3": {
+      "R2_mean": 0.5266634074584551,
+      "R2_std": 0.07504724921084846,
+      "align_mean": 0.8372765169026325,
+      "align_std": 0.08625598581773021,
+      "k80_mean": 2.75,
+      "k80_std": 0.6614378277661477
+    },
+    "dropout_0.5": {
+      "R2_mean": 0.5419305206234795,
+      "R2_std": 0.14350385127267948,
+      "align_mean": 0.8262282732557551,
+      "align_std": 0.09865134214556276,
+      "k80_mean": 2.875,
+      "k80_std": 0.5994789404140899
+    },
+    "dropout_0.7": {
+      "R2_mean": 0.5636294057866281,
+      "R2_std": 0.0865785296262793,
+      "align_mean": 0.8133155550474735,
+      "align_std": 0.11088788271368961,
+      "k80_mean": 3.0,
+      "k80_std": 0.7071067811865476
+    },
+    "diagnosis": {
+      "competition_issue": true,
+      "best_dropout": "dropout_0.3",
+      "note": "If dropout recovers alignment \u2192 competition problem. Else \u2192 SNR or capacity."
+    }
+  },
+  "B3_capacity": {
+    "32": {
+      "R2_mean": 0.5740953539034054,
+      "R2_std": 0.18746294466719074,
+      "align_mean": 0.7642915045518855,
+      "align_std": 0.12013994424464558,
+      "k80_mean": 3.0,
+      "k80_std": 0.5
+    },
+    "64": {
+      "R2_mean": 0.7248722131786767,
+      "R2_std": 0.17171641592792103,
+      "align_mean": 0.895335249742612,
+      "align_std": 0.08075315200830642,
+      "k80_mean": 2.625,
+      "k80_std": 0.8569568250501305
+    },
+    "128": {
+      "R2_mean": 0.7418947693969902,
+      "R2_std": 0.1791584477762045,
+      "align_mean": 0.8689028012567419,
+      "align_std": 0.10034790350355634,
+      "k80_mean": 1.625,
+      "k80_std": 0.4841229182759271
+    },
+    "256": {
+      "R2_mean": 0.8352962364799573,
+      "R2_std": 0.12418832939811585,
+      "align_mean": 0.7833629862674905,
+      "align_std": 0.11043891567944897,
+      "k80_mean": 1.625,
+      "k80_std": 0.6959705453537527
+    },
+    "diagnosis": {
+      "capacity_issue": false,
+      "best_hd": 64,
+      "note": "If larger hd recovers alignment \u2192 capacity bottleneck. Else \u2192 SNR or optimization bias."
+    }
+  },
+  "overall_diagnosis": "ROOT CAUSE: SNR + competition. The indicated mechanisms are the primary bottlenecks."
+}

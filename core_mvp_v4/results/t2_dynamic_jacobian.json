@@ -1,0 +1,74 @@
+{
+  "seeds": [
+    {
+      "seed": 0,
+      "mean_alignment": 0.9999999999999998,
+      "min_alignment": 0.9999999999999999,
+      "low_risk_alignment": 0.0,
+      "high_risk_alignment": 0.9999999999999998,
+      "n_windows": 17
+    },
+    {
+      "seed": 1,
+      "mean_alignment": 1.0000000000000002,
+      "min_alignment": 1.0000000000000002,
+      "low_risk_alignment": 0.0,
+      "high_risk_alignment": 1.0000000000000002,
+      "n_windows": 17
+    },
+    {
+      "seed": 2,
+      "mean_alignment": 1.0000000000000002,
+      "min_alignment": 1.0000000000000002,
+      "low_risk_alignment": 0.0,
+      "high_risk_alignment": 1.0000000000000002,
+      "n_windows": 17
+    },
+    {
+      "seed": 3,
+      "mean_alignment": 0.9999999999999998,
+      "min_alignment": 0.9999999999999999,
+      "low_risk_alignment": 0.0,
+      "high_risk_alignment": 0.9999999999999998,
+      "n_windows": 17
+    },
+    {
+      "seed": 4,
+      "mean_alignment": 1.0,
+      "min_alignment": 1.0,
+      "low_risk_alignment": 0.0,
+      "high_risk_alignment": 1.0,
+      "n_windows": 17
+    },
+    {
+      "seed": 5,
+      "mean_alignment": 1.0,
+      "min_alignment": 1.0,
+      "low_risk_alignment": 0.0,
+      "high_risk_alignment": 1.0,
+      "n_windows": 17
+    },
+    {
+      "seed": 6,
+      "mean_alignment": 1.0000000000000002,
+      "min_alignment": 1.0000000000000002,
+      "low_risk_alignment": 0.0,
+      "high_risk_alignment": 1.0000000000000002,
+      "n_windows": 17
+    },
+    {
+      "seed": 7,
+      "mean_alignment": 1.0000000000000002,
+      "min_alignment": 1.0000000000000002,
+      "low_risk_alignment": 0.0,
+      "high_risk_alignment": 1.0000000000000002,
+      "n_windows": 17
+    }
+  ],
+  "analysis": {
+    "mean_alignment": 1.0,
+    "low_risk_alignment": 0.0,
+    "high_risk_alignment": 1.0,
+    "conclusion": "GLOBALLY STABLE: mean alignment=1.000>0.9. J structure is fixed."
+  }
+}

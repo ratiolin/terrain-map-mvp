@@ -1,0 +1,106 @@
+{
+  "direct": {
+    "linear": {
+      "cost_mean": 1.2138796441521094,
+      "cost_std": 0.02313488724625287,
+      "hidden_sizes": []
+    },
+    "MLP_1x32": {
+      "cost_mean": 1.2080713761250887,
+      "cost_std": 0.0107739727269078,
+      "hidden_sizes": [
+        32
+      ]
+    },
+    "MLP_2x32": {
+      "cost_mean": 1.2093923964611821,
+      "cost_std": 0.008577330667803572,
+      "hidden_sizes": [
+        32,
+        32
+      ]
+    },
+    "MLP_3x32": {
+      "cost_mean": 1.2097679292115924,
+      "cost_std": 0.008549539782553628,
+      "hidden_sizes": [
+        32,
+        32,
+        32
+      ]
+    },
+    "MLP_1x128": {
+      "cost_mean": 1.2087894220062254,
+      "cost_std": 0.011705773619940268,
+      "hidden_sizes": [
+        128
+      ]
+    },
+    "MLP_1x256": {
+      "cost_mean": 1.2139895522329733,
+      "cost_std": 0.008241442335314507,
+      "hidden_sizes": [
+        256
+      ]
+    },
+    "MLP_2x128": {
+      "cost_mean": 1.2095907759840632,
+      "cost_std": 0.00858833312128649,
+      "hidden_sizes": [
+        128,
+        128
+      ]
+    }
+  },
+  "baseline": {
+    "linear": {
+      "cost_mean": 1.2088989407220174,
+      "cost_std": 0.008047970834213852,
+      "encoder_hd": 192,
+      "head_config": "linear"
+    },
+    "MLP_1x32": {
+      "cost_mean": 1.2088989407220174,
+      "cost_std": 0.008047970834213852,
+      "encoder_hd": 192,
+      "head_config": "MLP_1x32"
+    },
+    "MLP_2x32": {
+      "cost_mean": 1.2088989407220174,
+      "cost_std": 0.008047970834213852,
+      "encoder_hd": 192,
+      "head_config": "MLP_2x32"
+    },
+    "MLP_3x32": {
+      "cost_mean": 1.2088989407220174,
+      "cost_std": 0.008047970834213852,
+      "encoder_hd": 192,
+      "head_config": "MLP_3x32"
+    },
+    "MLP_1x128": {
+      "cost_mean": 1.2088989407220174,
+      "cost_std": 0.008047970834213852,
+      "encoder_hd": 192,
+      "head_config": "MLP_1x128"
+    },
+    "MLP_1x256": {
+      "cost_mean": 1.2088989407220174,
+      "cost_std": 0.008047970834213852,
+      "encoder_hd": 192,
+      "head_config": "MLP_1x256"
+    },
+    "MLP_2x128": {
+      "cost_mean": 1.2088989407220174,
+      "cost_std": 0.008047970834213852,
+      "encoder_hd": 192,
+      "head_config": "MLP_2x128"
+    }
+  },
+  "analysis": {
+    "linear_cost": 1.2138796441521094,
+    "best_direct": "MLP_1x32",
+    "best_direct_cost": 1.2080713761250887,
+    "baseline_cost": 1.2088989407220174,
+    "conclusion": "Linear cost=1.2139. Best direct=MLP_1x32 cost=1.2081. Baseline cost=1.2089."
+  }
+}

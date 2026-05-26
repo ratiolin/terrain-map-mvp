@@ -1,0 +1,39 @@
+{
+  "seeds": [
+    {
+      "seed": 0,
+      "R2_cost_pred": -232.4557333296073,
+      "max_rho": 0.15446251252102475
+    },
+    {
+      "seed": 1,
+      "R2_cost_pred": -0.1617866616925283,
+      "max_rho": 0.1135225551400612
+    },
+    {
+      "seed": 2,
+      "R2_cost_pred": -39.809619649401846,
+      "max_rho": 0.1433181341674337
+    },
+    {
+      "seed": 3,
+      "R2_cost_pred": -6.406062741523823,
+      "max_rho": 0.17668002217563944
+    },
+    {
+      "seed": 4,
+      "R2_cost_pred": -0.18191448426258128,
+      "max_rho": 0.11379584825351226
+    },
+    {
+      "seed": 5,
+      "R2_cost_pred": -9.397846541902258,
+      "max_rho": 0.21136945285984177
+    }
+  ],
+  "analysis": {
+    "R2_cost": -48.06882723473172,
+    "max_rho": 0.15219142085291887,
+    "conclusion": "NO TRAJECTORY VARIABLE: max \u03c1=0.152, R\u00b2=-48.069. Cost not trackable at trajectory level."
+  }
+}

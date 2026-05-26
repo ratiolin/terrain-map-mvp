@@ -1,0 +1,29 @@
+{
+  "baseline_C3": {
+    "align_mean": 0.8461073853497155,
+    "align_std": 0.10499877080640314,
+    "R2_mean": 0.8069539291846223,
+    "R2_std": 0.0925953883476741,
+    "k80_mean": 2.875,
+    "k80_std": 0.5994789404140899,
+    "attn_ctrl_mean": 0.5181171404127963,
+    "attn_noise_mean": 0.4814633527076027,
+    "attn_bias": 0.03665378770519362
+  },
+  "guided": {
+    "align_mean": 0.9319392805778388,
+    "align_std": 0.04555670991467225,
+    "R2_mean": 0.8771979351403378,
+    "R2_std": 0.13962904464917122,
+    "k80_mean": 1.75,
+    "k80_std": 0.82915619758885,
+    "attn_ctrl_mean": 0.5855148379970342,
+    "attn_noise_mean": 0.33756767569032187,
+    "attn_bias": 0.24794716230671232
+  },
+  "comparison": {
+    "guided_improvement": 0.08583189522812329,
+    "guided_attn_improvement": 0.2112933746015187
+  },
+  "conclusion": "GUIDED SUCCESS: attention bias=0.248 toward control dims. Position encoding + indicator force attention convergence."
+}

@@ -1,0 +1,123 @@
+{
+  "seeds": [
+    {
+      "seed": 0,
+      "k80_mean": 2.0,
+      "k80_std": 0.0,
+      "eff_rank_mean": 1.9890516084861016,
+      "eff_rank_std": 6.661338147750939e-16,
+      "cross_time_alignment": 1.0,
+      "cross_time_alignment_std": 0.0,
+      "principal_angle_da_vs_dh": 0.9466171783229906,
+      "avg_S_norm": [
+        1.1318917575587064,
+        1.0190014999570167
+      ]
+    },
+    {
+      "seed": 1,
+      "k80_mean": 2.0,
+      "k80_std": 0.0,
+      "eff_rank_mean": 1.9944379522086126,
+      "eff_rank_std": 4.440892098500626e-16,
+      "cross_time_alignment": 1.0000000000000002,
+      "cross_time_alignment_std": 0.0,
+      "principal_angle_da_vs_dh": 0.9666063329722325,
+      "avg_S_norm": [
+        1.0876190478331458,
+        1.00929867629709
+      ]
+    },
+    {
+      "seed": 2,
+      "k80_mean": 2.0,
+      "k80_std": 0.0,
+      "eff_rank_mean": 1.9914357206360267,
+      "eff_rank_std": 2.220446049250313e-16,
+      "cross_time_alignment": 1.0000000000000002,
+      "cross_time_alignment_std": 0.0,
+      "principal_angle_da_vs_dh": 0.9051970779386206,
+      "avg_S_norm": [
+        1.1185016840213295,
+        1.0193322909180431
+      ]
+    },
+    {
+      "seed": 3,
+      "k80_mean": 2.0,
+      "k80_std": 0.0,
+      "eff_rank_mean": 1.9950571859366169,
+      "eff_rank_std": 0.0,
+      "cross_time_alignment": 0.9999999999999999,
+      "cross_time_alignment_std": 0.0,
+      "principal_angle_da_vs_dh": 0.9702190484773036,
+      "avg_S_norm": [
+        1.1172643816027663,
+        1.0412764449075238
+      ]
+    },
+    {
+      "seed": 4,
+      "k80_mean": 2.0,
+      "k80_std": 0.0,
+      "eff_rank_mean": 1.9522260662736253,
+      "eff_rank_std": 2.220446049250313e-16,
+      "cross_time_alignment": 1.0,
+      "cross_time_alignment_std": 0.0,
+      "principal_angle_da_vs_dh": 0.9232300488157398,
+      "avg_S_norm": [
+        1.210746216589162,
+        0.9691140544184728
+      ]
+    },
+    {
+      "seed": 5,
+      "k80_mean": 2.0,
+      "k80_std": 0.0,
+      "eff_rank_mean": 1.9711390009808154,
+      "eff_rank_std": 4.440892098500626e-16,
+      "cross_time_alignment": 1.0,
+      "cross_time_alignment_std": 0.0,
+      "principal_angle_da_vs_dh": 0.9599180082929353,
+      "avg_S_norm": [
+        1.1981902100552473,
+        1.009095473201057
+      ]
+    },
+    {
+      "seed": 6,
+      "k80_mean": 2.0,
+      "k80_std": 0.0,
+      "eff_rank_mean": 1.998004303076166,
+      "eff_rank_std": 6.661338147750939e-16,
+      "cross_time_alignment": 1.0000000000000002,
+      "cross_time_alignment_std": 0.0,
+      "principal_angle_da_vs_dh": 0.9352601799925325,
+      "avg_S_norm": [
+        1.1207579971880535,
+        1.0717561246000398
+      ]
+    },
+    {
+      "seed": 7,
+      "k80_mean": 2.0,
+      "k80_std": 0.0,
+      "eff_rank_mean": 1.9696067457046167,
+      "eff_rank_std": 2.220446049250313e-16,
+      "cross_time_alignment": 1.0000000000000002,
+      "cross_time_alignment_std": 0.0,
+      "principal_angle_da_vs_dh": 0.9239795983586636,
+      "avg_S_norm": [
+        1.0900686611707797,
+        0.9138200004060155
+      ]
+    }
+  ],
+  "analysis": {
+    "k80": 2.0,
+    "eff_rank": 1.9826198229128227,
+    "cross_time_alignment": 1.0,
+    "da_vs_dh_angle": 0.9413784341463773,
+    "conclusion": "LOW-DIM: k80=2.0\u22643 \u2192 control is low-rank Jacobian structure. Cross-time alignment=1.000>0.8 \u2192 stable structure. \u2202a/\u2202h \u27c2 \u2202h/\u2202s (angle=0.941) \u2192 control and representation decoupled."
+  }
+}

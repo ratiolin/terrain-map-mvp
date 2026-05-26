@@ -1,0 +1,43 @@
+{
+  "double_well": {
+    "baseline": {
+      "align_mean": 0.867561176350794,
+      "align_std": 0.08975678682274973,
+      "cost_mean": 1.2123389409932162,
+      "cost_std": 0.007488390500857197,
+      "zone_mean": 0.01075,
+      "R2_mean": 0.8542526169364708
+    },
+    "split_encoder": {
+      "align_mean": 0.9725081688322679,
+      "align_std": 0.030972917903330333,
+      "cost_mean": 1.2111299083659057,
+      "zone_mean": 0.01075
+    },
+    "rho_align_cost": -0.4047619047619048,
+    "p_align_cost": 0.3198886412288163,
+    "rho_align_zone": 0.0,
+    "p_align_zone": 1.0
+  },
+  "triple_well": {
+    "baseline": {
+      "align_mean": 0.7026465073497903,
+      "align_std": 0.15335115143594724,
+      "cost_mean": 0.08809531487105676,
+      "cost_std": 0.006416529852494146,
+      "zone_mean": 0.98725,
+      "R2_mean": 0.8072471971802917
+    },
+    "split_encoder": {
+      "align_mean": 0.8366411102850835,
+      "align_std": 0.11149359165175955,
+      "cost_mean": 0.45203050524221405,
+      "zone_mean": 0.8635
+    },
+    "rho_align_cost": 0.4761904761904762,
+    "p_align_cost": 0.23293553465009798,
+    "rho_align_zone": -0.6257415691925263,
+    "p_align_zone": 0.09702245582500375
+  },
+  "conclusion": "INCONCLUSIVE: triple-well rho=0.476, double-well rho=-0.405"
+}

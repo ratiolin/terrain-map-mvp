@@ -1,0 +1,57 @@
+{
+  "seeds": [
+    {
+      "seed": 0,
+      "ntk_eff_rank": 4.3795294761657715,
+      "ntk_rank": 48,
+      "ntk_max_eig": 1.5257400274276733
+    },
+    {
+      "seed": 1,
+      "ntk_eff_rank": 5.074462413787842,
+      "ntk_rank": 44,
+      "ntk_max_eig": 0.6849053502082825
+    },
+    {
+      "seed": 2,
+      "ntk_eff_rank": 3.038808822631836,
+      "ntk_rank": 33,
+      "ntk_max_eig": 0.5819675326347351
+    },
+    {
+      "seed": 3,
+      "ntk_eff_rank": 5.679526329040527,
+      "ntk_rank": 43,
+      "ntk_max_eig": 0.5190920233726501
+    },
+    {
+      "seed": 4,
+      "ntk_eff_rank": 3.240355968475342,
+      "ntk_rank": 38,
+      "ntk_max_eig": 0.8980655670166016
+    },
+    {
+      "seed": 5,
+      "ntk_eff_rank": 4.660840034484863,
+      "ntk_rank": 43,
+      "ntk_max_eig": 0.5332291722297668
+    },
+    {
+      "seed": 6,
+      "ntk_eff_rank": 3.1689443588256836,
+      "ntk_rank": 35,
+      "ntk_max_eig": 0.5641657710075378
+    },
+    {
+      "seed": 7,
+      "ntk_eff_rank": 2.9844255447387695,
+      "ntk_rank": 32,
+      "ntk_max_eig": 0.6000039577484131
+    }
+  ],
+  "analysis": {
+    "ntk_eff_rank": 4.028361618518829,
+    "ntk_rank": 39.5,
+    "conclusion": "MODERATELY LINEAR: NTK eff_rank=4.0, rank=39.5."
+  }
+}

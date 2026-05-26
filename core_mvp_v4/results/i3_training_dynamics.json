@@ -1,0 +1,7 @@
+{
+  "analysis": {
+    "final_functional_distance": 0.019415543608677883,
+    "interpolation_barrier": 0.5558461242042837,
+    "conclusion": "DISCONNECTED SOLUTIONS: dist=0.0194, barrier=0.556."
+  }
+}

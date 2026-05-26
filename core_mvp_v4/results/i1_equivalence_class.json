@@ -1,0 +1,14 @@
+{
+  "analysis": {
+    "action_diff": 0.010722562478709223,
+    "weight_diff": 3.7391947608490512,
+    "h_diff": 5058471.818622348,
+    "action_h_ratio": 2.1197236760779947e-09,
+    "n_variants": 20,
+    "pca_var": [
+      0.5308830142021179,
+      0.17988765239715576
+    ],
+    "conclusion": "EQUIVALENCE CLASSES FOUND: action diff=0.0107, h diff=5058471.8186, ratio=0.0000."
+  }
+}

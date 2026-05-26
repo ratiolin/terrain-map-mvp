@@ -1,0 +1,8 @@
+{
+  "analysis": {
+    "CKA_rep": 0.23782548308372498,
+    "cos_grad": 0.0025219624745649294,
+    "cos_action": -0.014493969269096851,
+    "conclusion": "MIXED: CKA=0.238, grad=0.003, action=-0.014."
+  }
+}

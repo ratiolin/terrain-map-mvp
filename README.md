@@ -2,7 +2,7 @@
 
 **Closed-Loop Stability Through Adaptation and Shaping**
 
-A closed-loop learning system where model structure and control policy co-evolve through interaction with the environment. Stability is maintained either by tracking environmental dynamics or by constraining them, depending on boundary conditions. The system further exhibits a low-dimensional, geometrically structured controllability subspace whose existence, stability, and functional role are empirically validated.
+A closed-loop learning system where model structure and control policy co-evolve through interaction with the environment. Stability is maintained either by tracking environmental dynamics or by constraining them, depending on boundary conditions. The system exhibits a low-dimensional, geometrically structured controllability subspace; however, this structure is not a globally consistent coordinate object, but a task-constrained, locally expressed geometric organization whose functional role is empirically validated.
 
 ---
 
@@ -11,7 +11,7 @@ A closed-loop learning system where model structure and control policy co-evolve
 ```
 STAGE 1–10 COMPLETE
 CLOSED-LOOP VALIDATION COMPLETE
-BOUNDARY CONDITION RECOGNITION: PRINCIPLE VALIDATED, GEOMETRIC STRUCTURE IDENTIFIED, LOW-RANK SUBSPACE CONFIRMED, GENERALIZATION OPEN
+BOUNDARY CONDITION RECOGNITION: PRINCIPLE VALIDATED, FUNCTIONAL STRUCTURE CONFIRMED, GLOBAL GEOMETRIC CONSISTENCY REJECTED, GENERALIZATION OPEN
 ```
 
 ### Validated
@@ -25,13 +25,12 @@ BOUNDARY CONDITION RECOGNITION: PRINCIPLE VALIDATED, GEOMETRIC STRUCTURE IDENTIF
 * Capacity-based gating produces discrete switching
 * Non-zero shaping floor is structural
 * Intrinsic boundary condition recognition via rollout comparison (multiple seeds)
-* Controllability subspace emergent in hidden states (R²≈0.5, >10× improvement over raw state; causal necessity confirmed by ablation; causal sufficiency confirmed by injection)
-* Geometric controllability subspace identified via Jacobian SVD with coordinate-invariant structure
-* Strong low-rank structure of Jacobian (k80≈2–3), confirming existence of a compact controllability subspace
-* Cross-trajectory stability of subspace (alignment ≈0.88 ± 0.05 across segments)
-* Discrete latent dynamics confirmed in geometric subspace (high cluster separation; low intra-cluster angle)
-* Partial intra-cluster continuous modulation (significant in controllable regime, weaker near uncontrollable boundary)
-* Learned origin of geometric structure confirmed via weight randomization (alignment collapses to random while rank persists)
+* Controllability is encoded in hidden states (R²≈0.5, >10× improvement over raw state; causal necessity confirmed by ablation; causal sufficiency confirmed by intervention)
+* Strong low-rank structure in Jacobian spectrum (k80≈2–3), indicating compact effective controllability directions
+* Cross-trajectory statistical stability of controllability structure (alignment ≈0.88 ± 0.05 across segments)
+* Discrete latent dynamics observable in controllability-relevant structure (high cluster separation; low intra-cluster angle)
+* Partial intra-cluster continuous modulation (stronger in controllable regimes, weaker near uncontrollable boundary)
+* Learned origin of functional structure confirmed via weight randomization (decoding collapses while rank persists)
 
 ---
 
@@ -40,6 +39,7 @@ BOUNDARY CONDITION RECOGNITION: PRINCIPLE VALIDATED, GEOMETRIC STRUCTURE IDENTIF
 * Unified stability metric
 * Intrinsic switching in static environments
 * λ* as intrinsic critical point
+* Existence of a globally consistent, coordinate-invariant controllability subspace
 
 ---
 
@@ -47,9 +47,9 @@ BOUNDARY CONDITION RECOGNITION: PRINCIPLE VALIDATED, GEOMETRIC STRUCTURE IDENTIF
 
 * Generalization of boundary recognition to high-dimensional, continuously-varying environments
 * Continuous controllability tracking beyond binary drift intervals
-* Scaling laws of controllability subspace (rank, spectrum shape, task dependence)
-* Cross-agent alignment laws of geometric controllability subspaces
-* Failure regimes of subspace structure (e.g., spectrum flattening, loss of alignment)
+* Scaling laws of controllability structure (rank, spectrum shape, task dependence)
+* Cross-agent alignment laws at the functional (not geometric) level
+* Failure regimes of controllability encoding (e.g., spectrum flattening, loss of decoding, instability under distribution shift)
 
 ---
 
@@ -66,7 +66,7 @@ uv run python run.py
 uv run python core_mvp_v3/run.py
 ```
 
-Key outputs are written to `results_final/` and `core_mvp_v2/results/`.
+Key outputs are written to `results_final/` and `core_mvp_v2/results/`. Analysis scripts for geometric structure, gradient field, and multi-agent coordination are located in `core_mvp_v4/analysis/`, with results in `core_mvp_v4/results/`.
 
 ---
 
@@ -106,6 +106,13 @@ Key outputs are written to `results_final/` and `core_mvp_v2/results/`.
 │   ├── experiment.py
 │   └── run.py
 │
+├── core_mvp_v4/
+│   ├── __init__.py
+│   ├── envs/
+│   ├── analysis/
+│   ├── experiments/
+│   └── results/
+│
 └── results_final/
 ```
 
@@ -117,13 +124,13 @@ Key outputs are written to `results_final/` and `core_mvp_v2/results/`.
 
 * Mechanism: prediction minimization
 * Condition: environment dominates
-* Result: banded structure utility
+* Result: tracking-based stabilization
 
 **Shaping**
 
 * Mechanism: control minimization
-* Condition: control dominates
-* Result: target stabilization
+* Condition: control authority dominates
+* Result: constraint-based stabilization
 
 ---
 
@@ -151,30 +158,49 @@ Earlier experiments showed transition depended on loss scale. Later experiments 
 
 ## Boundary Condition Recognition: Principle Validated
 
-The system can endogenously recognize environmental controllability in low-dimensional settings. Through real-environment rollout comparison, the system perceives controllability and drives mode switching via multi-scale panic signals. Multiple seeds confirm the effect: ADAPT dominant (74–85%) in high-drift regimes, SHAPE dominant (up to 92%) in low-drift regimes.
+The system can endogenously recognize environmental controllability in low-dimensional settings. Through real-environment rollout comparison, the system evaluates controllability and drives mode switching via multi-scale panic signals. Multiple seeds confirm the effect: ADAPT dominant (74–85%) in high-drift regimes, SHAPE dominant (up to 92%) in low-drift regimes.
 
-**Emergent Controllability Subspace:**
-The hidden state spontaneously extracts a low-dimensional controllability subspace. Controllability, nearly linearly undetectable from raw state, becomes linearly readable in hidden space and concentrates along a small number of dominant directions. This subspace is defined by the leading right singular vectors of the Jacobian (∂h/∂a), is invariant under coordinate transformations, and exhibits strong low-rank structure (k80≈2–3). Ablation collapses controllability, confirming causal necessity. Perturbation along these directions induces structured action changes, confirming causal sufficiency.
+**Controllability Encoding:**
+The hidden state encodes controllability in a low-dimensional manner. While raw state contains weak linear signal, hidden representations make controllability linearly decodable. This information concentrates along a small number of dominant directions, reflected in the low-rank structure of the Jacobian spectrum (k80≈2–3). Ablation removes controllability, confirming causal necessity. Targeted perturbations recover structured behavioral changes, confirming causal sufficiency.
 
-**Geometric Stability and Reproducibility:**
-The controllability subspace is stable across independently sampled trajectory segments (alignment ≈0.88), indicating it is not a single-trajectory artifact. The structure persists across seeds, batches, and probe variations, demonstrating measurement robustness.
+**Geometric Structure (Revised Interpretation):**
+Although dominant directions can be extracted locally (e.g., via Jacobian SVD), these directions do not form a globally consistent, coordinate-invariant subspace. Instead:
+
+* Effective control directions are **state-dependent**
+* Local linearizations are valid only within neighborhoods
+* Global alignment is approximate and statistical, not exact
+
+Thus, controllability is not encoded as a fixed geometric object, but as a **distributed, locally linear but globally non-coherent structure**.
+
+**Statistical Stability:**
+Across trajectory segments, extracted dominant directions exhibit high but imperfect alignment (≈0.88), indicating **statistical regularity rather than strict invariance**.
 
 **Discrete and Continuous Structure:**
-Within the geometric subspace, hidden-state dynamics exhibit discrete clustering, indicating state-type switching. Within clusters, partial continuous modulation exists: strong in controllable regimes and weakened near uncontrollable boundaries. This supports a hybrid structure of discrete modes with continuous internal regulation.
+Hidden dynamics show:
+
+* Discrete clustering (mode switching)
+* Local continuous modulation within clusters
+
+This supports a hybrid structure: **discrete regimes with local continuous control**, rather than a globally smooth manifold.
 
 **Origin of Structure:**
-Weight randomization destroys subspace alignment while preserving low-rank spectrum, showing that rank is architecture-constrained but geometric organization is learned. Thus, controllability is encoded as a learned geometric structure rather than a trivial byproduct of dimensionality.
+Weight randomization preserves low-rank spectra but destroys controllability decoding. Therefore:
+
+> Rank is architectural; controllability structure is learned and functional
 
 **Cross-Agent Structure:**
-Geometric controllability subspaces are not identical across agents but exhibit statistically significant overlap, indicating convergence toward task-constrained functional subspaces without coordinate alignment.
+Different agents do not share aligned geometric subspaces. However, they converge to **functionally equivalent solutions** with similar behavioral outcomes.
 
 **Capacity Threshold:**
-A minimal hidden dimension is sufficient for stable emergence of the controllability subspace. Increasing capacity strengthens structure but does not create it.
+Minimal capacity is sufficient for controllability encoding. Increased capacity improves robustness but does not fundamentally change structure.
 
 **Failure Conditions:**
-If the Jacobian spectrum becomes flat, the low-rank subspace ceases to exist. If alignment drops to random levels, shared structure is lost. If controllability decoding collapses (R²→0), controllability is not encoded.
 
-**Remaining Challenge:** Generalization to higher-dimensional, continuously-varying environments has not been tested.
+* Spectrum flattening → loss of dominant directions
+* Decoding collapse (R² → 0) → loss of controllability encoding
+* Alignment degradation → loss of statistical structure
+
+**Remaining Challenge:** Generalization to higher-dimensional, continuously-varying environments remains untested.
 
 ---
 
@@ -182,12 +208,12 @@ If the Jacobian spectrum becomes flat, the low-rank subspace ceases to exist. If
 
 1. Structural advantage appears in discrete drift windows
 2. Shaping dominates when control authority is sufficient
-3. Transition is discrete; its trigger can be either external (loss scale) or internal (rollout comparison)
-4. Separation via state distribution, not gradients
-5. Hidden states encode controllability in a low-dimensional, geometrically defined, low-rank subspace that is causally necessary for adaptive behavior
-6. Representation structure is jointly determined by task intrinsic dimensionality and coupling-induced spectral constraints
-7. Geometric subspaces are coordinate-invariant, partially shared across agents, and statistically stable across trajectories
-8. Discrete latent dynamics and continuous modulation coexist within the same geometric structure
+3. Transition is discrete; trigger can be external (loss scale) or internal (rollout comparison)
+4. Separation occurs via state distribution, not gradients
+5. Controllability is encoded in a low-dimensional, low-rank, functionally defined structure, not a globally fixed subspace
+6. Representation is determined by task constraints and optimization dynamics, not uniquely by function
+7. Cross-agent consistency exists at the functional level, not the geometric level
+8. Discrete dynamics and continuous modulation coexist locally, not globally
 
 ---
 
@@ -196,8 +222,9 @@ If the Jacobian spectrum becomes flat, the low-rank subspace ceases to exist. If
 * Low-dimensional validation
 * No analytic prediction of emergence bands
 * Intrinsic boundary recognition confirmed only in simplified environments
-* Scaling laws of subspace rank and spectrum not yet characterized
-* Cross-agent geometric alignment not fully understood
+* No global geometric model of controllability
+* Scaling laws of controllability structure not yet characterized
+* Cross-agent structure only understood statistically
 * No guarantee of global optimality
 
 ---
@@ -210,8 +237,8 @@ If the Jacobian spectrum becomes flat, the low-rank subspace ceases to exist. If
 4. Long-term behavior in non-stationary settings
 5. Multi-agent coordination
 6. Minimum viable closed-loop system
-7. Interaction between task intrinsic dimensionality and coupling-induced spectral constraints
-8. Scaling laws and failure boundaries of geometric controllability subspaces
+7. Interaction between task intrinsic dimensionality and optimization-induced constraints
+8. Scaling laws and breakdown conditions of controllability encoding
 
 ---
 
@@ -219,6 +246,8 @@ If the Jacobian spectrum becomes flat, the low-rank subspace ceases to exist. If
 
 Closed-loop stability is maintained by tracking in uncontrollable regimes and by constraining in controllable regimes.
 
-A system trained solely to predict endogenously extracts controllability into a low-dimensional, coordinate-invariant, low-rank geometric subspace, organizing discrete mode switching with continuous internal modulation—without external rewards or loss weights.
+A system trained solely for prediction can encode controllability into a low-dimensional, low-rank structure in hidden states. This structure enables discrete mode switching with local continuous modulation, without requiring external rewards or explicit control objectives.
 
-This structure is stable, reproducible, and learned; its scaling and generalization properties remain open.
+This encoding is functional, distributed, and state-dependent. It is stable at the statistical level, reproducible across runs, and sufficient for behavior—but not a globally consistent geometric object.
+
+Its scaling behavior and generalization properties remain open.

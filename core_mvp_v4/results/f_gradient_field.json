@@ -1,0 +1,52 @@
+{
+  "seeds": [
+    {
+      "seed": 0,
+      "smoothness_mean": 0.021640082013138377,
+      "smoothness_std": 0.07211200645384154,
+      "integral_monotonic_frac": 1.0,
+      "integral_rho_mean": 0.9981681055157627
+    },
+    {
+      "seed": 1,
+      "smoothness_mean": 0.028761028921373746,
+      "smoothness_std": 0.068995779591098,
+      "integral_monotonic_frac": 1.0,
+      "integral_rho_mean": 0.9978928242763722
+    },
+    {
+      "seed": 2,
+      "smoothness_mean": 0.023050054453885995,
+      "smoothness_std": 0.0691894868874583,
+      "integral_monotonic_frac": 1.0,
+      "integral_rho_mean": 0.9975888249485669
+    },
+    {
+      "seed": 3,
+      "smoothness_mean": 0.020399818065867645,
+      "smoothness_std": 0.06956633184263604,
+      "integral_monotonic_frac": 1.0,
+      "integral_rho_mean": 0.9970037428090605
+    },
+    {
+      "seed": 4,
+      "smoothness_mean": 0.02166903519686297,
+      "smoothness_std": 0.07391332968504527,
+      "integral_monotonic_frac": 1.0,
+      "integral_rho_mean": 0.9976918933337027
+    },
+    {
+      "seed": 5,
+      "smoothness_mean": 0.02383995268367671,
+      "smoothness_std": 0.06786909425851086,
+      "integral_monotonic_frac": 1.0,
+      "integral_rho_mean": 0.9981445964234558
+    }
+  ],
+  "analysis": {
+    "smoothness": 0.023226661889134238,
+    "integral_rho": 0.99774833121782,
+    "monotonic_frac": 1.0,
+    "conclusion": "SMOOTH GRADIENT FIELD: \u03c1=0.998, 100% monotonic. Control works via local gradients."
+  }
+}

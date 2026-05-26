@@ -1,0 +1,6 @@
+{
+  "analysis": {
+    "cross_agent_alignment": 0.001150861341528259,
+    "conclusion": "NO CROSS-AGENT CONSISTENCY: cos=0.001. Each agent learns different field."
+  }
+}

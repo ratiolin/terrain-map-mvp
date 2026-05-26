@@ -1,0 +1,25 @@
+{
+  "efficiency": {
+    "encoder_final_cost": 1.2148760608127287,
+    "direct_final_cost": 1.213803320648295
+  },
+  "generalization": {
+    "encoder_gen_cost": 1.213346398236979,
+    "direct_gen_cost": 1.1729641817098153
+  },
+  "noise": {
+    "sigma_0.1": {
+      "encoder": 1.2088937905067358,
+      "direct": 1.2013247303737764,
+      "encoder_advantage": 0.9937380322982563
+    },
+    "sigma_0.2": {
+      "encoder": 1.20888796256576,
+      "direct": 1.2015074497757072,
+      "encoder_advantage": 0.9938939695715426
+    }
+  },
+  "analysis": {
+    "conclusion": "Equal sample efficiency \u2192 encoder not needed for convergence speed. Similar generalization \u2192 encoder not needed for feature invariance. No noise advantage \u2192 encoder provides no filtering."
+  }
+}
