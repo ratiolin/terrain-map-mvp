@@ -1,0 +1,15 @@
+{
+  "cross_correlation": {
+    "lag0": -0.995898864864833,
+    "max_corr": -0.868967765863142,
+    "max_lag": -50,
+    "min_corr": -0.995898864864833,
+    "min_lag": 0,
+    "lag_type": "instant anti-phase"
+  },
+  "phase": {
+    "circular_diff": 2.9195988946214584,
+    "near_pi": true,
+    "power_spectrum_corr": 0.9998615679854289
+  }
+}

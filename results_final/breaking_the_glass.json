@@ -1,0 +1,10 @@
+{
+  "exp1_optim_baseline": {
+    "jumps": 1,
+    "er": 1,
+    "corr": -0.11169323773818562
+  },
+  "exp3_chaotic": {
+    "description": "nonlinear sin(x) + extra noise"
+  }
+}

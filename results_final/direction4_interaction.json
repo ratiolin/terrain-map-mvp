@@ -1,0 +1,32 @@
+{
+  "behavioral": {
+    "action_diff": 0.6925511623118072,
+    "action_corr": 0.7526485265114544,
+    "action_diff_noisy": 0.6927442232925576,
+    "action_corr_noisy": 0.0150957443159731,
+    "coordination_collapse": true
+  },
+  "representational": {
+    "cka": 0.3618960606758295,
+    "cka_time_mean": 0.48419581693904457,
+    "cka_time_min": 0.25312562834216973,
+    "cka_time_max": 0.9041906261794556,
+    "cka_trend": "down",
+    "pca_k": 5,
+    "subspace_angles": [
+      90.0,
+      90.0,
+      90.0,
+      74.07402803170982,
+      59.818121892133
+    ],
+    "min_angle": 59.818121892133
+  },
+  "setup": {
+    "T": 8000,
+    "agent_A_seed": 42,
+    "agent_B_seed": 1,
+    "action_mix": 0.5,
+    "intervention_noise": 0.1
+  }
+}

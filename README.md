@@ -27,11 +27,15 @@ BOUNDARY CONDITION RECOGNITION: PRINCIPLE VALIDATED, GENERALIZATION OPEN
 * Intrinsic boundary condition recognition via rollout comparison (multiple seeds)
 * Controllability subspace emergent in hidden states (R²=0.51, 10× improvement; causal necessity confirmed by ablation; causal sufficiency confirmed by injection)
 
+---
+
 ### Rejected
 
 * Unified stability metric
 * Intrinsic switching in static environments
 * λ* as intrinsic critical point
+
+---
 
 ### Open
 
@@ -64,9 +68,9 @@ Key outputs are written to `results_final/` and `core_mvp_v2/results/`.
 ├── pyproject.toml
 ├── uv.lock
 ├── config.yaml
-├── run.py                          # Main entry (Stage 1–10)
+├── run.py
 │
-├── core/                           # Core engine (Stage 1–10)
+├── core/
 │   ├── agent.py
 │   ├── controller.py
 │   ├── env.py
@@ -74,31 +78,26 @@ Key outputs are written to `results_final/` and `core_mvp_v2/results/`.
 │   ├── metrics.py
 │   └── router.py
 │
-├── core_mvp_v2/                    # Stage 2 experiments
+├── core_mvp_v2/
 │   ├── agent.py
 │   ├── controller.py
 │   ├── env.py
 │   ├── gating.py
 │   ├── metrics.py
 │   ├── run_mvp.py
-│   ├── comparison_experiment.py    # A vs B
+│   ├── comparison_experiment.py
 │   ├── gradient_alignment_experiment.py
-│   ├── gated_objective.py          # Capacity competition
-│   ├── delay_alignment.py          # Time-lag experiments
-│   └── results/                    # Phase diagrams, alignment data
+│   ├── gated_objective.py
+│   ├── delay_alignment.py
+│   └── results/
 │
-├── core_mvp_v3/                    # Stage 3: Intrinsic boundary recognition
-│   ├── env.py                      # Clonable drifting environment
-│   ├── models.py                   # Predictor + dual-head policy
-│   ├── experiment.py               # Full loop with rollouts, panic, mode switching
-│   └── run.py                      # Entry point
+├── core_mvp_v3/
+│   ├── env.py
+│   ├── models.py
+│   ├── experiment.py
+│   └── run.py
 │
-└── results_final/                  # Final experiment outputs (JSON)
-    ├── comparison_A_vs_B.json
-    ├── lambda_phase_transition.json
-    ├── phase_diagram.json
-    ├── control_phase_diagram.json
-    └── ...
+└── results_final/
 ```
 
 ---
@@ -159,6 +158,7 @@ The hidden state spontaneously extracts a low-dimensional controllability subspa
 3. Transition is discrete; its trigger can be either external (loss scale) or internal (rollout comparison)
 4. Separation via state distribution, not gradients
 5. Hidden states spontaneously encode controllability in low-dimensional subspaces causally necessary for adaptive behavior
+6. Representation rank is jointly determined by task intrinsic dimensionality and coupling-induced contraction: coupling provides the upper bound through spectral suppression, while task structure provides the lower bound through the minimal dimensionality required for optimal control. In low-dimensional tasks, rank-1 is overdetermined; in high-dimensional tasks, the final rank reflects the balance between task expansion and coupling contraction.
 
 ---
 
@@ -167,6 +167,7 @@ The hidden state spontaneously extracts a low-dimensional controllability subspa
 * Low-dimensional validation
 * No analytic prediction of emergence bands
 * Intrinsic boundary recognition confirmed only in binary drift interval environment
+* Representation rank is currently evaluated only in a 1D double-well task; the interaction between task intrinsic dimensionality and coupling-induced spectral constraints has not been quantitatively mapped in higher-dimensional environments
 * No guarantee of global optimality
 
 ---
@@ -179,9 +180,10 @@ The hidden state spontaneously extracts a low-dimensional controllability subspa
 4. Long-term behavior in non-stationary settings
 5. Multi-agent coordination
 6. Minimum viable closed-loop system
+7. Interaction between task intrinsic dimensionality and coupling-induced spectral constraints
 
 ---
 
 ## Core Result
 
-> **Closed-loop stability is maintained by tracking in uncontrollable regimes and by constraining in controllable regimes. A system trained solely to predict can endogenously learn to perceive environmental controllability through real-environment interaction, extract it into a low-dimensional hidden subspace causally necessary for behavior, and switch between behavioral modes without external rewards or loss weights. The principle of intrinsic boundary condition recognition has been validated in low-dimensional settings; generalization remains open.**
+> **Closed-loop stability is maintained by tracking in uncontrollable regimes and by constraining in controllable regimes. A system trained solely to predict can endogenously learn to perceive environmental controllability through real-environment interaction, extract it into a low-dimensional hidden subspace causally necessary for behavior, and switch between behavioral modes without external rewards or loss weights. Representation structure is jointly determined by task intrinsic dimensionality and coupling-induced spectral constraints. The principle of intrinsic boundary condition recognition has been validated in low-dimensional settings; generalization remains open.**

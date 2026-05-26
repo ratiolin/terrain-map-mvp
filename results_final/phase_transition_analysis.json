@@ -1,0 +1,834 @@
+{
+  "exp1_dim32_101": {
+    "sweep": [
+      {
+        "alpha": 0.0,
+        "entropy": 0.0229,
+        "corr": 0.9564,
+        "top_pc_energy": 0.997,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.01,
+        "entropy": 0.0201,
+        "corr": 0.982,
+        "top_pc_energy": 0.9971,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.02,
+        "entropy": 1.0818,
+        "corr": 0.2125,
+        "top_pc_energy": 0.4796,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.03,
+        "entropy": 1.058,
+        "corr": 0.047,
+        "top_pc_energy": 0.5857,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.04,
+        "entropy": 0.5616,
+        "corr": -0.4427,
+        "top_pc_energy": 0.8587,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.05,
+        "entropy": 0.8483,
+        "corr": -0.3518,
+        "top_pc_energy": 0.7281,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.06,
+        "entropy": 0.442,
+        "corr": -0.5784,
+        "top_pc_energy": 0.9033,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.07,
+        "entropy": 1.0386,
+        "corr": -0.3041,
+        "top_pc_energy": 0.6162,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.08,
+        "entropy": 0.9018,
+        "corr": -0.0956,
+        "top_pc_energy": 0.7067,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.09,
+        "entropy": 0.0135,
+        "corr": 0.9814,
+        "top_pc_energy": 0.9982,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.1,
+        "entropy": 0.0031,
+        "corr": 0.9925,
+        "top_pc_energy": 0.9997,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.11,
+        "entropy": 0.0013,
+        "corr": 0.9783,
+        "top_pc_energy": 0.9999,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.12,
+        "entropy": 0.0292,
+        "corr": 0.9676,
+        "top_pc_energy": 0.9956,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.13,
+        "entropy": 0.0181,
+        "corr": 0.9533,
+        "top_pc_energy": 0.9977,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.14,
+        "entropy": 1.0229,
+        "corr": -0.3042,
+        "top_pc_energy": 0.6634,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.15,
+        "entropy": 0.031,
+        "corr": 0.9687,
+        "top_pc_energy": 0.9952,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.16,
+        "entropy": 1.0819,
+        "corr": -0.362,
+        "top_pc_energy": 0.5947,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.17,
+        "entropy": 1.0265,
+        "corr": 0.365,
+        "top_pc_energy": 0.4819,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.18,
+        "entropy": 1.0781,
+        "corr": -0.3988,
+        "top_pc_energy": 0.5084,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.19,
+        "entropy": 0.9828,
+        "corr": -0.1702,
+        "top_pc_energy": 0.624,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.2,
+        "entropy": 0.005,
+        "corr": 0.9874,
+        "top_pc_energy": 0.9995,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.21,
+        "entropy": 0.0059,
+        "corr": 0.9872,
+        "top_pc_energy": 0.9993,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.22,
+        "entropy": 0.6606,
+        "corr": -0.2137,
+        "top_pc_energy": 0.816,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.23,
+        "entropy": 1.2077,
+        "corr": 0.1157,
+        "top_pc_energy": 0.4835,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.24,
+        "entropy": 0.8116,
+        "corr": 0.0146,
+        "top_pc_energy": 0.703,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.25,
+        "entropy": 0.0128,
+        "corr": 0.9875,
+        "top_pc_energy": 0.9983,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.26,
+        "entropy": 1.2588,
+        "corr": 0.1664,
+        "top_pc_energy": 0.3619,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.27,
+        "entropy": 0.872,
+        "corr": -0.2888,
+        "top_pc_energy": 0.5736,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.28,
+        "entropy": 0.6404,
+        "corr": -0.42,
+        "top_pc_energy": 0.8275,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.29,
+        "entropy": 0.631,
+        "corr": -0.1628,
+        "top_pc_energy": 0.8231,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.3,
+        "entropy": 1.0251,
+        "corr": 0.1062,
+        "top_pc_energy": 0.5778,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.31,
+        "entropy": 0.4089,
+        "corr": -0.3974,
+        "top_pc_energy": 0.9045,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.32,
+        "entropy": 0.0168,
+        "corr": 0.9844,
+        "top_pc_energy": 0.9977,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.33,
+        "entropy": 0.0042,
+        "corr": 0.9923,
+        "top_pc_energy": 0.9995,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.34,
+        "entropy": 0.0162,
+        "corr": 0.984,
+        "top_pc_energy": 0.9978,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.35000000000000003,
+        "entropy": 1.0361,
+        "corr": 0.3156,
+        "top_pc_energy": 0.4889,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.36,
+        "entropy": 0.0216,
+        "corr": 0.9549,
+        "top_pc_energy": 0.9969,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.37,
+        "entropy": 0.0199,
+        "corr": 0.98,
+        "top_pc_energy": 0.9972,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.38,
+        "entropy": 0.0105,
+        "corr": 0.9878,
+        "top_pc_energy": 0.9987,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.39,
+        "entropy": 1.1388,
+        "corr": 0.009,
+        "top_pc_energy": 0.5251,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.4,
+        "entropy": 0.8438,
+        "corr": -0.1728,
+        "top_pc_energy": 0.7581,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.41000000000000003,
+        "entropy": 0.0186,
+        "corr": 0.9738,
+        "top_pc_energy": 0.9974,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.42,
+        "entropy": 1.1982,
+        "corr": -0.3323,
+        "top_pc_energy": 0.4502,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.43,
+        "entropy": 1.1842,
+        "corr": -0.1601,
+        "top_pc_energy": 0.4795,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.44,
+        "entropy": 0.0111,
+        "corr": 0.9774,
+        "top_pc_energy": 0.9986,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.45,
+        "entropy": 0.0171,
+        "corr": 0.9871,
+        "top_pc_energy": 0.9976,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.46,
+        "entropy": 0.0164,
+        "corr": 0.9811,
+        "top_pc_energy": 0.9977,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.47000000000000003,
+        "entropy": 0.0015,
+        "corr": 0.9915,
+        "top_pc_energy": 0.9999,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.48,
+        "entropy": 0.6618,
+        "corr": -0.2894,
+        "top_pc_energy": 0.8176,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.49,
+        "entropy": 0.0236,
+        "corr": 0.9734,
+        "top_pc_energy": 0.9965,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.5,
+        "entropy": 0.0124,
+        "corr": 0.9831,
+        "top_pc_energy": 0.9984,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.51,
+        "entropy": 0.901,
+        "corr": -0.4756,
+        "top_pc_energy": 0.6531,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.52,
+        "entropy": 1.0461,
+        "corr": -0.0829,
+        "top_pc_energy": 0.6492,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.53,
+        "entropy": 0.0025,
+        "corr": 0.992,
+        "top_pc_energy": 0.9998,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.54,
+        "entropy": 0.0082,
+        "corr": 0.9874,
+        "top_pc_energy": 0.999,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.55,
+        "entropy": 0.6272,
+        "corr": -0.2029,
+        "top_pc_energy": 0.8204,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.56,
+        "entropy": 0.0204,
+        "corr": 0.9762,
+        "top_pc_energy": 0.9971,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.5700000000000001,
+        "entropy": 0.0126,
+        "corr": 0.9818,
+        "top_pc_energy": 0.9983,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.58,
+        "entropy": 0.9274,
+        "corr": 0.0764,
+        "top_pc_energy": 0.6409,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.59,
+        "entropy": 0.8095,
+        "corr": -0.0253,
+        "top_pc_energy": 0.7252,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.6,
+        "entropy": 1.1038,
+        "corr": -0.2307,
+        "top_pc_energy": 0.5729,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.61,
+        "entropy": 1.1439,
+        "corr": 0.2851,
+        "top_pc_energy": 0.4071,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.62,
+        "entropy": 0.4389,
+        "corr": -0.5305,
+        "top_pc_energy": 0.9019,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.63,
+        "entropy": 0.0211,
+        "corr": 0.9851,
+        "top_pc_energy": 0.9969,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.64,
+        "entropy": 0.7597,
+        "corr": -0.4769,
+        "top_pc_energy": 0.7789,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.65,
+        "entropy": 0.0123,
+        "corr": 0.9898,
+        "top_pc_energy": 0.9984,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.66,
+        "entropy": 0.8612,
+        "corr": 0.1459,
+        "top_pc_energy": 0.6943,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.67,
+        "entropy": 0.859,
+        "corr": -0.3588,
+        "top_pc_energy": 0.7385,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.68,
+        "entropy": 0.4738,
+        "corr": -0.5712,
+        "top_pc_energy": 0.8929,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.6900000000000001,
+        "entropy": 1.1594,
+        "corr": -0.3373,
+        "top_pc_energy": 0.5025,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.7000000000000001,
+        "entropy": 0.0205,
+        "corr": 0.9827,
+        "top_pc_energy": 0.9971,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.71,
+        "entropy": 0.0108,
+        "corr": 0.9687,
+        "top_pc_energy": 0.9986,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.72,
+        "entropy": 1.2658,
+        "corr": 0.3261,
+        "top_pc_energy": 0.4186,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.73,
+        "entropy": 0.5876,
+        "corr": -0.3131,
+        "top_pc_energy": 0.8475,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.74,
+        "entropy": 0.007,
+        "corr": 0.9818,
+        "top_pc_energy": 0.9992,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.75,
+        "entropy": 0.006,
+        "corr": 0.9825,
+        "top_pc_energy": 0.9993,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.76,
+        "entropy": 0.0145,
+        "corr": 0.9792,
+        "top_pc_energy": 0.998,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.77,
+        "entropy": 1.1398,
+        "corr": -0.1626,
+        "top_pc_energy": 0.6067,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.78,
+        "entropy": 0.6611,
+        "corr": -0.4152,
+        "top_pc_energy": 0.8211,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.79,
+        "entropy": 0.0075,
+        "corr": 0.9864,
+        "top_pc_energy": 0.9991,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.8,
+        "entropy": 0.7676,
+        "corr": -0.2658,
+        "top_pc_energy": 0.7797,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.81,
+        "entropy": 0.014,
+        "corr": 0.9874,
+        "top_pc_energy": 0.9981,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.8200000000000001,
+        "entropy": 1.0995,
+        "corr": 0.1246,
+        "top_pc_energy": 0.5018,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.8300000000000001,
+        "entropy": 0.005,
+        "corr": 0.9823,
+        "top_pc_energy": 0.9995,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.84,
+        "entropy": 0.0182,
+        "corr": 0.9803,
+        "top_pc_energy": 0.9974,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.85,
+        "entropy": 0.9261,
+        "corr": -0.1538,
+        "top_pc_energy": 0.6671,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.86,
+        "entropy": 0.0175,
+        "corr": 0.986,
+        "top_pc_energy": 0.9976,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.87,
+        "entropy": 0.8519,
+        "corr": -0.3002,
+        "top_pc_energy": 0.7478,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.88,
+        "entropy": 0.0129,
+        "corr": 0.986,
+        "top_pc_energy": 0.9983,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.89,
+        "entropy": 0.0277,
+        "corr": 0.9768,
+        "top_pc_energy": 0.9958,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.9,
+        "entropy": 1.1157,
+        "corr": 0.3482,
+        "top_pc_energy": 0.4646,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.91,
+        "entropy": 0.376,
+        "corr": -0.6591,
+        "top_pc_energy": 0.9208,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.92,
+        "entropy": 0.7598,
+        "corr": -0.094,
+        "top_pc_energy": 0.76,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.93,
+        "entropy": 0.0122,
+        "corr": 0.9828,
+        "top_pc_energy": 0.9985,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.9400000000000001,
+        "entropy": 0.8978,
+        "corr": 0.0624,
+        "top_pc_energy": 0.6595,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.9500000000000001,
+        "entropy": 0.0231,
+        "corr": 0.9611,
+        "top_pc_energy": 0.9967,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.96,
+        "entropy": 0.0181,
+        "corr": 0.973,
+        "top_pc_energy": 0.9975,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.97,
+        "entropy": 1.079,
+        "corr": -0.0873,
+        "top_pc_energy": 0.5668,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 0.98,
+        "entropy": 0.014,
+        "corr": 0.9879,
+        "top_pc_energy": 0.9981,
+        "sign_dominant": 1
+      },
+      {
+        "alpha": 0.99,
+        "entropy": 1.0863,
+        "corr": 0.0093,
+        "top_pc_energy": 0.53,
+        "sign_dominant": -1
+      },
+      {
+        "alpha": 1.0,
+        "entropy": 0.0127,
+        "corr": 0.9851,
+        "top_pc_energy": 0.9983,
+        "sign_dominant": 1
+      }
+    ],
+    "derivatives": {
+      "dH_max_alpha": [
+        0.73,
+        1.0
+      ],
+      "dC_max_alpha": [
+        0.92,
+        1.0
+      ]
+    },
+    "collapse_alphas": [
+      0.1,
+      0.11,
+      0.2,
+      0.21,
+      0.33,
+      0.47,
+      0.53,
+      0.54,
+      0.74,
+      0.75,
+      0.79,
+      0.83
+    ],
+    "sign_flip_alphas": [
+      0.03,
+      0.08,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.19,
+      0.21,
+      0.22,
+      0.26,
+      0.29,
+      0.3,
+      0.31,
+      0.39,
+      0.4,
+      0.41,
+      0.43,
+      0.47,
+      0.48,
+      0.5,
+      0.52,
+      0.54,
+      0.55,
+      0.58,
+      0.6,
+      0.61,
+      0.62,
+      0.63,
+      0.64,
+      0.66,
+      0.69,
+      0.72,
+      0.73,
+      0.76,
+      0.78,
+      0.79,
+      0.8,
+      0.84,
+      0.85,
+      0.86,
+      0.87,
+      0.9,
+      0.92,
+      0.96,
+      0.97
+    ]
+  },
+  "dim_8_sweep": {
+    "dim": 8,
+    "n_collapses": 0,
+    "n_sign_flips": 28,
+    "entropy_range": 0.25,
+    "criticality_score": 28.25
+  },
+  "dim_16_sweep": {
+    "dim": 16,
+    "n_collapses": 0,
+    "n_sign_flips": 23,
+    "entropy_range": 0.27,
+    "criticality_score": 23.27
+  },
+  "dim_24_sweep": {
+    "dim": 24,
+    "n_collapses": 0,
+    "n_sign_flips": 0,
+    "entropy_range": 0.72,
+    "criticality_score": 0.72
+  },
+  "dim_32_sweep": {
+    "dim": 32,
+    "n_collapses": 6,
+    "n_sign_flips": 20,
+    "entropy_range": 1.2,
+    "criticality_score": 27.2
+  },
+  "dim_48_sweep": {
+    "dim": 48,
+    "n_collapses": 0,
+    "n_sign_flips": 26,
+    "entropy_range": 0.84,
+    "criticality_score": 26.84
+  },
+  "dim_64_sweep": {
+    "dim": 64,
+    "n_collapses": 0,
+    "n_sign_flips": 0,
+    "entropy_range": 0.6,
+    "criticality_score": 0.6
+  },
+  "dim_96_sweep": {
+    "dim": 96,
+    "n_collapses": 0,
+    "n_sign_flips": 0,
+    "entropy_range": 0.99,
+    "criticality_score": 0.99
+  }
+}

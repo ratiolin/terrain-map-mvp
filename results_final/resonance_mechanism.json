@@ -1,0 +1,106 @@
+{
+  "alpha_0.0": {
+    "exp1_spectral": {
+      "min_singular": 2.3183649108374823e-17,
+      "max_singular": 12.68578815460205,
+      "condition_number": 1268578816.0,
+      "effective_rank": 1,
+      "sv_ratio_top5": 1.0
+    },
+    "exp2_alignment": {
+      "alignment": 0.3512727824514611,
+      "top4_dims": [
+        9,
+        29,
+        14,
+        27
+      ]
+    },
+    "exp3_orthogonal": {
+      "R2_sub": 0.9858,
+      "R2_orth": 0.9931,
+      "leakage_ratio": 1.01
+    },
+    "exp4_linear": {
+      "R2_H_to_A": 1.0
+    }
+  },
+  "alpha_0.4": {
+    "exp1_spectral": {
+      "min_singular": 2.3183649108374823e-17,
+      "max_singular": 12.68578815460205,
+      "condition_number": 1268578816.0,
+      "effective_rank": 1,
+      "sv_ratio_top5": 1.0
+    },
+    "exp2_alignment": {
+      "alignment": 0.40579357900689905,
+      "top4_dims": [
+        13,
+        19,
+        2,
+        17
+      ]
+    },
+    "exp3_orthogonal": {
+      "R2_sub": 0.9998,
+      "R2_orth": 1.0,
+      "leakage_ratio": 1.0
+    },
+    "exp4_linear": {
+      "R2_H_to_A": 1.0
+    }
+  },
+  "alpha_0.8": {
+    "exp1_spectral": {
+      "min_singular": 2.3183649108374823e-17,
+      "max_singular": 12.68578815460205,
+      "condition_number": 1268578816.0,
+      "effective_rank": 1,
+      "sv_ratio_top5": 1.0
+    },
+    "exp2_alignment": {
+      "alignment": 0.26736076604531184,
+      "top4_dims": [
+        18,
+        28,
+        19,
+        2
+      ]
+    },
+    "exp3_orthogonal": {
+      "R2_sub": 0.9996,
+      "R2_orth": 1.0,
+      "leakage_ratio": 1.0
+    },
+    "exp4_linear": {
+      "R2_H_to_A": 1.0
+    }
+  },
+  "alpha_1.0": {
+    "exp1_spectral": {
+      "min_singular": 2.3183649108374823e-17,
+      "max_singular": 12.68578815460205,
+      "condition_number": 1268578816.0,
+      "effective_rank": 1,
+      "sv_ratio_top5": 1.0
+    },
+    "exp2_alignment": {
+      "alignment": 0.26736076604531184,
+      "top4_dims": [
+        28,
+        18,
+        19,
+        2
+      ]
+    },
+    "exp3_orthogonal": {
+      "R2_sub": 0.9997,
+      "R2_orth": 1.0,
+      "leakage_ratio": 1.0
+    },
+    "exp4_linear": {
+      "R2_H_to_A": 1.0
+    }
+  }
+}

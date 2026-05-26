@@ -1,7 +1,9 @@
+import json
 import random
 import copy
 import math
 from collections import deque
+from pathlib import Path
 
 import numpy as np
 import torch
@@ -121,7 +123,7 @@ class ExperimentConfig:
         self.eps = 1e-6
 
 
-def train(config=None):
+def train(config=None, save_tag=None):
     if config is None:
         config = ExperimentConfig()
 
@@ -183,6 +185,8 @@ def train(config=None):
         "switch_event": [], "theta": [],
     }
 
+    trajectory = []
+
     for episode in range(config.num_episodes):
         env.reset()
         for _ in range(config.episode_length):
@@ -190,7 +194,7 @@ def train(config=None):
             risk_t = abs(float(state_t[0]))
             state_t_tensor = torch.tensor(state_t, dtype=torch.float32).unsqueeze(0)
 
-            action_shape_t, action_adapt_t, _ = policy_net(state_t_tensor)
+            action_shape_t, action_adapt_t, h = policy_net(state_t_tensor)
 
             if mode == Mode.SHAPE:
                 action_t = action_shape_t
@@ -345,6 +349,24 @@ def train(config=None):
             logs["survival_event"].append(survival_event)
             logs["switch_event"].append(int(switched))
             logs["theta"].append(theta_val)
+
+            trajectory.append({
+                "state": state_t.tolist(),
+                "action": [action_val],
+                "hidden_state": h.detach().cpu().numpy().tolist(),
+                "env_state": env.get_state(),
+                "drift": env.current_drift,
+                "controllability": controllability,
+            })
+
+    results_dir = Path("results_final")
+    results_dir.mkdir(exist_ok=True)
+    tag = f"_{save_tag}" if save_tag else ""
+    trajectory_path = results_dir / f"phase0_full_trajectory{tag}.json"
+    with open(trajectory_path, "w") as f:
+        json.dump(trajectory, f)
+
+    torch.save(policy_net.state_dict(), results_dir / f"phase0_policy_net{tag}.pt")
 
     return logs, pred_net, policy_net, config
 

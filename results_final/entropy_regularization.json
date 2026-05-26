@@ -1,0 +1,37 @@
+[
+  {
+    "lambda": 0.0,
+    "entropy": 0.0298,
+    "corr": 0.9661
+  },
+  {
+    "lambda": 0.01,
+    "entropy": 0.5609,
+    "corr": -0.4499
+  },
+  {
+    "lambda": 0.05,
+    "entropy": 0.4285,
+    "corr": -0.4978
+  },
+  {
+    "lambda": 0.1,
+    "entropy": 1.0459,
+    "corr": -0.0727
+  },
+  {
+    "lambda": 0.5,
+    "entropy": 0.003,
+    "corr": 0.9915
+  },
+  {
+    "lambda": 1.0,
+    "entropy": 0.0225,
+    "corr": 0.964
+  },
+  {
+    "lambda": 5.0,
+    "entropy": 0.3678,
+    "corr": 0.99
+  }
+]
