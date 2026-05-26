@@ -1,0 +1,26 @@
+{
+  "action_cos_sim": 0.9865359031686751,
+  "segment_cos_sim": [
+    0.9985819043215849,
+    0.9938662538144348,
+    0.9989246817371682,
+    0.9933328182193496
+  ],
+  "action_similarity_threshold": 0.7,
+  "action_similar": true,
+  "n_switches_A": 0,
+  "n_switches_B": 0,
+  "mean_temporal_distance_steps": 0.0,
+  "temporal_distance_pct": 0.0,
+  "switch_timing_threshold_pct": 10.0,
+  "in_zone_rate_A": 1.0,
+  "in_zone_rate_B": 1.0,
+  "mean_risk_A": 1.0041104555130005,
+  "mean_risk_B": 0.92262864112854,
+  "mean_risk_difference": 0.08148181438446045,
+  "risk_low_drift_A": 0.8670043349266052,
+  "risk_low_drift_B": 0.773750364780426,
+  "risk_high_drift_A": 1.1412853002548218,
+  "risk_high_drift_B": 1.0715816020965576,
+  "behaviorally_consistent": true
+}

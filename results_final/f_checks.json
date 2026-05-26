@@ -1,0 +1,35 @@
+{
+  "F_check_1_tautological": {
+    "pass_low": true,
+    "pass_high": true,
+    "delta_low": 1.0590820886946517e-08,
+    "delta_high": 6.119435291829234e-08,
+    "note": "alignment(Q@U_old, Q@J) == alignment(U_old, J) \u2014 tautology"
+  },
+  "F_check_1_new_probe": {
+    "alignment_original_low": 0.5464052331655967,
+    "alignment_new_low": 0.1873794384425675,
+    "delta_low": 0.35902579472302926,
+    "pass_low": false,
+    "alignment_original_high": 0.9897883880096763,
+    "alignment_new_high": 0.04234159818605819,
+    "delta_high": 0.9474467898236181,
+    "pass_high": false,
+    "note": "comparing alignment of NEW probed U vs original U"
+  },
+  "F_check_2": {
+    "pass_low": true,
+    "pass_high": true,
+    "max_svd_delta_low": 2.8188654965788373e-08,
+    "max_svd_delta_high": 4.001029019207181e-08,
+    "note": "svd(J) == svd(Q@J) \u2014 must pass (orthogonal inv of singular vals)"
+  },
+  "F_check_3": {
+    "pass_low": false,
+    "pass_high": false,
+    "max_delta_low": 0.813304548878044,
+    "max_delta_high": 0.9416927849166281,
+    "note": "P_new == Q @ P_old @ Q^T \u2014 tests if new-probe U = Q @ U_old"
+  },
+  "all_pass": false
+}

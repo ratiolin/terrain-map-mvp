@@ -1,0 +1,57 @@
+{
+  "global": {
+    "angles_deg": [
+      90.0,
+      90.0,
+      67.399658203125,
+      43.284427642822266,
+      6.519508361816406
+    ],
+    "mean_angle": 59.44071578979492,
+    "max_angle": 90.0,
+    "frobenius_norm": 1.2902401685714722,
+    "alignment_normalized": 0.5770129448453198
+  },
+  "by_drift": {
+    "low_drift": {
+      "angles_deg": [
+        90.0,
+        90.0,
+        51.20636749267578,
+        13.539473533630371,
+        3.234221935272217
+      ],
+      "mean_angle": 49.596012115478516,
+      "max_angle": 90.0,
+      "frobenius_norm": 1.5279170274734497,
+      "alignment_normalized": 0.6833052674820094
+    },
+    "high_drift": {
+      "angles_deg": [
+        89.9720230102539,
+        90.0,
+        90.0,
+        53.51840591430664,
+        4.089308738708496
+      ],
+      "mean_angle": 65.51594543457031,
+      "max_angle": 90.0,
+      "frobenius_norm": 1.1612156629562378,
+      "alignment_normalized": 0.5193114317815264
+    }
+  },
+  "random_baseline": {
+    "n_random": 1000,
+    "mean_random_alignment": 0.39083046277499717,
+    "std_random_alignment": 0.04568494369489376,
+    "mean_random_angle": 69.9954462798032,
+    "std_random_angle": 2.841346925032534,
+    "z_alignment": 4.075356698700833,
+    "p_alignment": 0.0,
+    "z_angle": 3.7146926198533476,
+    "p_angle": 0.0
+  },
+  "shared_geometric_subspace": false,
+  "top_k": 5,
+  "epsilon": 0.0001
+}

@@ -1,0 +1,9 @@
+{
+  "case": "UNCERTAIN",
+  "inputs": {
+    "mean_angle": 25.2,
+    "max_angle": 90.0,
+    "max_percentile": 100.0,
+    "align_significant": true
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "original": {
+    "num_clusters": 3,
+    "silhouette": 0.6052464989950044,
+    "intra_angle": 19.40963855421687,
+    "inter_angle": 65.79933110367892,
+    "jacobian_alignment_low": 0.5464052331655967,
+    "jacobian_alignment_high": 0.9897883880096763
+  },
+  "transformed": {
+    "num_clusters": 2,
+    "silhouette": 0.5319126706478814,
+    "intra_angle": 40.83116883116883,
+    "inter_angle": 78.0,
+    "jacobian_alignment_low": 0.18737943844262653,
+    "jacobian_alignment_high": 0.04234159818600631
+  },
+  "K_preserved": true,
+  "silhouette_ok": true,
+  "ratio_ok": false,
+  "jacobian_alignment_preserved_low": false,
+  "jacobian_alignment_preserved_high": false,
+  "representation_invariant": false,
+  "Q_orthogonal": true
+}

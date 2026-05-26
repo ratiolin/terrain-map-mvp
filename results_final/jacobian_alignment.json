@@ -1,0 +1,24 @@
+{
+  "high_drift": {
+    "alignment": 0.9893728635397551,
+    "z_score": 5.3135210821685,
+    "percentile": 100.0,
+    "significant": true,
+    "mean_random": 0.38439675241543597,
+    "std_random": 0.1138559726721593,
+    "n_random": 1000,
+    "top_k": 5,
+    "epsilon": 0.0001
+  },
+  "low_drift": {
+    "alignment": 0.5430292502803311,
+    "z_score": 1.4650440353118102,
+    "percentile": 92.2,
+    "significant": false,
+    "mean_random": 0.37642436370073834,
+    "std_random": 0.1137200538440701,
+    "n_random": 1000,
+    "top_k": 5,
+    "epsilon": 0.0001
+  }
+}

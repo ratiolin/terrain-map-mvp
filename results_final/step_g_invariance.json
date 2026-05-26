@@ -1,0 +1,34 @@
+{
+  "methods": {
+    "axis_probe": {
+      "alignment_orig": 0.6847330704932256,
+      "alignment_direct": 0.6847330836397133,
+      "alignment_new": 0.16019036721447996,
+      "delta_direct": 1.314648767625215e-08,
+      "delta_new": 0.5245427032787456,
+      "overlap_frac": 0.4086058404412638,
+      "invariant": false
+    },
+    "svd_jacobian": {
+      "alignment_orig": 0.999997615814209,
+      "alignment_direct": 0.9999976383682467,
+      "alignment_new": 0.9999976383235665,
+      "delta_direct": 2.2554037748534483e-08,
+      "delta_new": 2.250935748904226e-08,
+      "overlap_frac": 1.0000000012522716,
+      "invariant": true
+    },
+    "pls_hidden_ctrl": {
+      "alignment_orig": 0.9021383384844086,
+      "alignment_direct": 0.9021383362372098,
+      "alignment_new": 0.845792882398897,
+      "delta_direct": 2.247198760407798e-09,
+      "delta_new": 0.05634545608551156,
+      "overlap_frac": 0.728394246047451,
+      "invariant": false
+    }
+  },
+  "geometric_subspace_exists": true,
+  "top_k": 5,
+  "Q_orthogonal": true
+}

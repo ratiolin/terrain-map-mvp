@@ -1,0 +1,71 @@
+{
+  "dimensions_scanned": [
+    16,
+    32,
+    64,
+    128
+  ],
+  "results": [
+    {
+      "hidden_dim": 16,
+      "num_clusters": 2,
+      "silhouette": 0.6240992735603312,
+      "intra_angle": 12.689155106641808,
+      "inter_angle": 34.799885988235474,
+      "ratio": 2.7424903918619035,
+      "mutual_info": 0.6909233093138181,
+      "structure_present": true,
+      "mean_step_jacobian_angle": 11.008376593764563,
+      "jacobian_alignment_high": 0.9999998211860657,
+      "n_windows": 15,
+      "jacobian_count": 400
+    },
+    {
+      "hidden_dim": 32,
+      "num_clusters": 2,
+      "silhouette": 0.5890965813241027,
+      "intra_angle": 15.132015632123363,
+      "inter_angle": 38.869909865515574,
+      "ratio": 2.5687199104732916,
+      "mutual_info": 0.48997922331038474,
+      "structure_present": true,
+      "mean_step_jacobian_angle": 4.014120365201232,
+      "jacobian_alignment_high": 0.9999999403953552,
+      "n_windows": 15,
+      "jacobian_count": 400
+    },
+    {
+      "hidden_dim": 64,
+      "num_clusters": 2,
+      "silhouette": 0.6847949215917205,
+      "intra_angle": 16.804700470700556,
+      "inter_angle": 55.64735187802996,
+      "ratio": 3.3114158709307815,
+      "mutual_info": 0.48997922331038474,
+      "structure_present": true,
+      "mean_step_jacobian_angle": 10.104755076773483,
+      "jacobian_alignment_high": 0.9999998807907104,
+      "n_windows": 15,
+      "jacobian_count": 400
+    },
+    {
+      "hidden_dim": 128,
+      "num_clusters": 2,
+      "silhouette": 0.7720618112374006,
+      "intra_angle": 15.678109164140663,
+      "inter_angle": 67.64766413824898,
+      "ratio": 4.314784607433813,
+      "mutual_info": 0.6909233093138181,
+      "structure_present": true,
+      "mean_step_jacobian_angle": 15.12504274467179,
+      "jacobian_alignment_high": 1.0,
+      "n_windows": 15,
+      "jacobian_count": 400
+    }
+  ],
+  "capacity_threshold": 16,
+  "total_steps": 4000,
+  "top_k": 5,
+  "window": 500,
+  "stride": 250
+}

@@ -1,0 +1,9 @@
+{
+  "n_segments": 16,
+  "segment_length": 500,
+  "mean_alignment": 0.8814684040531954,
+  "std_alignment": 0.05432132835961417,
+  "min_alignment": 0.7745987345074279,
+  "max_alignment": 1.000000014682206,
+  "stability": "stable"
+}

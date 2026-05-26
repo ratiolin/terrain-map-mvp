@@ -1,0 +1,39 @@
+{
+  "num_clusters": 2,
+  "silhouette": 0.3,
+  "clusters": [
+    {
+      "cluster": 0,
+      "n_points": 450,
+      "correlations": {
+        "drift": {
+          "pearson_r": 0.1348345829859434,
+          "p_value": 0.004164646363920887
+        },
+        "risk": {
+          "pearson_r": 0.4052690034115339,
+          "p_value": 3.2319493654708256e-19
+        }
+      },
+      "best_signal": "risk",
+      "passes_continuity": true
+    },
+    {
+      "cluster": 1,
+      "n_points": 425,
+      "correlations": {
+        "drift": {
+          "pearson_r": 0.27709059470001024,
+          "p_value": 6.258907618879338e-09
+        },
+        "risk": {
+          "pearson_r": 0.29570693482806565,
+          "p_value": 5.041999061208687e-10
+        }
+      },
+      "best_signal": "risk",
+      "passes_continuity": false
+    }
+  ],
+  "majority_passes": false
+}

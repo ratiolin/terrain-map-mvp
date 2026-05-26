@@ -1,0 +1,29 @@
+{
+  "original": {
+    "k_80": 2,
+    "top_svals": [
+      10.509464263916016,
+      2.1518781185150146,
+      0.7499964237213135,
+      0.45422855019569397,
+      0.23750688135623932
+    ]
+  },
+  "shuffled": {
+    "k_80": 3,
+    "top_svals": [
+      2.956239938735962,
+      1.462725281715393,
+      0.47204887866973877,
+      0.2305939942598343,
+      0.20860682427883148
+    ]
+  },
+  "alignment_orig_vs_shuffled": 0.3835674728919089,
+  "random_baseline_mean_alignment": 0.3926308005541122,
+  "shuffled_clustering_silhouette": -1.0,
+  "shuffled_clustering_ratio": 2.026163226973958,
+  "spectrum_collapsed": false,
+  "alignment_degraded": true,
+  "structure_from_learning_not_architecture": true
+}

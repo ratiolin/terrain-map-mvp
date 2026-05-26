@@ -1,0 +1,133 @@
+{
+  "agent_A": {
+    "num_clusters": 3,
+    "labels": [
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "silhouette": 0.6052464989950044
+  },
+  "agent_B": {
+    "num_clusters": 3,
+    "labels": [
+      2,
+      1,
+      1,
+      1,
+      0,
+      0,
+      2,
+      0,
+      2,
+      2,
+      0,
+      2,
+      2,
+      2,
+      2,
+      0,
+      1,
+      1,
+      0,
+      2,
+      2,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1
+    ],
+    "silhouette": 0.7288123552000381
+  },
+  "cross_agent_alignments": {
+    "A_cluster0_vs_B_cluster0": {
+      "alignment": 0.0,
+      "z_score": -8.179370803022088,
+      "percentile": 0.0,
+      "consistent": false
+    },
+    "A_cluster0_vs_B_cluster1": {
+      "alignment": 0.0,
+      "z_score": -8.245721293249,
+      "percentile": 0.0,
+      "consistent": false
+    },
+    "A_cluster0_vs_B_cluster2": {
+      "alignment": 0.0,
+      "z_score": -8.316668130069534,
+      "percentile": 0.0,
+      "consistent": false
+    },
+    "A_cluster1_vs_B_cluster0": {
+      "alignment": 0.0,
+      "z_score": -8.272472615127796,
+      "percentile": 0.0,
+      "consistent": false
+    },
+    "A_cluster1_vs_B_cluster1": {
+      "alignment": 0.0,
+      "z_score": -8.583166576030392,
+      "percentile": 0.0,
+      "consistent": false
+    },
+    "A_cluster1_vs_B_cluster2": {
+      "alignment": 0.0,
+      "z_score": -8.424987862153031,
+      "percentile": 0.0,
+      "consistent": false
+    },
+    "A_cluster2_vs_B_cluster0": {
+      "alignment": 1.0,
+      "z_score": 1.1438233953129577,
+      "percentile": 86.9,
+      "consistent": false
+    },
+    "A_cluster2_vs_B_cluster1": {
+      "alignment": 1.0,
+      "z_score": 1.0749698203239106,
+      "percentile": 86.2,
+      "consistent": false
+    },
+    "A_cluster2_vs_B_cluster2": {
+      "alignment": 1.0,
+      "z_score": 1.177083139097571,
+      "percentile": 88.6,
+      "consistent": false
+    }
+  },
+  "n_random_baseline": 1000
+}
