@@ -1,0 +1,120 @@
+{
+  "scores": {
+    "L3-2": false,
+    "L3-8": false,
+    "L3-3": false,
+    "L3-4": false,
+    "L3-5": false,
+    "L3-6": false,
+    "L3-7": false,
+    "L3-9": true
+  },
+  "n_pass": 1,
+  "n_total": 8,
+  "details": {
+    "L3-2": {
+      "emergence_rate": 1.0,
+      "mean_t_star": 288.625,
+      "std_t_star": 303.6906063331561,
+      "t_stars": [
+        19.0,
+        265.0,
+        200.0,
+        417.0,
+        1030.0,
+        200.0,
+        50.0,
+        128.0
+      ],
+      "pass": false
+    },
+    "L3-3": {
+      "phase1_action": 0.02018608677200973,
+      "phase2_action": 0.02553116843663156,
+      "phase1_risk": 0.5527388388511838,
+      "phase2_risk": 0.5317333052862007,
+      "phase3_risk": 0.5725080045346878,
+      "pass": false
+    },
+    "L3-4": {
+      "full": {
+        "mean_action": 0.01441260754239435,
+        "mean_risk": 0.5502578465475431
+      },
+      "noisy": {
+        "mean_action": 2.982055741497626,
+        "mean_risk": 244.44808812905234
+      },
+      "pass": false
+    },
+    "L3-5": {
+      "minimal_mean_risk": 14.84860095262629,
+      "open_risk": 0.058059685403148466,
+      "final_k": 0.1467166244983673,
+      "pass": false
+    },
+    "L3-6": {
+      "normal_risk": 241.97826391698416,
+      "shuffled_risk": 241.97826391698416,
+      "pass": false
+    },
+    "L3-7": {
+      "p1_risk": 0.5673332949124561,
+      "p2_risk": 0.14947373826042154,
+      "p3_risk": 0.04325224984037382,
+      "pass": false
+    },
+    "L3-8": {
+      "early_gain": 0.3010437263910091,
+      "late_gain": -0.013578139630052548,
+      "late_std": 0.37123343477325377,
+      "pass": false
+    },
+    "L3-9": {
+      "emergence_rate": 1.0,
+      "results": [
+        {
+          "seed": 0,
+          "t_star": 27,
+          "final_risk": 341.28318572411536
+        },
+        {
+          "seed": 1,
+          "t_star": 520,
+          "final_risk": 0.5039309157163068
+        },
+        {
+          "seed": 2,
+          "t_star": 100,
+          "final_risk": 340.29380683311086
+        },
+        {
+          "seed": 3,
+          "t_star": 566,
+          "final_risk": 0.5662757591169768
+        },
+        {
+          "seed": 4,
+          "t_star": 9,
+          "final_risk": 0.5114564590344001
+        },
+        {
+          "seed": 5,
+          "t_star": 200,
+          "final_risk": 115.97076469149592
+        },
+        {
+          "seed": 6,
+          "t_star": 100,
+          "final_risk": 226.91031511249622
+        },
+        {
+          "seed": 7,
+          "t_star": 90,
+          "final_risk": 227.72901958448307
+        }
+      ],
+      "pass": true
+    }
+  }
+}

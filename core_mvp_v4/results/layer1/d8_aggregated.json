@@ -1,0 +1,235 @@
+{
+  "per_seed": {
+    "0": {
+      "d": 8,
+      "seed": 0,
+      "r_closed": {
+        "r_max_abs": 0.17815328861315444,
+        "r_mean_abs": 0.09659155436621746
+      },
+      "r_pseudo": {
+        "r_max_abs": 0.06924493464161702,
+        "r_mean_abs": 0.04347694295121845
+      },
+      "dist_metrics": {
+        "w1_close_open": 0.0007177485302090646,
+        "w1_pseudo_open": 0.0,
+        "w2_close_open": 0.0009154222932159002,
+        "w2_pseudo_open": 2.4640479228129524e-09,
+        "pseudo_ratio": 2.691706266139416e-06
+      },
+      "gain": 0.0014293903950601816,
+      "grad_norm": 0.0741911381483078,
+      "action_norm_mean": 0.009960632771253586,
+      "action_norm_train_final": 0.025700919069582596,
+      "action_norm_train_std": 0.04098103668804429,
+      "best_lambda": 0.1,
+      "aborted": false,
+      "verdict": {
+        "pass_all": true,
+        "criteria": {
+          "c1_w2": {
+            "pass": true,
+            "value": 0.0009154222932159002
+          },
+          "c2_pseudo_ratio": {
+            "pass": true,
+            "value": 2.691706266139416e-06
+          },
+          "c3_correlation": {
+            "pass": true,
+            "r_closed": 0.17815328861315444,
+            "r_pseudo": 0.06924493464161702
+          },
+          "c4_grad_norm": {
+            "pass": true,
+            "value": 0.0741911381483078
+          },
+          "c5_gain": {
+            "pass": true,
+            "value": 0.0014293903950601816
+          },
+          "c6_action_norm": {
+            "pass": true,
+            "value": 0.009960632771253586
+          }
+        },
+        "fail_mode": "UNKNOWN"
+      }
+    },
+    "1": {
+      "d": 8,
+      "seed": 1,
+      "r_closed": {
+        "r_max_abs": 0.12133306133224532,
+        "r_mean_abs": 0.07599128796515185
+      },
+      "r_pseudo": {
+        "r_max_abs": 0.17506913647820524,
+        "r_mean_abs": 0.10349847247785328
+      },
+      "dist_metrics": {
+        "w1_close_open": 0.0006161005496978758,
+        "w1_pseudo_open": 0.0,
+        "w2_close_open": 0.000811325615467981,
+        "w2_pseudo_open": 0.0,
+        "pseudo_ratio": 0.0
+      },
+      "gain": 0.0017343774670735002,
+      "grad_norm": 0.03211497142910957,
+      "action_norm_mean": 0.011970204301178455,
+      "action_norm_train_final": 0.034328797142487016,
+      "action_norm_train_std": 0.042582756560140496,
+      "best_lambda": 0.1,
+      "aborted": false,
+      "verdict": {
+        "pass_all": false,
+        "criteria": {
+          "c1_w2": {
+            "pass": true,
+            "value": 0.000811325615467981
+          },
+          "c2_pseudo_ratio": {
+            "pass": true,
+            "value": 0.0
+          },
+          "c3_correlation": {
+            "pass": false,
+            "r_closed": 0.12133306133224532,
+            "r_pseudo": 0.17506913647820524
+          },
+          "c4_grad_norm": {
+            "pass": true,
+            "value": 0.03211497142910957
+          },
+          "c5_gain": {
+            "pass": true,
+            "value": 0.0017343774670735002
+          },
+          "c6_action_norm": {
+            "pass": true,
+            "value": 0.011970204301178455
+          }
+        },
+        "fail_mode": "LOW_CORRELATION: action-state correlation too weak."
+      }
+    },
+    "2": {
+      "d": 8,
+      "seed": 2,
+      "r_closed": {
+        "r_max_abs": 0.3277764151056604,
+        "r_mean_abs": 0.1940828723314893
+      },
+      "r_pseudo": {
+        "r_max_abs": 0.15555369794808058,
+        "r_mean_abs": 0.09374384922524931
+      },
+      "dist_metrics": {
+        "w1_close_open": 0.011303004056215286,
+        "w1_pseudo_open": 0.0,
+        "w2_close_open": 0.0160751093695903,
+        "w2_pseudo_open": 0.0,
+        "pseudo_ratio": 0.0
+      },
+      "gain": 0.01624579168856144,
+      "grad_norm": 0.008435836061835289,
+      "action_norm_mean": 0.09652385115623474,
+      "action_norm_train_final": 0.01841540141432779,
+      "action_norm_train_std": 0.014192774365672057,
+      "best_lambda": 0.1,
+      "aborted": false,
+      "verdict": {
+        "pass_all": true,
+        "criteria": {
+          "c1_w2": {
+            "pass": true,
+            "value": 0.0160751093695903
+          },
+          "c2_pseudo_ratio": {
+            "pass": true,
+            "value": 0.0
+          },
+          "c3_correlation": {
+            "pass": true,
+            "r_closed": 0.3277764151056604,
+            "r_pseudo": 0.15555369794808058
+          },
+          "c4_grad_norm": {
+            "pass": true,
+            "value": 0.008435836061835289
+          },
+          "c5_gain": {
+            "pass": true,
+            "value": 0.01624579168856144
+          },
+          "c6_action_norm": {
+            "pass": true,
+            "value": 0.09652385115623474
+          }
+        },
+        "fail_mode": "UNKNOWN"
+      }
+    }
+  },
+  "aggregated": {
+    "n_seeds": 3,
+    "n_active": 3,
+    "n_aborted": 0,
+    "r_closed_max_abs": {
+      "mean": 0.20908758835035338,
+      "std": 0.08707243250871466,
+      "n": 3
+    },
+    "r_pseudo_max_abs": {
+      "mean": 0.1332892563559676,
+      "std": 0.0459816589750319,
+      "n": 3
+    },
+    "w2_close_open": {
+      "mean": 0.005933952426091394,
+      "std": 0.007171006770046848,
+      "n": 3
+    },
+    "w2_pseudo_open": {
+      "mean": 8.213493076043174e-10,
+      "std": 1.161563330259777e-09,
+      "n": 3
+    },
+    "pseudo_ratio": {
+      "mean": 8.972354220464721e-07,
+      "std": 1.2688825024996686e-06,
+      "n": 3
+    },
+    "gain": {
+      "mean": 0.00646985318356504,
+      "std": 0.006913753660572875,
+      "n": 3
+    },
+    "grad_norm": {
+      "mean": 0.03824731521308422,
+      "std": 0.027192451996028277,
+      "n": 3
+    },
+    "action_norm": {
+      "mean": 0.03948489607622226,
+      "std": 0.040340974966719484,
+      "n": 3
+    },
+    "action_norm_train": {
+      "mean": 0.026148372542132467,
+      "std": 0.006504316610673345,
+      "n": 3
+    },
+    "pass_rate": {
+      "mean": 0.6666666666666666,
+      "std": 0.4714045207910317,
+      "n": 3
+    },
+    "fail_modes": {
+      "UNKNOWN": 2,
+      "LOW_CORRELATION: action-state correlation too weak.": 1
+    }
+  },
+  "lambda": 0.1
+}

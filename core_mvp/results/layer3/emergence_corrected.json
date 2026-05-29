@@ -1,0 +1,62 @@
+{
+  "scores": {
+    "L3-9": false,
+    "L3-2": true,
+    "L3-8": false,
+    "L3-3": false,
+    "L3-4": false,
+    "L3-6": false,
+    "L3-7": false,
+    "L3-5": true
+  },
+  "n_pass": 2,
+  "n_total": 8,
+  "details": {
+    "L3-9": {
+      "emergence_rate": 0.625,
+      "pass": "False"
+    },
+    "L3-2": {
+      "mean": 1000.0,
+      "std": 0.0
+    },
+    "L3-8": {
+      "late_gain": -0.035989454885190224,
+      "late_std": 0.7522630479072152,
+      "pass": false
+    },
+    "L3-3": {
+      "base_risk": 226.76269153343793,
+      "shuffled_risk": 226.07058541539607,
+      "recovery_risk": 226.76269153343793,
+      "base_act": 1.5330441683437674,
+      "shuffled_act": 1.0750472604446113,
+      "pass": false
+    },
+    "L3-4": {
+      "full_risk": 226.76269153343793,
+      "noisy_risk": 0.5345644862154961,
+      "noisy_act_var": 9.470522938844248e-05,
+      "pass": false
+    },
+    "L3-6": {
+      "normal_risk": 0.590384526101451,
+      "shuffled_risk": 0.590384526101451,
+      "pass": false
+    },
+    "L3-7": {
+      "base_risk": 453.14086976307675,
+      "detach_risk": 453.14086976307675,
+      "recovery_risk": 453.14086976307675,
+      "pass": false
+    },
+    "L3-5": {
+      "minimal_risk": 0.1110687389225436,
+      "open_risk": 280.20453215566585,
+      "final_k": -0.46515197470139935,
+      "pass": true
+    }
+  },
+  "stable_seeds": 4,
+  "unstable_seeds": 4
+}

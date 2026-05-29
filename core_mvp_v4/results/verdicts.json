@@ -1,0 +1,7 @@
+{
+  "L1_closed_loop_dominance": "MARGINAL: slight closed-loop advantage",
+  "L2_adapt_shaping_separation": "PASS: bimodal structure detected (>=2 components)",
+  "L3_endogenous_boundary": "MARGINAL: weak panic-drift coupling",
+  "L4_controllability_structure": "PASS: low-rank structure detected (k80/d < 0.5)",
+  "L5_functional_equivalence": "MARGINAL: some representational diversity"
+}

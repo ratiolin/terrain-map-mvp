@@ -1,0 +1,22 @@
+{
+  "verdicts": {
+    "open_closed": {
+      "pass": false,
+      "detail": "risk_cl=1.200 vs risk_op=1.216"
+    },
+    "perturbation": {
+      "pass": false,
+      "detail": "recovery=800 steps"
+    },
+    "long_term": {
+      "pass": true,
+      "detail": "2nd/1st=1.001 slope=0.00000"
+    },
+    "utilisation": {
+      "pass": true,
+      "detail": "\u03c1(|a|,g)=1.000 min_grad=0.0461"
+    }
+  },
+  "all_pass": false,
+  "conclusion": "Layer 1 ROBUSTNESS FAILED: see individual criteria."
+}

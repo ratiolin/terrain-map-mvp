@@ -1,0 +1,13 @@
+{
+  "k": 2,
+  "d_dims": [
+    4,
+    8,
+    16,
+    32
+  ],
+  "n_seeds": 8,
+  "episodes": 5,
+  "steps_per_episode": 2000,
+  "drift_total_steps": 10000
+}
