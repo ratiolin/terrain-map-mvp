@@ -55,7 +55,7 @@ def main():
         t0 = time.time()
 
         if layer == "1":
-            from core_mvp.layers.layer1_core import run_phase_a, run_phase_b
+            from core_mvp.layers.layer1_final import run_phase_a, run_phase_b
             od = os.path.join(RESULTS, "layer1")
             if args.phase in ("A", "all"):
                 run_phase_a(d_dims, list(range(seeds)), eps, stp, 1000, od)
@@ -63,26 +63,22 @@ def main():
                 run_phase_b(d_dims, list(range(seeds)), eps, stp, 1000, od)
 
         elif layer == "2":
-            from core_mvp.layers.layer2_generalization import run_layer2
+            from core_mvp.layers.layer2_final import run_layer2
             run_layer2(seeds=list(range(seeds)))
 
         elif layer == "3":
-            from core_mvp.layers.layer3_online import run_layer3
+            from core_mvp.layers.layer3_final import run_layer3
             run_layer3(n_seeds=seeds)
 
         elif layer == "4":
-            from core_mvp.layers.layer4_advanced import run_delay, run_minimal, run_complexity, run_deprivation, run_truefalse
-            import os as _os
+            from core_mvp.layers.layer4_final import run_delay, run_minimal, run_complexity, run_deprivation, run_truefalse, run_dual_path
             out4 = f"{RESULTS}/layer4"
-            _os.makedirs(out4, exist_ok=True)
+            os.makedirs(out4, exist_ok=True)
             for fn, name in [(run_delay, "delay"), (run_minimal, "minimal"),
                               (run_complexity, "complexity"), (run_deprivation, "deprivation"),
-                              (run_truefalse, "truefalse")]:
+                              (run_truefalse, "truefalse"), (run_dual_path, "dual_path")]:
                 print(f"\n  L4-{name}")
                 fn(seeds, stp)
-            from core_mvp.layers.layer4_dual_path import run_dual_path
-            print(f"\n  L4-dual_path")
-            run_dual_path(n_seeds=seeds, n_steps=stp)
 
         print(f"  Layer {layer} done in {time.time()-t0:.1f}s")
 

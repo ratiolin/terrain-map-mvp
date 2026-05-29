@@ -1,9 +1,0 @@
-{
-  "mean_survival_normal": 49.0,
-  "mean_survival_blocked": 49.0,
-  "mean_survival_open": 49.0,
-  "failure_rate_normal": 1.0,
-  "failure_rate_blocked": 1.0,
-  "failure_rate_open": 1.0,
-  "hazard_ratio": 1.0
-}

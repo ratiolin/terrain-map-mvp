@@ -69,22 +69,16 @@ core_mvp/
 │   ├── core_panic.py          # PanicController (mode-switching for non-stationary envs)
 │   └── core_logger.py         # ExperimentLogger, ResultAggregator
 ├── layers/
-│   ├── layer1_core.py         # Layer 1: Closed-loop dominance (Phase A: existence, Phase B: directional)
-│   ├── layer1_robustness.py   # Layer 1 robustness: open/closed, perturbation, long-term, utilization
-│   ├── layer2_generalization.py  # Layer 2: Multi-env generalization (A:double-well, B:DriftLevel, C:Impulsive)
-│   ├── layer2_proof.py        # Layer 2 proof: phase scan, survival, irreversibility
-│   ├── layer3_online.py       # Layer 3: Online gradient intervention (existence-driven, emergence detection)
-│   ├── layer3_corrected.py    # Layer 3: Corrected with stable-phase detection
-│   ├── layer3_full.py         # Layer 3: Full 9-sub-experiment suite
-│   ├── layer3_final.py        # Layer 3: Final version with ContinuousDriftLevelEnv
-│   ├── layer4_advanced.py     # Layer 4: Delay, minimal, complexity, deprivation, true/false world
-│   └── layer4_dual_path.py    # Layer 4: Dual-path (noise suppression, signal exploitation)
+│   ├── layer1_final.py         # Layer 1: Closed-loop dominance (Phase A: existence, Phase B: directional)
+│   ├── layer2_final.py         # Layer 2: Causal necessity across 3 environments
+│   ├── layer3_final.py         # Layer 3: Existence-driven emergence with online intervention
+│   └── layer4_final.py         # Layer 4: 6 experiments (delay, minimal, complexity, deprivation, true/false, dual-path)
 ├── legacy_v3/                 # Historical reference (v3 experiment/model/env)
 └── results/
-    ├── layer1/                # Layer 1 outputs (dominance, robustness, directional fix)
-    ├── layer2/                # Layer 2 outputs (generalization, proof, phase scan)
-    ├── layer3/                # Layer 3 outputs (emergence, online intervention)
-    └── layer4/                # Layer 4 outputs (complexity, deprivation, dual-path, etc.)
+    ├── layer1/                # Layer 1 outputs
+    ├── layer2/                # Layer 2 outputs
+    ├── layer3/                # Layer 3 outputs
+    └── layer4/                # Layer 4 outputs
 ```
 
 ---
@@ -98,13 +92,13 @@ uv sync
 # Quick test (all 4 layers, minimal seeds/steps)
 uv run python core_mvp/run.py --quick
 
-# Layer 1: Closed-loop dominance (Phase A = existence, Phase B = directional fix)
+# Layer 1: Closed-loop dominance
 uv run python core_mvp/run.py --layer 1
 
-# Layer 2: Causal necessity across 3 environments
+# Layer 2: Causal necessity
 uv run python core_mvp/run.py --layer 2
 
-# Layer 3: Emergence mechanism with online gradient intervention
+# Layer 3: Emergence mechanism
 uv run python core_mvp/run.py --layer 3
 
 # Layer 4: Robustness, compression, deprivation, dual-path
